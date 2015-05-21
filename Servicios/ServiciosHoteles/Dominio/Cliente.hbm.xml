@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="ServiciosHoteles"
+                   namespace="ServiciosHoteles.Dominio"
+                   default-lazy="false">
+  <class name="Cliente" table="t_cliente">
+    <id name="Codigo" column="codigo">
+      <generator class="increment" />
+    </id>
+    <property name="Nombre" column="nombre" />
+    <!--<property name="Correo" column="correo" />-->
+    <!--<many-to-one name="Sede" column="sede" />-->
+  </class>
+</hibernate-mapping>
