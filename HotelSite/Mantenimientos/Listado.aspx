@@ -15,7 +15,7 @@
                     <ItemStyle CssClass="hidden-xs"></ItemStyle>
                 </asp:BoundField>
                 <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="columna2">
-                    <HeaderStyle CssClass="hidden-xs"></HeaderStyle>
+                    <HeaderStyle CssClass="hidden-xs"></HeaderStyle> 
 
                     <ItemStyle CssClass="hidden-xs"></ItemStyle>
                 </asp:BoundField>
