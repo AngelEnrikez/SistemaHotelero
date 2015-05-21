@@ -13,7 +13,8 @@ namespace ServiciosHoteles.Persistencia
             using (ISession sesion = NHibernateHelper.ObtenerSesion())
             {
                 sesion.Save(entidad);
-                sesion.Flush();
+                sesion.Flush(); 
+                //prueba
             }
             return entidad;
         }
