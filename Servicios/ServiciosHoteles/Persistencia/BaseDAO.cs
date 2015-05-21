@@ -6,7 +6,7 @@ using NHibernate;
 
 namespace ServiciosHoteles.Persistencia
 {
-    public class BaseDAO<Entidad, Id>
+    public class BaseDAO<Entidad, Id> 
     {
         public Entidad Crear(Entidad entidad)
         {
