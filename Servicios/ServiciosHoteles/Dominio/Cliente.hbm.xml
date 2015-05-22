@@ -6,14 +6,14 @@
   <class name="Cliente" table="t_Cliente">
     <id name="IdCliente" column="idCliente">
       <generator class="increment" />
-    </id>
-    <property name="IdTipoDocumento" column="idTipoDocumento" />
-    <property name="Nombres" column="nombres" />
+    </id>    
+    <property name="Nombre" column="nombre" />
     <property name="ApellidoPaterno" column="apellidoPaterno" />
     <property name="ApellidoMaterno" column="apellidoMaterno" />
     <property name="NumeroDocumento" column="numeroDocumento" />    
     <property name="Email" column="email" />
-    <property name="Telefono" column="telefono" />
-    <property name="IdPais" column="idPais" />
+    <property name="Telefono" column="telefono" />    
+    <many-to-one name="Pais" column="idPais" />
+    <many-to-one name="TipoDocumento" column="idTipoDocumento" />
   </class>
 </hibernate-mapping>

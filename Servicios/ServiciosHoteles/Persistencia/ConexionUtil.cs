@@ -9,7 +9,7 @@ namespace ServiciosHoteles.Persistencia
     {
         public static string ObtenerCadena()
         {
-            return "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=SistemaHotel;Data Source=LP-PCCAPA";
+            return "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=BDHoteles;Data Source=LP-PCCAPA";
             //return "Data Source=H45-17;Initial Catalog=BD_Clientes;Integrated Security=SSPI;";
 
         }

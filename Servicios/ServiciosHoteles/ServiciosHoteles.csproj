@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Clientes.svc" />
+    <EmbeddedResource Include="Dominio\Cliente.hbm.xml" />
+    <EmbeddedResource Include="Dominio\TipoDocumento.hbm.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -75,8 +77,12 @@
       <DependentUpon>Clientes.svc</DependentUpon>
     </Compile>
     <Compile Include="Dominio\Cliente.cs" />
+    <Compile Include="Dominio\TipoDocumento.cs" />
+    <Compile Include="Dominio\Pais.cs" />
     <Compile Include="IClientes.cs" />
     <Compile Include="Persistencia\BaseDAO.cs" />
+    <Compile Include="Persistencia\TipoDocumentoDAO.cs" />
+    <Compile Include="Persistencia\PaisDAO.cs" />
     <Compile Include="Persistencia\ClienteDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
@@ -86,7 +92,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Dominio\Cliente.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Pais.hbm.xml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

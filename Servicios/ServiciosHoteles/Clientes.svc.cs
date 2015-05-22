@@ -12,7 +12,8 @@ namespace ServiciosHoteles
     public class Clientes : IClientes
     {
         private ClienteDAO clienteDAO = null;
-
+        private PaisDAO paisDAO = null;
+        private TipoDocumentoDAO tipoDocumentoDAO = null;
         private ClienteDAO ClienteDAO
         {
             get
@@ -25,20 +26,45 @@ namespace ServiciosHoteles
                 return clienteDAO;
             }
         }
+        private PaisDAO PaisDAO
+        {
+            get
+            {
+                if (paisDAO == null)
+                {
+                    paisDAO = new PaisDAO();
+                }
 
+                return paisDAO;
+            }
+        }
+        private TipoDocumentoDAO TipoDocumentoDAO
+        {
+            get
+            {
+                if (tipoDocumentoDAO == null)
+                {
+                    tipoDocumentoDAO = new TipoDocumentoDAO();
+                }
+
+                return tipoDocumentoDAO;
+            }
+        }
         public Cliente CrearCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
         {
+            Pais paisExistente = PaisDAO.Obtener(idPais);
+            TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(idTipoDocumento);
+
             Cliente clienteRegistrar = new Cliente()
             {
-                IdCliente=idCliente,
-                IdTipoDocumento=idTipoDocumento,
-                Nombres = nombres,
+                TipoDocumento=tipoDocumentoExistente,
+                Nombre = nombres,
                 ApellidoPaterno = apellidoPaterno,
                 ApellidoMaterno = apellidoMaterno,
                 NumeroDocumento = numeroDocumento,
                 Telefono = telefono,
                 Email = email,
-                IdPais=idPais
+                Pais=paisExistente
             };
 
             return ClienteDAO.Crear(clienteRegistrar);
@@ -46,17 +72,20 @@ namespace ServiciosHoteles
 
         public Cliente ModificarCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
         {
+            Pais paisExistente = PaisDAO.Obtener(idPais);
+            TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(idTipoDocumento);
+
             Cliente clienteAModificar = new Cliente()
             {
                 IdCliente = idCliente,
-                IdTipoDocumento = idTipoDocumento,
-                Nombres = nombres,
+                TipoDocumento = tipoDocumentoExistente,
+                Nombre = nombres,
                 ApellidoPaterno = apellidoPaterno,
                 ApellidoMaterno = apellidoMaterno,
                 NumeroDocumento = numeroDocumento,
                 Telefono = telefono,
                 Email = email,
-                IdPais = idPais
+                Pais = paisExistente
             };
 
             return ClienteDAO.Modificar(clienteAModificar);
