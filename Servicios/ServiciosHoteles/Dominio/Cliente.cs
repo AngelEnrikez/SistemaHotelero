@@ -10,7 +10,9 @@ namespace ServiciosHoteles.Dominio
     public class Cliente
     {
         [DataMember]
-        public int Codigo { get; set; }
+        public int IdCliente { get; set; }
+        [DataMember]
+        public int IdTipoDocumento { get; set; }
         [DataMember]
         public string Nombres { get; set; }
         [DataMember]
@@ -18,11 +20,13 @@ namespace ServiciosHoteles.Dominio
         [DataMember]
         public string ApellidoMaterno { get; set; }
         [DataMember]
-        public string DNI { get; set; }
+        public string NumeroDocumento { get; set; }
+        [DataMember]
+        public string Email { get; set; }
         [DataMember]
         public string Telefono { get; set; }
         [DataMember]
-        public string Email { get; set; }
+        public int IdPais { get; set; }
         
         
 

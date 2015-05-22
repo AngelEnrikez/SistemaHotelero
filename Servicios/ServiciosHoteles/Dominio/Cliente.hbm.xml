@@ -3,15 +3,17 @@
                    assembly="ServiciosHoteles"
                    namespace="ServiciosHoteles.Dominio"
                    default-lazy="false">
-  <class name="Cliente" table="t_cliente">
-    <id name="Codigo" column="codigo">
+  <class name="Cliente" table="t_Cliente">
+    <id name="IdCliente" column="idCliente">
       <generator class="increment" />
     </id>
+    <property name="IdTipoDocumento" column="idTipoDocumento" />
     <property name="Nombres" column="nombres" />
     <property name="ApellidoPaterno" column="apellidoPaterno" />
     <property name="ApellidoMaterno" column="apellidoMaterno" />
-    <property name="DNI" column="dni" />
-    <property name="Telefono" column="telefono" />
+    <property name="NumeroDocumento" column="numeroDocumento" />    
     <property name="Email" column="email" />
+    <property name="Telefono" column="telefono" />
+    <property name="IdPais" column="idPais" />
   </class>
 </hibernate-mapping>

@@ -26,32 +26,37 @@ namespace ServiciosHoteles
             }
         }
 
-        public Cliente RegistrarCliente(string nombres, string apellidoPaterno, string apellidoMaterno, string dni, string telefono, string email)
+        public Cliente CrearCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
         {
             Cliente clienteRegistrar = new Cliente()
             {
+                IdCliente=idCliente,
+                IdTipoDocumento=idTipoDocumento,
                 Nombres = nombres,
                 ApellidoPaterno = apellidoPaterno,
                 ApellidoMaterno = apellidoMaterno,
-                DNI = dni,
+                NumeroDocumento = numeroDocumento,
                 Telefono = telefono,
-                Email = email
+                Email = email,
+                IdPais=idPais
             };
 
             return ClienteDAO.Crear(clienteRegistrar);
         }
 
-        public Cliente ModificarCliente(int codigo, string nombres, string apellidoPaterno, string apellidoMaterno, string dni, string telefono, string email)
+        public Cliente ModificarCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
         {
             Cliente clienteAModificar = new Cliente()
             {
-                Codigo = codigo,
+                IdCliente = idCliente,
+                IdTipoDocumento = idTipoDocumento,
                 Nombres = nombres,
                 ApellidoPaterno = apellidoPaterno,
                 ApellidoMaterno = apellidoMaterno,
-                DNI = dni,
+                NumeroDocumento = numeroDocumento,
                 Telefono = telefono,
-                Email = email
+                Email = email,
+                IdPais = idPais
             };
 
             return ClienteDAO.Modificar(clienteAModificar);
@@ -68,7 +73,7 @@ namespace ServiciosHoteles
             return ClienteDAO.Obtener(codigo);
         }
 
-        public List<Dominio.Cliente> ListarClientes()
+        public List<Cliente> ListarClientes()
         {
             return ClienteDAO.Listar().ToList();
         }

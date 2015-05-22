@@ -13,9 +13,9 @@ namespace ServiciosHoteles
     public interface IClientes
     {
         [OperationContract]
-        Cliente RegistrarCliente(string nombres, string apellidoPaterno, string apellidoMaterno, string dni, string telefono, string email);
+        Cliente CrearCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono,int idPais);
         [OperationContract]
-        Cliente ModificarCliente(int codigo, string nombres, string apellidoPaterno, string apellidoMaterno, string dni, string telefono, string email);
+        Cliente ModificarCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais);
         [OperationContract]
         void EliminarCliente(int codigo);
         [OperationContract]
