@@ -27,7 +27,7 @@
                             <DynamicSelectedStyle BackColor="#FFCC66" />
                             <Items>
                                 <asp:MenuItem Text="Mantenimiento" Value="Mantenimiento">
-                                    <asp:MenuItem NavigateUrl="~/Mantenimientos/Listado.aspx" Text="Clientes" Value="Clientes"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Mantenimientos/ListarCliente.aspx" Text="Clientes" Value="Clientes"></asp:MenuItem>
                                 </asp:MenuItem>
                                 <asp:MenuItem Text="Operaciones" Value="Operaciones"></asp:MenuItem>
                                 <asp:MenuItem Text="Reportes" Value="Reportes">

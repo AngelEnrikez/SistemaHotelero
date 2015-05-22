@@ -70,6 +70,8 @@
     <Content Include="Clientes.svc" />
     <EmbeddedResource Include="Dominio\Cliente.hbm.xml" />
     <EmbeddedResource Include="Dominio\TipoDocumento.hbm.xml" />
+    <Content Include="Paises.svc" />
+    <Content Include="TiposDocumento.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +82,11 @@
     <Compile Include="Dominio\TipoDocumento.cs" />
     <Compile Include="Dominio\Pais.cs" />
     <Compile Include="IClientes.cs" />
+    <Compile Include="IPaises.cs" />
+    <Compile Include="ITiposDocumento.cs" />
+    <Compile Include="Paises.svc.cs">
+      <DependentUpon>Paises.svc</DependentUpon>
+    </Compile>
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\TipoDocumentoDAO.cs" />
     <Compile Include="Persistencia\PaisDAO.cs" />
@@ -87,6 +94,9 @@
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TiposDocumento.svc.cs">
+      <DependentUpon>TiposDocumento.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
