@@ -25,6 +25,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "HotelSite(1)", "http://loca
 		Release.AspNetCompiler.Debug = "False"
 		SlnRelativePath = "HotelSite\"
 	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{B8D24A85-AD04-42DE-B875-76AA91AB71C3} = {B8D24A85-AD04-42DE-B875-76AA91AB71C3}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librerias", "Librerias", "{96379ED0-9EDD-4AE4-8051-9C42862E7058}"
 	ProjectSection(SolutionItems) = preProject
