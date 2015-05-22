@@ -1,26 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Runtime.Serialization;
+using System.Web;
 
 namespace ServiciosHoteles.Dominio
 {
-       [DataContract]
+    [DataContract]
     public class Cliente
     {
         [DataMember]
         public int Codigo { get; set; }
         [DataMember]
-        public string Nombre { get; set; }
+        public string Nombres { get; set; }
         [DataMember]
         public string ApellidoPaterno { get; set; }
         [DataMember]
-        public int DNI { get; set; }
+        public string ApellidoMaterno { get; set; }
+        [DataMember]
+        public string DNI { get; set; }
         [DataMember]
         public string Telefono { get; set; }
         [DataMember]
         public string Email { get; set; }
+        
+        
+
 
 
     }

@@ -7,8 +7,11 @@
     <id name="Codigo" column="codigo">
       <generator class="increment" />
     </id>
-    <property name="Nombre" column="nombre" />
-    <!--<property name="Correo" column="correo" />-->
-    <!--<many-to-one name="Sede" column="sede" />-->
+    <property name="Nombres" column="nombres" />
+    <property name="ApellidoPaterno" column="apellidoPaterno" />
+    <property name="ApellidoMaterno" column="apellidoMaterno" />
+    <property name="DNI" column="dni" />
+    <property name="Telefono" column="telefono" />
+    <property name="Email" column="email" />
   </class>
 </hibernate-mapping>

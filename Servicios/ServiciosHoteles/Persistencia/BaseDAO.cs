@@ -42,7 +42,7 @@ namespace ServiciosHoteles.Persistencia
                 sesion.Flush();
             }
         }
-        public ICollection<Entidad> ListarTodos()
+        public ICollection<Entidad> Listar()
         {
             using (ISession sesion = NHibernateHelper.ObtenerSesion())
             {
