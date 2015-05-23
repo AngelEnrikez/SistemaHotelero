@@ -23,6 +23,6 @@ namespace ServiciosHoteles
         [OperationContract]
         List<Cliente> ListarClientes();
         [OperationContract]
-        List<Cliente> ListarClientes(string nombre, string numeroDocumento);
+        List<Cliente> BuscarClientes(string nombre, string numeroDocumento);
     }
 }

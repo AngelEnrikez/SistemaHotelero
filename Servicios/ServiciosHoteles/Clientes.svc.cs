@@ -108,7 +108,7 @@ namespace ServiciosHoteles
         }
 
 
-        public List<Cliente> ListarClientes(string nombre, string numeroDocumento)
+        public List<Cliente> BuscarClientes(string nombre, string numeroDocumento)
         {   
             Cliente clienteBuscar = new Cliente(){
                 Nombre = nombre,
