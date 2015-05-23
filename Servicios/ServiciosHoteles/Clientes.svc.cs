@@ -75,7 +75,7 @@ namespace ServiciosHoteles
             }
             else if (numeroDocumento == string.Empty)
             {
-                mensaje = "El campo Nro. Documento Materno debe ser obligatorio";
+                mensaje = "El campo Nro. Documento debe ser obligatorio";
             }
             else if (!emailValido(email))
             {
@@ -143,7 +143,7 @@ namespace ServiciosHoteles
             }
             else if (numeroDocumento == string.Empty)
             {
-                mensaje = "El campo Nro. Documento Materno debe ser obligatorio";
+                mensaje = "El campo Nro. Documento debe ser obligatorio";
             }
             if (!emailValido(email))
             {
