@@ -37,12 +37,20 @@ public partial class _Default : System.Web.UI.Page
     private void Listar() {
         try
         {
+            gdListado.DataSource = null; 
+            gdListado.DataBind();
             using (ServicioClientes.ClientesClient objCliente = new ClientesClient())
             {
                 List<ServicioClientes.Cliente> clientes = objCliente.ListarClientes();
-                hdMaxCodigo.Value = (clientes.Max(r => r.IdCliente) + 1).ToString();
-                gdListado.DataSource = clientes;
-                gdListado.DataBind();
+                if (clientes.Count > 0)
+                {
+                    hdMaxCodigo.Value = (clientes.Max(r => r.IdCliente) + 1).ToString();
+                    gdListado.DataSource = clientes;
+                    gdListado.DataBind();
+                }
+                else {
+                    hdMaxCodigo.Value = "1";
+                }
             }
         }
         catch (Exception ex)
@@ -76,7 +84,7 @@ public partial class _Default : System.Web.UI.Page
             {
                 GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
                 HiddenField hdnDataId = (HiddenField)row.FindControl("hdGridCodigo");
-                Response.Redirect("MantenimientoCliente.aspx?cod=" + hdnDataId.Value + "&accion=A", true);
+                Response.Redirect("AdministracionCliente.aspx?cod=" + hdnDataId.Value + "&accion=A", true);
             }
         }
         catch (Exception ex )
@@ -89,7 +97,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnAgregar_Click(object sender, EventArgs e)
     {
-        Response.Redirect("MantenimientoCliente.aspx?cod=" + hdMaxCodigo.Value + "&accion=N",true);
+        Response.Redirect("AdministracionCliente.aspx?cod=" + hdMaxCodigo.Value + "&accion=N", true);
     }
  
 }
