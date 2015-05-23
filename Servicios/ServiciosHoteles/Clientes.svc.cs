@@ -61,7 +61,8 @@ namespace ServiciosHoteles
             int numerDocEntero;
             bool numeroDocumentoValido = int.TryParse(numeroDocumento, out numerDocEntero);
 
-            if (nombres == string.Empty ){
+            if (nombres == string.Empty)
+            {
                 mensaje = "El campo Nombres debe ser obligatorio";
             }
             else if (apellidoPaterno == string.Empty)
@@ -95,14 +96,14 @@ namespace ServiciosHoteles
 
                 Cliente clienteRegistrar = new Cliente()
                 {
-                    TipoDocumento=tipoDocumentoExistente,
+                    TipoDocumento = tipoDocumentoExistente,
                     Nombre = nombres,
                     ApellidoPaterno = apellidoPaterno,
                     ApellidoMaterno = apellidoMaterno,
                     NumeroDocumento = numeroDocumento,
                     Telefono = telefono,
                     Email = email,
-                    Pais=paisExistente
+                    Pais = paisExistente
                 };
 
                 Cliente clienteCreado = ClienteDAO.Crear(clienteRegistrar);
@@ -115,7 +116,7 @@ namespace ServiciosHoteles
 
             return mensaje;
 
-            
+
         }
 
         public string ModificarCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
@@ -157,7 +158,7 @@ namespace ServiciosHoteles
                 mensaje = "El campo Nro Documento debe ser numérico";
             }
             else
-            { 
+            {
                 Pais paisExistente = PaisDAO.Obtener(idPais);
                 TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(idTipoDocumento);
 
@@ -175,14 +176,11 @@ namespace ServiciosHoteles
                 };
 
                 Cliente clienteModificado = ClienteDAO.Modificar(clienteAModificar);
-
                 if (clienteModificado != null)
                 {
                     mensaje = "Grabacion Exitosa";
                 }
             }
-
-
 
             return mensaje;
         }
@@ -205,8 +203,9 @@ namespace ServiciosHoteles
 
 
         public List<Cliente> BuscarClientes(string nombre, string numeroDocumento)
-        {   
-            Cliente clienteBuscar = new Cliente(){
+        {
+            Cliente clienteBuscar = new Cliente()
+            {
                 Nombre = nombre,
                 NumeroDocumento = numeroDocumento
             };

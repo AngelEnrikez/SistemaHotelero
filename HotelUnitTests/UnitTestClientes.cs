@@ -8,23 +8,46 @@ namespace HotelUnitTests
     public class UnitTestClientes
     {
         [TestMethod]
-        public void validarRegistro()
+        public void TestCrearCliente()
         {
             ServicioClientes.ClientesClient proxy = new ServicioClientes.ClientesClient();
-            string mensaje = proxy.CrearCliente(1, "Juan Luis", "Perez", "Rodriguez", "12324212", "jperez@contoso.com", "2133212", 1);
+            string mensaje = proxy.CrearCliente(2, "Juan Luis", "Perez", "Rodriguez", "12324212", "jperez@contoso.com", "2133212", 1);
+            Cliente cliente = proxy.ObtenerCliente(2);
             Assert.AreEqual("Grabacion Exitosa", mensaje);
+            Assert.IsNotNull(cliente);
         }
 
         [TestMethod]
-        public void validarModificacion()
+        public void TestModificarCliente()
         {
             ServicioClientes.ClientesClient proxy = new ServicioClientes.ClientesClient();
-            string mensaje = proxy.ModificarCliente(2,1, "Juan Luis", "Perez", "Rodriguez", "12324212", "jperez@contoso.com", "2133212", 1);
-            Cliente cliente = proxy.ObtenerCliente(2);
+            string mensaje = proxy.ModificarCliente(1,1, "Juan Luis", "Perez", "Rodriguez", "12324212", "jperez@contoso.com", "2133212", 1);
+            Cliente cliente = proxy.ObtenerCliente(1);
 
             Assert.AreEqual("Grabacion Exitosa", mensaje);
             Assert.IsNotNull(cliente);
             Assert.AreEqual("Perez", cliente.ApellidoPaterno);
         }
+
+
+        [TestMethod]
+        public void TestObtenerCliente()
+        {
+            ServicioClientes.ClientesClient proxy = new ServicioClientes.ClientesClient();
+            Cliente cliente = proxy.ObtenerCliente(2);
+
+            Assert.IsNotNull(cliente);
+        }
+
+        [TestMethod]
+        public void TestEliminarCliente()
+        {
+            ServicioClientes.ClientesClient proxy = new ServicioClientes.ClientesClient();
+             proxy.EliminarCliente(2);
+            Cliente cliente = proxy.ObtenerCliente(2);
+
+            Assert.IsNull(cliente);
+        }
+
     }
 }
