@@ -6,9 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ServicioClientes;
 
-public partial class _Default : System.Web.UI.Page
+public partial class Default2 : System.Web.UI.Page
 {
-
     /// <summary>
     /// Inicio
     /// </summary>
@@ -28,16 +27,17 @@ public partial class _Default : System.Web.UI.Page
             divError.InnerHtml = ex.Message;
             divError.Visible = true;
         }
-        
+
     }
 
     /// <summary>
     /// Listar el registro
     /// </summary>
-    private void Listar() {
+    private void Listar()
+    {
         try
         {
-            gdListado.DataSource = null; 
+            gdListado.DataSource = null;
             gdListado.DataBind();
             using (ServicioClientes.ClientesClient objCliente = new ClientesClient())
             {
@@ -48,17 +48,18 @@ public partial class _Default : System.Web.UI.Page
                     gdListado.DataSource = clientes;
                     gdListado.DataBind();
                 }
-                else {
+                else
+                {
                     hdMaxCodigo.Value = "1";
                 }
             }
         }
         catch (Exception ex)
-        {            
+        {
             throw ex;
         }
-       
-       
+
+
     }
 
     /// <summary>
@@ -87,17 +88,16 @@ public partial class _Default : System.Web.UI.Page
                 Response.Redirect("AdministracionCliente.aspx?cod=" + hdnDataId.Value + "&accion=A", true);
             }
         }
-        catch (Exception ex )
+        catch (Exception ex)
         {
             divError.InnerHtml = ex.Message;
             divError.Visible = true;
         }
-       
+
     }
 
     protected void btnAgregar_Click(object sender, EventArgs e)
     {
         Response.Redirect("AdministracionCliente.aspx?cod=" + hdMaxCodigo.Value + "&accion=N", true);
     }
- 
 }
