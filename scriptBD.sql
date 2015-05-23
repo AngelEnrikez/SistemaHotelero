@@ -59,7 +59,9 @@ CREATE TABLE [dbo].[t_TipoDocumento](
 GO
 SET ANSI_PADDING OFF
 GO
-INSERT [dbo].[t_TipoDocumento] ([idTipoDocumento], [descripcion]) VALUES (1, CONVERT(TEXT, N'DNI'))
+INSERT [dbo].[t_TipoDocumento] ([idTipoDocumento], [descripcion]) VALUES (1, 'DNI')
+INSERT [dbo].[t_TipoDocumento] ([idTipoDocumento], [descripcion]) VALUES (2, 'Carnet Extranjeria')
+INSERT [dbo].[t_TipoDocumento] ([idTipoDocumento], [descripcion]) VALUES (3, 'Pasaporte')
 /****** Object:  Table [dbo].[t_Servicio]    Script Date: 05/22/2015 17:35:15 ******/
 SET ANSI_NULLS ON
 GO
@@ -97,7 +99,10 @@ CREATE TABLE [dbo].[t_Pais](
 GO
 SET ANSI_PADDING OFF
 GO
-INSERT [dbo].[t_Pais] ([idPais], [nombrePais]) VALUES (1, CONVERT(TEXT, N'Peru'))
+INSERT INTO [dbo].[t_Pais] ([idPais],[nombrePais]) VALUES (1,'Peru')
+INSERT INTO [dbo].[t_Pais] ([idPais],[nombrePais]) VALUES (2,'Colombia')
+INSERT INTO [dbo].[t_Pais] ([idPais],[nombrePais]) VALUES (3,'Venezuela')
+INSERT INTO [dbo].[t_Pais] ([idPais],[nombrePais]) VALUES (4,'Ecuador')
 /****** Object:  Table [dbo].[t_Configuracion]    Script Date: 05/22/2015 17:35:15 ******/
 SET ANSI_NULLS ON
 GO
@@ -142,12 +147,6 @@ CREATE TABLE [dbo].[t_Cliente](
 GO
 SET ANSI_PADDING OFF
 GO
-INSERT [dbo].[t_Cliente] ([idCliente], [nombre], [apellidoPaterno], [apellidoMaterno], [idTipoDocumento], [numeroDocumento], [email], [telefono], [idPais]) VALUES (1, CONVERT(TEXT, N'Pablo'), CONVERT(TEXT, N'Ccapa'), CONVERT(TEXT, N'Becerra'), 1, CONVERT(TEXT, N'952365478'), CONVERT(TEXT, N'pablito@hotmail.com'), CONVERT(TEXT, N'985632514'), 1)
-INSERT [dbo].[t_Cliente] ([idCliente], [nombre], [apellidoPaterno], [apellidoMaterno], [idTipoDocumento], [numeroDocumento], [email], [telefono], [idPais]) VALUES (3, CONVERT(TEXT, N'pablo2'), CONVERT(TEXT, N'apedd'), CONVERT(TEXT, N'asdasd'), 1, CONVERT(TEXT, N'w3eq21'), CONVERT(TEXT, N'sdasdasd'), CONVERT(TEXT, N'234234'), 1)
-INSERT [dbo].[t_Cliente] ([idCliente], [nombre], [apellidoPaterno], [apellidoMaterno], [idTipoDocumento], [numeroDocumento], [email], [telefono], [idPais]) VALUES (4, CONVERT(TEXT, N'asdadadsa'), CONVERT(TEXT, N'sdasdasdada'), CONVERT(TEXT, N'sdadadadasdasd'), 1, CONVERT(TEXT, N'45555555555'), CONVERT(TEXT, N'fffffffffff'), CONVERT(TEXT, N'f555555555555'), 1)
-INSERT [dbo].[t_Cliente] ([idCliente], [nombre], [apellidoPaterno], [apellidoMaterno], [idTipoDocumento], [numeroDocumento], [email], [telefono], [idPais]) VALUES (5, CONVERT(TEXT, N'pablinn'), CONVERT(TEXT, N'pablin'), CONVERT(TEXT, N'pablin'), 1, CONVERT(TEXT, N'45555555555'), CONVERT(TEXT, N'fffffffffff'), CONVERT(TEXT, N'f555555555555'), 1)
-INSERT [dbo].[t_Cliente] ([idCliente], [nombre], [apellidoPaterno], [apellidoMaterno], [idTipoDocumento], [numeroDocumento], [email], [telefono], [idPais]) VALUES (6, CONVERT(TEXT, N'pablinn'), CONVERT(TEXT, N'pablin'), CONVERT(TEXT, N'pablin'), 1, CONVERT(TEXT, N'45555555555'), CONVERT(TEXT, N'dddddd'), CONVERT(TEXT, N'f555555555555'), 1)
-INSERT [dbo].[t_Cliente] ([idCliente], [nombre], [apellidoPaterno], [apellidoMaterno], [idTipoDocumento], [numeroDocumento], [email], [telefono], [idPais]) VALUES (7, CONVERT(TEXT, N'ggggg'), CONVERT(TEXT, N'ggggg'), CONVERT(TEXT, N'gggggggg'), 1, CONVERT(TEXT, N'45555555555'), CONVERT(TEXT, N'dddddd'), CONVERT(TEXT, N'f555555555555'), 1)
 /****** Object:  Table [dbo].[t_Habitacion]    Script Date: 05/22/2015 17:35:15 ******/
 SET ANSI_NULLS ON
 GO

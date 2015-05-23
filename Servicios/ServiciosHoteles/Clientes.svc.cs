@@ -50,7 +50,7 @@ namespace ServiciosHoteles
                 return tipoDocumentoDAO;
             }
         }
-        public Cliente CrearCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
+        public Cliente CrearCliente(int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
         {
             Pais paisExistente = PaisDAO.Obtener(idPais);
             TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(idTipoDocumento);
@@ -105,6 +105,17 @@ namespace ServiciosHoteles
         public List<Cliente> ListarClientes()
         {
             return ClienteDAO.Listar().ToList();
+        }
+
+
+        public List<Cliente> ListarClientes(string nombre, string numeroDocumento)
+        {   
+            Cliente clienteBuscar = new Cliente(){
+                Nombre = nombre,
+                NumeroDocumento = numeroDocumento
+            };
+
+            return ClienteDAO.Buscar(clienteBuscar).ToList();
         }
     }
 }

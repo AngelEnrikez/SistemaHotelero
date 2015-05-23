@@ -13,7 +13,7 @@ namespace ServiciosHoteles
     public interface IClientes
     {
         [OperationContract]
-        Cliente CrearCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono,int idPais);
+        Cliente CrearCliente(int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono,int idPais);
         [OperationContract]
         Cliente ModificarCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais);
         [OperationContract]
@@ -22,5 +22,7 @@ namespace ServiciosHoteles
         Cliente ObtenerCliente(int codigo);
         [OperationContract]
         List<Cliente> ListarClientes();
+        [OperationContract]
+        List<Cliente> ListarClientes(string nombre, string numeroDocumento);
     }
 }

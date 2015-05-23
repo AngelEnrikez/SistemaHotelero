@@ -70,6 +70,7 @@
     <Content Include="Clientes.svc" />
     <EmbeddedResource Include="Dominio\Cliente.hbm.xml" />
     <EmbeddedResource Include="Dominio\TipoDocumento.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Pais.hbm.xml" />
     <Content Include="Paises.svc" />
     <Content Include="TiposDocumento.svc" />
     <Content Include="Web.config" />
@@ -102,7 +103,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Dominio\Pais.hbm.xml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
