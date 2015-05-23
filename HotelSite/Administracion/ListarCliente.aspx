@@ -50,7 +50,7 @@
             <asp:Button ID="btnAgregar" class="btn btn-default" runat="server" Text="Agregar" OnClick="btnAgregar_Click" />
             <asp:HiddenField ID="hdMaxCodigo" runat="server" />
         </div>
-        <div id="divError" class="alert alert-danger" role="alert"  runat="server"  visible="false" >Error</div>
+        <div id="divError" class="alert alert-info" role="alert"  runat="server"  visible="false" >Mensaje</div>
     </div>
 
 </asp:Content>

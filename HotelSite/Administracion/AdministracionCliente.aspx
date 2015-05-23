@@ -83,7 +83,7 @@
             <asp:HiddenField ID="hdAgregarActualizar" runat="server" />
             <asp:HiddenField ID="hdCodigo" runat="server" Value="0" />
         </div>
-        <div id="divError" class="alert alert-danger" runat="server" visible="false" role="alert">Error</div>
+        <div id="divError" class="alert alert-info" runat="server" visible="false" role="alert">Mensaje</div>
     </div>
 </asp:Content>
 

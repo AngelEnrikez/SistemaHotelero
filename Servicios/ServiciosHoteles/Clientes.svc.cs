@@ -61,18 +61,32 @@ namespace ServiciosHoteles
             int numerDocEntero;
             bool numeroDocumentoValido = int.TryParse(numeroDocumento, out numerDocEntero);
 
-            
-            if (!emailValido(email))
+            if (nombres == string.Empty ){
+                mensaje = "El campo Nombres debe ser obligatorio";
+            }
+            else if (apellidoPaterno == string.Empty)
+            {
+                mensaje = "El campo Apellido Paterno debe ser obligatorio";
+            }
+            else if (apellidoMaterno == string.Empty)
+            {
+                mensaje = "El campo Apellido Materno debe ser obligatorio";
+            }
+            else if (numeroDocumento == string.Empty)
+            {
+                mensaje = "El campo Nro. Documento Materno debe ser obligatorio";
+            }
+            else if (!emailValido(email))
             {
                 mensaje = "Ingrese Correo Electronico Valido";
             }
             else if (!telefonoValido)
             {
-                mensaje = "Ingrese Valores Numericos";
+                mensaje = "El campo Teléfono debe ser numérico";
             }
             else if (!numeroDocumentoValido)
             {
-                mensaje = "Ingrese Valores Numericos";
+                mensaje = "El campo Nro Documento debe ser numérico";
             }
             else
             {
@@ -114,18 +128,33 @@ namespace ServiciosHoteles
             int numerDocEntero;
             bool numeroDocumentoValido = int.TryParse(numeroDocumento, out numerDocEntero);
 
-            
+            if (nombres == string.Empty)
+            {
+                mensaje = "El campo Nombres debe ser obligatorio";
+            }
+            else if (apellidoPaterno == string.Empty)
+            {
+                mensaje = "El campo Apellido Paterno debe ser obligatorio";
+            }
+            else if (apellidoMaterno == string.Empty)
+            {
+                mensaje = "El campo Apellido Materno debe ser obligatorio";
+            }
+            else if (numeroDocumento == string.Empty)
+            {
+                mensaje = "El campo Nro. Documento Materno debe ser obligatorio";
+            }
             if (!emailValido(email))
             {
                 mensaje = "Ingrese Correo Electronico Valido";
             }
             else if (!telefonoValido)
             {
-                mensaje = "Ingrese Valores Numericos";
+                mensaje = "El campo Teléfono debe ser numérico";
             }
             else if (!numeroDocumentoValido)
             {
-                mensaje = "Ingrese Valores Numericos";
+                mensaje = "El campo Nro Documento debe ser numérico";
             }
             else
             { 
