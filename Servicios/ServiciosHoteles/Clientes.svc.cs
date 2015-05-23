@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Web.UI.WebControls;
 
 namespace ServiciosHoteles
 {
@@ -50,45 +51,111 @@ namespace ServiciosHoteles
                 return tipoDocumentoDAO;
             }
         }
-        public Cliente CrearCliente(int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
+        public string CrearCliente(int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
         {
-            Pais paisExistente = PaisDAO.Obtener(idPais);
-            TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(idTipoDocumento);
+            string mensaje = null;
 
-            Cliente clienteRegistrar = new Cliente()
+            int telefonoEntero;
+            bool telefonoValido = int.TryParse(telefono, out telefonoEntero);
+
+            int numerDocEntero;
+            bool numeroDocumentoValido = int.TryParse(numeroDocumento, out numerDocEntero);
+
+            
+            if (!emailValido(email))
             {
-                TipoDocumento=tipoDocumentoExistente,
-                Nombre = nombres,
-                ApellidoPaterno = apellidoPaterno,
-                ApellidoMaterno = apellidoMaterno,
-                NumeroDocumento = numeroDocumento,
-                Telefono = telefono,
-                Email = email,
-                Pais=paisExistente
-            };
+                mensaje = "Ingrese Correo Electronico Valido";
+            }
+            else if (!telefonoValido)
+            {
+                mensaje = "Ingrese Valores Numericos";
+            }
+            else if (!numeroDocumentoValido)
+            {
+                mensaje = "Ingrese Valores Numericos";
+            }
+            else
+            {
+                Pais paisExistente = PaisDAO.Obtener(idPais);
+                TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(idTipoDocumento);
 
-            return ClienteDAO.Crear(clienteRegistrar);
+                Cliente clienteRegistrar = new Cliente()
+                {
+                    TipoDocumento=tipoDocumentoExistente,
+                    Nombre = nombres,
+                    ApellidoPaterno = apellidoPaterno,
+                    ApellidoMaterno = apellidoMaterno,
+                    NumeroDocumento = numeroDocumento,
+                    Telefono = telefono,
+                    Email = email,
+                    Pais=paisExistente
+                };
+
+                Cliente clienteCreado = ClienteDAO.Crear(clienteRegistrar);
+
+                if (clienteCreado != null)
+                {
+                    mensaje = "Grabacion Exitosa";
+                }
+            }
+
+            return mensaje;
+
+            
         }
 
-        public Cliente ModificarCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
+        public string ModificarCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
         {
-            Pais paisExistente = PaisDAO.Obtener(idPais);
-            TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(idTipoDocumento);
+            string mensaje = null;
 
-            Cliente clienteAModificar = new Cliente()
+            int telefonoEntero;
+            bool telefonoValido = int.TryParse(telefono, out telefonoEntero);
+
+            int numerDocEntero;
+            bool numeroDocumentoValido = int.TryParse(numeroDocumento, out numerDocEntero);
+
+            
+            if (!emailValido(email))
             {
-                IdCliente = idCliente,
-                TipoDocumento = tipoDocumentoExistente,
-                Nombre = nombres,
-                ApellidoPaterno = apellidoPaterno,
-                ApellidoMaterno = apellidoMaterno,
-                NumeroDocumento = numeroDocumento,
-                Telefono = telefono,
-                Email = email,
-                Pais = paisExistente
-            };
+                mensaje = "Ingrese Correo Electronico Valido";
+            }
+            else if (!telefonoValido)
+            {
+                mensaje = "Ingrese Valores Numericos";
+            }
+            else if (!numeroDocumentoValido)
+            {
+                mensaje = "Ingrese Valores Numericos";
+            }
+            else
+            { 
+                Pais paisExistente = PaisDAO.Obtener(idPais);
+                TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(idTipoDocumento);
 
-            return ClienteDAO.Modificar(clienteAModificar);
+                Cliente clienteAModificar = new Cliente()
+                {
+                    IdCliente = idCliente,
+                    TipoDocumento = tipoDocumentoExistente,
+                    Nombre = nombres,
+                    ApellidoPaterno = apellidoPaterno,
+                    ApellidoMaterno = apellidoMaterno,
+                    NumeroDocumento = numeroDocumento,
+                    Telefono = telefono,
+                    Email = email,
+                    Pais = paisExistente
+                };
+
+                Cliente clienteModificado = ClienteDAO.Modificar(clienteAModificar);
+
+                if (clienteModificado != null)
+                {
+                    mensaje = "Grabacion Exitosa";
+                }
+            }
+
+
+
+            return mensaje;
         }
 
         public void EliminarCliente(int codigo)
@@ -116,6 +183,19 @@ namespace ServiciosHoteles
             };
 
             return ClienteDAO.Buscar(clienteBuscar).ToList();
+        }
+
+        bool emailValido(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -97,14 +97,15 @@ public partial class Default2 : System.Web.UI.Page
     /// <param name="e"></param>
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
+        string mensaje = null;
+
         try
         {
             using (ServicioClientes.ClientesClient objCliente = new ClientesClient())
             {
                 if (hdAgregarActualizar.Value == "N")
                 {
-                    objCliente.CrearCliente(
-                        Convert.ToInt32(hdCodigo.Value),
+                    mensaje = objCliente.CrearCliente(
                         Convert.ToInt32(cmbTipoDocumento.SelectedValue),
                         txtNombres.Text.Trim(),
                         txtApellidoPat.Text.Trim(),
@@ -116,7 +117,7 @@ public partial class Default2 : System.Web.UI.Page
                 }
                 else if (hdAgregarActualizar.Value == "A")
                 {
-                    objCliente.ModificarCliente(
+                    mensaje = objCliente.ModificarCliente(
                        Convert.ToInt32(hdCodigo.Value),
                        Convert.ToInt32(cmbTipoDocumento.SelectedValue),
                        txtNombres.Text.Trim(),
@@ -134,8 +135,17 @@ public partial class Default2 : System.Web.UI.Page
             divError.InnerHtml = ex.Message;
             divError.Visible = true;
         }
-       
-        Response.Redirect("ListarCliente.aspx", true);
+
+        if (mensaje == "Grabacion Exitosa")
+        {
+            Response.Redirect("ListarCliente.aspx", true);
+        }
+        else
+        {
+            divError.InnerText = mensaje;
+            divError.Visible = true;
+        }
+        
 
     }
 
