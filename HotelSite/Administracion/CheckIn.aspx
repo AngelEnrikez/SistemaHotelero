@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.master" AutoEventWireup="true" CodeFile="CheckIn.aspx.cs" Inherits="Mantenimientos_CheckIn" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -22,7 +23,7 @@
                         <asp:Button ID="btnConsultarReserva" class="btn btn-default" runat="server" Text="Consultar" />
                     </td>
 
-
+                    
                 </tr>
 
                 <tr>
