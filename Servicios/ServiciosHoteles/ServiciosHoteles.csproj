@@ -98,6 +98,7 @@
     <Compile Include="TiposDocumento.svc.cs">
       <DependentUpon>TiposDocumento.svc</DependentUpon>
     </Compile>
+    <Compile Include="Util\Utilidades.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -13,16 +13,16 @@ namespace ServiciosHoteles
     public interface IClientes
     {
         [OperationContract]
-        string CrearCliente(int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono,int idPais);
+        Cliente CrearCliente(Cliente clienteNuevo);
         [OperationContract]
-        string ModificarCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais);
+        Cliente ModificarCliente(Cliente clienteModificado);
         [OperationContract]
-        void EliminarCliente(int codigo);
+        void EliminarCliente(Cliente clienteEliminar);
         [OperationContract]
         Cliente ObtenerCliente(int codigo);
         [OperationContract]
         List<Cliente> ListarClientes();
         [OperationContract]
-        List<Cliente> BuscarClientes(string nombre, string numeroDocumento);
+        List<Cliente> BuscarClientes(Cliente clienteABuscar);
     }
 }

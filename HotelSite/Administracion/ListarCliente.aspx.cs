@@ -44,7 +44,7 @@ public partial class Default2 : System.Web.UI.Page
                 List<ServicioClientes.Cliente> clientes = objCliente.ListarClientes();
                 if (clientes.Count > 0)
                 {
-                    hdMaxCodigo.Value = (clientes.Max(r => r.IdCliente) + 1).ToString();
+                    //hdMaxCodigo.Value = (clientes.Max(r => r.IdCliente) + 1).ToString();
                     gdListado.DataSource = clientes;
                     gdListado.DataBind();
                 }
@@ -77,7 +77,7 @@ public partial class Default2 : System.Web.UI.Page
                 HiddenField hdnDataId = (HiddenField)row.FindControl("hdGridCodigo");
                 using (ServicioClientes.ClientesClient objCliente = new ClientesClient())
                 {
-                    objCliente.EliminarCliente(Convert.ToInt32(hdnDataId.Value));
+                    objCliente.EliminarCliente( new ServicioClientes.Cliente (){IdCliente=Convert.ToInt32(hdnDataId.Value)});
                 }
                 Listar();
             }
@@ -98,6 +98,6 @@ public partial class Default2 : System.Web.UI.Page
 
     protected void btnAgregar_Click(object sender, EventArgs e)
     {
-        Response.Redirect("AdministracionCliente.aspx?cod=" + hdMaxCodigo.Value + "&accion=N", true);
+        Response.Redirect("AdministracionCliente.aspx?cod=0&accion=N", true);
     }
 }

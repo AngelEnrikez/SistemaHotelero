@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Web.UI.WebControls;
+using ServiciosHoteles.Util;
 
 namespace ServiciosHoteles
 {
@@ -51,179 +52,178 @@ namespace ServiciosHoteles
                 return tipoDocumentoDAO;
             }
         }
-        public string CrearCliente(int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
-        {
-            string mensaje = null;
 
+
+
+
+
+        public Cliente CrearCliente(Cliente clienteACrear)
+        {
+            Cliente clienteCreado = null;
             int telefonoEntero;
-            bool telefonoValido = int.TryParse(telefono, out telefonoEntero);
+            bool telefonoValido = int.TryParse(clienteACrear.Telefono, out telefonoEntero);
 
             int numerDocEntero;
-            bool numeroDocumentoValido = int.TryParse(numeroDocumento, out numerDocEntero);
+            bool numeroDocumentoValido = int.TryParse(clienteACrear.NumeroDocumento, out numerDocEntero);
 
-            if (nombres == string.Empty)
+            try
             {
-                mensaje = "El campo Nombres debe ser obligatorio";
-            }
-            else if (apellidoPaterno == string.Empty)
-            {
-                mensaje = "El campo Apellido Paterno debe ser obligatorio";
-            }
-            else if (apellidoMaterno == string.Empty)
-            {
-                mensaje = "El campo Apellido Materno debe ser obligatorio";
-            }
-            else if (numeroDocumento == string.Empty)
-            {
-                mensaje = "El campo Nro. Documento debe ser obligatorio";
-            }
-            else if (!emailValido(email))
-            {
-                mensaje = "Ingrese Correo Electronico Valido";
-            }
-            else if (!telefonoValido)
-            {
-                mensaje = "El campo Teléfono debe ser numérico";
-            }
-            else if (!numeroDocumentoValido)
-            {
-                mensaje = "El campo Nro Documento debe ser numérico";
-            }
-            else
-            {
-                Pais paisExistente = PaisDAO.Obtener(idPais);
-                TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(idTipoDocumento);
 
-                Cliente clienteRegistrar = new Cliente()
+                if (clienteACrear.Nombre == string.Empty)
                 {
-                    TipoDocumento = tipoDocumentoExistente,
-                    Nombre = nombres,
-                    ApellidoPaterno = apellidoPaterno,
-                    ApellidoMaterno = apellidoMaterno,
-                    NumeroDocumento = numeroDocumento,
-                    Telefono = telefono,
-                    Email = email,
-                    Pais = paisExistente
-                };
-
-                Cliente clienteCreado = ClienteDAO.Crear(clienteRegistrar);
-
-                if (clienteCreado != null)
+                    FaultReason reason = new FaultReason("El campo Nombres debe ser obligatorio");
+                    throw new FaultException(reason);
+                }
+                else if (clienteACrear.ApellidoPaterno == string.Empty)
                 {
-                    mensaje = "Grabacion Exitosa";
+                    FaultReason reason = new FaultReason("El campo Apellido Paterno debe ser obligatorio");
+                    throw new FaultException(reason);
+                }
+                else if (clienteACrear.ApellidoMaterno == string.Empty)
+                {
+                    FaultReason reason = new FaultReason("El campo Apellido Materno debe ser obligatorio");
+                    throw new FaultException(reason);
+                }
+                else if (clienteACrear.NumeroDocumento == string.Empty)
+                {
+                    FaultReason reason = new FaultReason("El campo Nro. Documento debe ser obligatorio");
+                    throw new FaultException(reason);
+                }
+                else if (!Utilidades.emailValido(clienteACrear.Email))
+                {
+                    FaultReason reason = new FaultReason("Ingrese Correo Electronico Valido");
+                    throw new FaultException(reason);
+                }
+                else if (!telefonoValido)
+                {
+                    FaultReason reason = new FaultReason("El campo Teléfono debe ser numérico");
+                    throw new FaultException(reason);
+                }
+                else if (!numeroDocumentoValido)
+                {
+                    FaultReason reason = new FaultReason("El campo Nro Documento debe ser numérico");
+                    throw new FaultException(reason);
+                }
+                else
+                {
+                    Pais paisExistente = PaisDAO.Obtener(clienteACrear.Pais.IdPais);
+                    TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(clienteACrear.TipoDocumento.IdTipoDocumento);
+
+                    clienteCreado = ClienteDAO.Crear(clienteACrear);
                 }
             }
-
-            return mensaje;
-
-
+            catch (FaultException ex) { throw ex; }        
+            return clienteCreado;
         }
 
-        public string ModificarCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais)
+        public Cliente ModificarCliente(Cliente clienteAModificar)
         {
-            string mensaje = null;
+            Cliente clienteModificado = null;
 
             int telefonoEntero;
-            bool telefonoValido = int.TryParse(telefono, out telefonoEntero);
+            bool telefonoValido = int.TryParse(clienteAModificar.Telefono, out telefonoEntero);
 
             int numerDocEntero;
-            bool numeroDocumentoValido = int.TryParse(numeroDocumento, out numerDocEntero);
+            bool numeroDocumentoValido = int.TryParse(clienteAModificar.NumeroDocumento, out numerDocEntero);
 
-            if (nombres == string.Empty)
+            try
             {
-                mensaje = "El campo Nombres debe ser obligatorio";
-            }
-            else if (apellidoPaterno == string.Empty)
-            {
-                mensaje = "El campo Apellido Paterno debe ser obligatorio";
-            }
-            else if (apellidoMaterno == string.Empty)
-            {
-                mensaje = "El campo Apellido Materno debe ser obligatorio";
-            }
-            else if (numeroDocumento == string.Empty)
-            {
-                mensaje = "El campo Nro. Documento debe ser obligatorio";
-            }
-            if (!emailValido(email))
-            {
-                mensaje = "Ingrese Correo Electronico Valido";
-            }
-            else if (!telefonoValido)
-            {
-                mensaje = "El campo Teléfono debe ser numérico";
-            }
-            else if (!numeroDocumentoValido)
-            {
-                mensaje = "El campo Nro Documento debe ser numérico";
-            }
-            else
-            {
-                Pais paisExistente = PaisDAO.Obtener(idPais);
-                TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(idTipoDocumento);
-
-                Cliente clienteAModificar = new Cliente()
+                if (clienteAModificar.Nombre == string.Empty)
                 {
-                    IdCliente = idCliente,
-                    TipoDocumento = tipoDocumentoExistente,
-                    Nombre = nombres,
-                    ApellidoPaterno = apellidoPaterno,
-                    ApellidoMaterno = apellidoMaterno,
-                    NumeroDocumento = numeroDocumento,
-                    Telefono = telefono,
-                    Email = email,
-                    Pais = paisExistente
-                };
-
-                Cliente clienteModificado = ClienteDAO.Modificar(clienteAModificar);
-                if (clienteModificado != null)
+                    FaultReason reason = new FaultReason("El campo Nombres debe ser obligatorio");
+                    throw new FaultException(reason);
+                }
+                else if (clienteAModificar.ApellidoPaterno == string.Empty)
                 {
-                    mensaje = "Grabacion Exitosa";
+                    FaultReason reason = new FaultReason("El campo Apellido Paterno debe ser obligatorio");
+                    throw new FaultException(reason);
+                }
+                else if (clienteAModificar.ApellidoMaterno == string.Empty)
+                {
+                    FaultReason reason = new FaultReason("El campo Apellido Materno debe ser obligatorio");
+                    throw new FaultException(reason);
+                }
+                else if (clienteAModificar.NumeroDocumento == string.Empty)
+                {
+                    FaultReason reason = new FaultReason("El campo Nro. Documento debe ser obligatorio");
+                    throw new FaultException(reason);
+                }
+                else if (!Utilidades.emailValido(clienteAModificar.Email))
+                {
+                    FaultReason reason = new FaultReason("Ingrese Correo Electronico Valido");
+                    throw new FaultException(reason);
+                }
+                else if (!telefonoValido)
+                {
+                    FaultReason reason = new FaultReason("El campo Teléfono debe ser numérico");
+                    throw new FaultException(reason);
+                }
+                else if (!numeroDocumentoValido)
+                {
+                    FaultReason reason = new FaultReason("El campo Nro Documento debe ser numérico");
+                    throw new FaultException(reason);
+                }
+                else
+                {
+                    Pais paisExistente = PaisDAO.Obtener(clienteAModificar.Pais.IdPais);
+                    TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(clienteAModificar.TipoDocumento.IdTipoDocumento);
+
+                    clienteModificado = ClienteDAO.Modificar(clienteAModificar);
                 }
             }
-
-            return mensaje;
+            catch (FaultException ex) { throw ex; }
+            return clienteModificado;
         }
 
-        public void EliminarCliente(int codigo)
+        public void EliminarCliente(Cliente clienteAEliminar)
         {
-            Cliente clienteAEliminar = ClienteDAO.Obtener(codigo);
-            ClienteDAO.Eliminar(clienteAEliminar);
+            try
+            {
+                ClienteDAO.Eliminar(clienteAEliminar);
+            }
+            catch (FaultException ex)
+            {
+                throw ex;
+            }
         }
 
         public Cliente ObtenerCliente(int codigo)
         {
-            return ClienteDAO.Obtener(codigo);
+            try
+            {
+                return ClienteDAO.Obtener(codigo);
+            }
+            catch (FaultException ex)
+            {
+                throw ex;
+            }
+
         }
 
         public List<Cliente> ListarClientes()
         {
-            return ClienteDAO.Listar().ToList();
-        }
-
-
-        public List<Cliente> BuscarClientes(string nombre, string numeroDocumento)
-        {
-            Cliente clienteBuscar = new Cliente()
+            try
             {
-                Nombre = nombre,
-                NumeroDocumento = numeroDocumento
-            };
+                return ClienteDAO.Listar().ToList();
+            }
+            catch (FaultException ex)
+            {
+                throw ex;
+            }
 
-            return ClienteDAO.Buscar(clienteBuscar).ToList();
         }
 
-        bool emailValido(string email)
+        public List<Cliente> BuscarClientes(Cliente clienteABuscar)
         {
             try
             {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
+                return ClienteDAO.Buscar(clienteABuscar).ToList();
             }
-            catch
+            catch (FaultException ex)
             {
-                return false;
+                throw ex;
             }
         }
+
     }
 }

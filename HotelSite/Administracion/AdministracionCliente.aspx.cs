@@ -97,56 +97,50 @@ public partial class Default2 : System.Web.UI.Page
     /// <param name="e"></param>
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
-        string mensaje = null;
-
         try
         {
             using (ServicioClientes.ClientesClient objCliente = new ClientesClient())
             {
+                ServicioClientes.TipoDocumento tipoDocumento = new ServicioClientes.TipoDocumento();
+                ServicioClientes.Pais pais = new ServicioClientes.Pais();
+                ServicioClientes.Cliente cliente = new Cliente();
                 if (hdAgregarActualizar.Value == "N")
                 {
-                    mensaje = objCliente.CrearCliente(
-                        Convert.ToInt32(cmbTipoDocumento.SelectedValue),
-                        txtNombres.Text.Trim(),
-                        txtApellidoPat.Text.Trim(),
-                        txtApellidoMat.Text.Trim(),
-                        txtNumeroDocumento.Text.Trim(),
-                        txtEmail.Text.Trim(),
-                        txtTelefono.Text.Trim(),
-                        Convert.ToInt32(cmbPais.SelectedValue));
+                    cliente.Nombre = txtNombres.Text.Trim();
+                    cliente.ApellidoPaterno = txtApellidoPat.Text.Trim();
+                    cliente.ApellidoMaterno = txtApellidoMat.Text.Trim();
+                    cliente.Telefono = txtTelefono.Text.Trim();
+                    tipoDocumento.IdTipoDocumento = Convert.ToInt32(cmbTipoDocumento.SelectedValue);
+                    cliente.TipoDocumento = tipoDocumento;
+                    cliente.NumeroDocumento = txtNumeroDocumento.Text.Trim();
+                    cliente.Email = txtEmail.Text.Trim();
+                    pais.IdPais = Convert.ToInt32(cmbPais.SelectedValue);
+                    cliente.Pais = pais;
+                    objCliente.CrearCliente(cliente);
                 }
                 else if (hdAgregarActualizar.Value == "A")
                 {
-                    mensaje = objCliente.ModificarCliente(
-                       Convert.ToInt32(hdCodigo.Value),
-                       Convert.ToInt32(cmbTipoDocumento.SelectedValue),
-                       txtNombres.Text.Trim(),
-                       txtApellidoPat.Text.Trim(),
-                       txtApellidoMat.Text.Trim(),
-                       txtNumeroDocumento.Text.Trim(),
-                       txtEmail.Text.Trim(),
-                       txtTelefono.Text.Trim(),
-                       Convert.ToInt32(cmbPais.SelectedValue));
+                    cliente.IdCliente =Convert.ToInt32( hdCodigo.Value);
+                    cliente.Nombre = txtNombres.Text.Trim();
+                    cliente.ApellidoPaterno = txtApellidoPat.Text.Trim();
+                    cliente.ApellidoMaterno = txtApellidoMat.Text.Trim();
+                    cliente.Telefono = txtTelefono.Text.Trim();
+                    tipoDocumento.IdTipoDocumento = Convert.ToInt32(cmbTipoDocumento.SelectedValue);
+                    cliente.TipoDocumento = tipoDocumento;
+                    cliente.NumeroDocumento = txtNumeroDocumento.Text.Trim();
+                    cliente.Email = txtEmail.Text.Trim();
+                    pais.IdPais = Convert.ToInt32(cmbPais.SelectedValue);
+                    cliente.Pais = pais;
+                   objCliente.ModificarCliente(cliente);
                 }
             }
+            Response.Redirect("ListarCliente.aspx", true);
         }
         catch (Exception ex)
         {
             divError.InnerHtml = ex.Message;
             divError.Visible = true;
         }
-
-        if (mensaje == "Grabacion Exitosa")
-        {
-            Response.Redirect("ListarCliente.aspx", true);
-        }
-        else
-        {
-            divError.InnerText = mensaje;
-            divError.Visible = true;
-        }
-        
-
     }
 
     /// <summary>

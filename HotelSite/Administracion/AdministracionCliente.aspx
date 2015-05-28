@@ -13,12 +13,7 @@
                         <asp:Label ID="lblNombres" runat="server" Text="Nombres:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtNombres" class="input-group-addon" MaxLength="80" runat="server" Width="300px"></asp:TextBox>
-                        <asp:RequiredFieldValidator id="nombreValidator" runat="server"
-                          ControlToValidate="txtNombres"
-                          ErrorMessage="Ingrese Datos Obligatorios"
-                          ForeColor="Red">
-                        </asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtNombres" class="input-group-addon" MaxLength="80" runat="server" Width="300px"></asp:TextBox>                        
                     </td>
                 </tr>
                  <tr>
@@ -27,11 +22,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="txtApellidoPat" class="input-group-addon" MaxLength="100" runat="server" Width="300px"></asp:TextBox>
-                        <asp:RequiredFieldValidator id="apPatValidator" runat="server"
-                          ControlToValidate="txtApellidoPat"
-                          ErrorMessage="Ingrese Datos Obligatorios"
-                          ForeColor="Red">
-                        </asp:RequiredFieldValidator>
+                       
                     </td>
                 </tr>
                 <tr>
@@ -57,11 +48,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="txtNumeroDocumento" class="input-group-addon" MaxLength="20" runat="server" Width="100px"></asp:TextBox>
-                        <asp:RequiredFieldValidator id="numDocValidator" runat="server"
-                          ControlToValidate="txtNumeroDocumento"
-                          ErrorMessage="Ingrese Datos Obligatorios"
-                          ForeColor="Red">
-                        </asp:RequiredFieldValidator>
+                      
                     </td>
                 </tr>
                  <tr>
