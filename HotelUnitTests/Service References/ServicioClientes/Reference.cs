@@ -313,22 +313,22 @@ namespace HotelUnitTests.ServicioClientes {
     public interface IClientes {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientes/CrearCliente", ReplyAction="http://tempuri.org/IClientes/CrearClienteResponse")]
-        string CrearCliente(int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais);
+        HotelUnitTests.ServicioClientes.Cliente CrearCliente(HotelUnitTests.ServicioClientes.Cliente clienteNuevo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientes/CrearCliente", ReplyAction="http://tempuri.org/IClientes/CrearClienteResponse")]
-        System.Threading.Tasks.Task<string> CrearClienteAsync(int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais);
+        System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente> CrearClienteAsync(HotelUnitTests.ServicioClientes.Cliente clienteNuevo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientes/ModificarCliente", ReplyAction="http://tempuri.org/IClientes/ModificarClienteResponse")]
-        string ModificarCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais);
+        HotelUnitTests.ServicioClientes.Cliente ModificarCliente(HotelUnitTests.ServicioClientes.Cliente clienteModificado);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientes/ModificarCliente", ReplyAction="http://tempuri.org/IClientes/ModificarClienteResponse")]
-        System.Threading.Tasks.Task<string> ModificarClienteAsync(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais);
+        System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente> ModificarClienteAsync(HotelUnitTests.ServicioClientes.Cliente clienteModificado);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientes/EliminarCliente", ReplyAction="http://tempuri.org/IClientes/EliminarClienteResponse")]
-        void EliminarCliente(int codigo);
+        void EliminarCliente(HotelUnitTests.ServicioClientes.Cliente clienteEliminar);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientes/EliminarCliente", ReplyAction="http://tempuri.org/IClientes/EliminarClienteResponse")]
-        System.Threading.Tasks.Task EliminarClienteAsync(int codigo);
+        System.Threading.Tasks.Task EliminarClienteAsync(HotelUnitTests.ServicioClientes.Cliente clienteEliminar);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientes/ObtenerCliente", ReplyAction="http://tempuri.org/IClientes/ObtenerClienteResponse")]
         HotelUnitTests.ServicioClientes.Cliente ObtenerCliente(int codigo);
@@ -343,10 +343,10 @@ namespace HotelUnitTests.ServicioClientes {
         System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente[]> ListarClientesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientes/BuscarClientes", ReplyAction="http://tempuri.org/IClientes/BuscarClientesResponse")]
-        HotelUnitTests.ServicioClientes.Cliente[] BuscarClientes(string nombre, string numeroDocumento);
+        HotelUnitTests.ServicioClientes.Cliente[] BuscarClientes(HotelUnitTests.ServicioClientes.Cliente clienteABuscar);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientes/BuscarClientes", ReplyAction="http://tempuri.org/IClientes/BuscarClientesResponse")]
-        System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente[]> BuscarClientesAsync(string nombre, string numeroDocumento);
+        System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente[]> BuscarClientesAsync(HotelUnitTests.ServicioClientes.Cliente clienteABuscar);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -376,28 +376,28 @@ namespace HotelUnitTests.ServicioClientes {
                 base(binding, remoteAddress) {
         }
         
-        public string CrearCliente(int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais) {
-            return base.Channel.CrearCliente(idTipoDocumento, nombres, apellidoPaterno, apellidoMaterno, numeroDocumento, email, telefono, idPais);
+        public HotelUnitTests.ServicioClientes.Cliente CrearCliente(HotelUnitTests.ServicioClientes.Cliente clienteNuevo) {
+            return base.Channel.CrearCliente(clienteNuevo);
         }
         
-        public System.Threading.Tasks.Task<string> CrearClienteAsync(int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais) {
-            return base.Channel.CrearClienteAsync(idTipoDocumento, nombres, apellidoPaterno, apellidoMaterno, numeroDocumento, email, telefono, idPais);
+        public System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente> CrearClienteAsync(HotelUnitTests.ServicioClientes.Cliente clienteNuevo) {
+            return base.Channel.CrearClienteAsync(clienteNuevo);
         }
         
-        public string ModificarCliente(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais) {
-            return base.Channel.ModificarCliente(idCliente, idTipoDocumento, nombres, apellidoPaterno, apellidoMaterno, numeroDocumento, email, telefono, idPais);
+        public HotelUnitTests.ServicioClientes.Cliente ModificarCliente(HotelUnitTests.ServicioClientes.Cliente clienteModificado) {
+            return base.Channel.ModificarCliente(clienteModificado);
         }
         
-        public System.Threading.Tasks.Task<string> ModificarClienteAsync(int idCliente, int idTipoDocumento, string nombres, string apellidoPaterno, string apellidoMaterno, string numeroDocumento, string email, string telefono, int idPais) {
-            return base.Channel.ModificarClienteAsync(idCliente, idTipoDocumento, nombres, apellidoPaterno, apellidoMaterno, numeroDocumento, email, telefono, idPais);
+        public System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente> ModificarClienteAsync(HotelUnitTests.ServicioClientes.Cliente clienteModificado) {
+            return base.Channel.ModificarClienteAsync(clienteModificado);
         }
         
-        public void EliminarCliente(int codigo) {
-            base.Channel.EliminarCliente(codigo);
+        public void EliminarCliente(HotelUnitTests.ServicioClientes.Cliente clienteEliminar) {
+            base.Channel.EliminarCliente(clienteEliminar);
         }
         
-        public System.Threading.Tasks.Task EliminarClienteAsync(int codigo) {
-            return base.Channel.EliminarClienteAsync(codigo);
+        public System.Threading.Tasks.Task EliminarClienteAsync(HotelUnitTests.ServicioClientes.Cliente clienteEliminar) {
+            return base.Channel.EliminarClienteAsync(clienteEliminar);
         }
         
         public HotelUnitTests.ServicioClientes.Cliente ObtenerCliente(int codigo) {
@@ -416,12 +416,12 @@ namespace HotelUnitTests.ServicioClientes {
             return base.Channel.ListarClientesAsync();
         }
         
-        public HotelUnitTests.ServicioClientes.Cliente[] BuscarClientes(string nombre, string numeroDocumento) {
-            return base.Channel.BuscarClientes(nombre, numeroDocumento);
+        public HotelUnitTests.ServicioClientes.Cliente[] BuscarClientes(HotelUnitTests.ServicioClientes.Cliente clienteABuscar) {
+            return base.Channel.BuscarClientes(clienteABuscar);
         }
         
-        public System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente[]> BuscarClientesAsync(string nombre, string numeroDocumento) {
-            return base.Channel.BuscarClientesAsync(nombre, numeroDocumento);
+        public System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente[]> BuscarClientesAsync(HotelUnitTests.ServicioClientes.Cliente clienteABuscar) {
+            return base.Channel.BuscarClientesAsync(clienteABuscar);
         }
     }
 }
