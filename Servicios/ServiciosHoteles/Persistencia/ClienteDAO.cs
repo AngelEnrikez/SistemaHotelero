@@ -10,18 +10,18 @@ namespace ServiciosHoteles.Persistencia
 {
     public class ClienteDAO : BaseDAO<Cliente, int>
     {
-        public ICollection<Cliente> Buscar(Cliente cliente)
+        public ICollection<Cliente> Buscar(string nombre, string numeroDocumento)
         {
             using (ISession sesion = NHibernateHelper.ObtenerSesion())
             {
                 ICriteria busqueda = sesion.CreateCriteria(typeof(Cliente));
-                if (cliente.Nombre != null && cliente.Nombre.Trim().Length > 0)
+                if (nombre != null && nombre.Trim().Length > 0)
                 {
-                    busqueda.Add(Restrictions.Like("Nombre", cliente.Nombre, MatchMode.Anywhere)); 
+                    busqueda.Add(Restrictions.Like("Nombre", nombre, MatchMode.Anywhere)); 
                 }
-                if (cliente.NumeroDocumento != null && cliente.NumeroDocumento.Trim().Length > 0)
+                if (numeroDocumento != null && numeroDocumento.Trim().Length > 0)
                 {
-                    busqueda.Add(Restrictions.Like("NumeroDocumento", cliente.NumeroDocumento, MatchMode.Start));
+                    busqueda.Add(Restrictions.Like("NumeroDocumento", numeroDocumento, MatchMode.Start));
                 }
                 
                 return busqueda.List<Cliente>();

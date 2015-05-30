@@ -343,10 +343,10 @@ namespace HotelUnitTests.ServicioClientes {
         System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente[]> ListarClientesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientes/BuscarClientes", ReplyAction="http://tempuri.org/IClientes/BuscarClientesResponse")]
-        HotelUnitTests.ServicioClientes.Cliente[] BuscarClientes(HotelUnitTests.ServicioClientes.Cliente clienteABuscar);
+        HotelUnitTests.ServicioClientes.Cliente[] BuscarClientes(string nombre, string numeroDocumento);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientes/BuscarClientes", ReplyAction="http://tempuri.org/IClientes/BuscarClientesResponse")]
-        System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente[]> BuscarClientesAsync(HotelUnitTests.ServicioClientes.Cliente clienteABuscar);
+        System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente[]> BuscarClientesAsync(string nombre, string numeroDocumento);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -416,12 +416,12 @@ namespace HotelUnitTests.ServicioClientes {
             return base.Channel.ListarClientesAsync();
         }
         
-        public HotelUnitTests.ServicioClientes.Cliente[] BuscarClientes(HotelUnitTests.ServicioClientes.Cliente clienteABuscar) {
-            return base.Channel.BuscarClientes(clienteABuscar);
+        public HotelUnitTests.ServicioClientes.Cliente[] BuscarClientes(string nombre, string numeroDocumento) {
+            return base.Channel.BuscarClientes(nombre, numeroDocumento);
         }
         
-        public System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente[]> BuscarClientesAsync(HotelUnitTests.ServicioClientes.Cliente clienteABuscar) {
-            return base.Channel.BuscarClientesAsync(clienteABuscar);
+        public System.Threading.Tasks.Task<HotelUnitTests.ServicioClientes.Cliente[]> BuscarClientesAsync(string nombre, string numeroDocumento) {
+            return base.Channel.BuscarClientesAsync(nombre, numeroDocumento);
         }
     }
 }

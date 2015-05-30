@@ -70,14 +70,15 @@
   <xs:element name="BuscarClientes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="clienteABuscar" nillable="true" type="q8:Cliente" />
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numeroDocumento" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="BuscarClientesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="BuscarClientesResult" nillable="true" type="q9:ArrayOfCliente" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="BuscarClientesResult" nillable="true" type="q8:ArrayOfCliente" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

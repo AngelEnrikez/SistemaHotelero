@@ -53,63 +53,67 @@ namespace ServiciosHoteles
             }
         }
 
-
-
-
-
         public Cliente CrearCliente(Cliente clienteACrear)
         {
             Cliente clienteCreado = null;
             int telefonoEntero;
-            bool telefonoValido = int.TryParse(clienteACrear.Telefono, out telefonoEntero);
-
             int numerDocEntero;
+            
+            List<Cliente> clienteExistente = ClienteDAO.Buscar("", clienteACrear.NumeroDocumento).ToList();
+            
+            bool telefonoValido = int.TryParse(clienteACrear.Telefono, out telefonoEntero);
             bool numeroDocumentoValido = int.TryParse(clienteACrear.NumeroDocumento, out numerDocEntero);
 
             try
             {
-
-                if (clienteACrear.Nombre == null || clienteACrear.Nombre == string.Empty)
-                {
-                    FaultReason reason = new FaultReason("El campo Nombres debe ser obligatorio");
-                    throw new FaultException(reason);
-                }
-                else if (clienteACrear.ApellidoPaterno == null || clienteACrear.ApellidoPaterno == string.Empty)
-                {
-                    FaultReason reason = new FaultReason("El campo Apellido Paterno debe ser obligatorio");
-                    throw new FaultException(reason);
-                }
-                else if (clienteACrear.ApellidoMaterno == null || clienteACrear.ApellidoMaterno == string.Empty)
-                {
-                    FaultReason reason = new FaultReason("El campo Apellido Materno debe ser obligatorio");
-                    throw new FaultException(reason);
-                }
-                else if (clienteACrear.NumeroDocumento == null || clienteACrear.NumeroDocumento == string.Empty)
-                {
-                    FaultReason reason = new FaultReason("El campo Nro. Documento debe ser obligatorio");
-                    throw new FaultException(reason);
-                }
-                else if (!Utilidades.emailValido(clienteACrear.Email))
-                {
-                    FaultReason reason = new FaultReason("Ingrese Correo Electronico Valido");
-                    throw new FaultException(reason);
-                }
-                else if (!telefonoValido)
-                {
-                    FaultReason reason = new FaultReason("El campo Teléfono debe ser numérico");
-                    throw new FaultException(reason);
-                }
-                else if (!numeroDocumentoValido)
-                {
-                    FaultReason reason = new FaultReason("El campo Nro Documento debe ser numérico");
+                if (clienteExistente.Capacity == 1) {
+                    FaultReason reason = new FaultReason("El numero de documento ingresado ya se encuentra registrado");
                     throw new FaultException(reason);
                 }
                 else
                 {
-                    Pais paisExistente = PaisDAO.Obtener(clienteACrear.Pais.IdPais);
-                    TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(clienteACrear.TipoDocumento.IdTipoDocumento);
+                    if (clienteACrear.Nombre == null || clienteACrear.Nombre == string.Empty)
+                    {
+                        FaultReason reason = new FaultReason("El campo Nombres debe ser obligatorio");
+                        throw new FaultException(reason);
+                    }
+                    else if (clienteACrear.ApellidoPaterno == null || clienteACrear.ApellidoPaterno == string.Empty)
+                    {
+                        FaultReason reason = new FaultReason("El campo Apellido Paterno debe ser obligatorio");
+                        throw new FaultException(reason);
+                    }
+                    else if (clienteACrear.ApellidoMaterno == null || clienteACrear.ApellidoMaterno == string.Empty)
+                    {
+                        FaultReason reason = new FaultReason("El campo Apellido Materno debe ser obligatorio");
+                        throw new FaultException(reason);
+                    }
+                    else if (clienteACrear.NumeroDocumento == null || clienteACrear.NumeroDocumento == string.Empty)
+                    {
+                        FaultReason reason = new FaultReason("El campo Nro. Documento debe ser obligatorio");
+                        throw new FaultException(reason);
+                    }
+                    else if (!Utilidades.emailValido(clienteACrear.Email))
+                    {
+                        FaultReason reason = new FaultReason("Ingrese Correo Electronico Valido");
+                        throw new FaultException(reason);
+                    }
+                    else if (!telefonoValido)
+                    {
+                        FaultReason reason = new FaultReason("El campo Teléfono debe ser numérico");
+                        throw new FaultException(reason);
+                    }
+                    else if (!numeroDocumentoValido)
+                    {
+                        FaultReason reason = new FaultReason("El campo Nro Documento debe ser numérico");
+                        throw new FaultException(reason);
+                    }
+                    else
+                    {
+                        Pais paisExistente = PaisDAO.Obtener(clienteACrear.Pais.IdPais);
+                        TipoDocumento tipoDocumentoExistente = TipoDocumentoDAO.Obtener(clienteACrear.TipoDocumento.IdTipoDocumento);
 
-                    clienteCreado = ClienteDAO.Crear(clienteACrear);
+                        clienteCreado = ClienteDAO.Crear(clienteACrear);
+                    }
                 }
             }
             catch (FaultException ex) { throw ex; }        
@@ -213,11 +217,11 @@ namespace ServiciosHoteles
 
         }
 
-        public List<Cliente> BuscarClientes(Cliente clienteABuscar)
+        public List<Cliente> BuscarClientes(string nombre, string numeroDocumento)
         {
             try
             {
-                return ClienteDAO.Buscar(clienteABuscar).ToList();
+                return ClienteDAO.Buscar(nombre, numeroDocumento).ToList();
             }
             catch (FaultException ex)
             {
