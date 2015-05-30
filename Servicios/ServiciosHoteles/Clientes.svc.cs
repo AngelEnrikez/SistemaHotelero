@@ -69,22 +69,22 @@ namespace ServiciosHoteles
             try
             {
 
-                if (clienteACrear.Nombre == string.Empty)
+                if (clienteACrear.Nombre == null || clienteACrear.Nombre == string.Empty)
                 {
                     FaultReason reason = new FaultReason("El campo Nombres debe ser obligatorio");
                     throw new FaultException(reason);
                 }
-                else if (clienteACrear.ApellidoPaterno == string.Empty)
+                else if (clienteACrear.ApellidoPaterno == null || clienteACrear.ApellidoPaterno == string.Empty)
                 {
                     FaultReason reason = new FaultReason("El campo Apellido Paterno debe ser obligatorio");
                     throw new FaultException(reason);
                 }
-                else if (clienteACrear.ApellidoMaterno == string.Empty)
+                else if (clienteACrear.ApellidoMaterno == null || clienteACrear.ApellidoMaterno == string.Empty)
                 {
                     FaultReason reason = new FaultReason("El campo Apellido Materno debe ser obligatorio");
                     throw new FaultException(reason);
                 }
-                else if (clienteACrear.NumeroDocumento == string.Empty)
+                else if (clienteACrear.NumeroDocumento == null || clienteACrear.NumeroDocumento == string.Empty)
                 {
                     FaultReason reason = new FaultReason("El campo Nro. Documento debe ser obligatorio");
                     throw new FaultException(reason);

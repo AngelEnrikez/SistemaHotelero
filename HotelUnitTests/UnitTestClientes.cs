@@ -77,5 +77,35 @@ namespace HotelUnitTests
             Assert.IsNull(cliente);
         }
 
+        [TestMethod]
+        public void TestCamposObligatorios()
+        {
+            try {
+                ServicioClientes.TipoDocumento tipoDocumento = new ServicioClientes.TipoDocumento();
+                ServicioClientes.Pais pais = new ServicioClientes.Pais();
+                ServicioClientes.Cliente clienteNuevo = new Cliente();
+                ServicioClientes.ClientesClient proxy = new ServicioClientes.ClientesClient();
+
+                clienteNuevo.ApellidoPaterno = "Perez";
+                clienteNuevo.ApellidoMaterno = "Rodriguez";
+                clienteNuevo.Telefono = "12324212";
+                tipoDocumento.IdTipoDocumento = 1;
+                clienteNuevo.TipoDocumento = tipoDocumento;
+                clienteNuevo.NumeroDocumento = "2133212";
+                clienteNuevo.Email = "jperez@contoso.com";
+                pais.IdPais = 1;
+                clienteNuevo.Pais = pais;
+
+                Cliente cliente = proxy.CrearCliente(clienteNuevo);
+                Assert.IsNotNull(clienteNuevo);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("El campo Nombres debe ser obligatorio", ex.Message);
+            }
+
+            
+        }
+
     }
 }
