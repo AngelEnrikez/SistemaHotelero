@@ -1,4 +1,5 @@
-﻿using ServiciosHoteles.Util;
+﻿using ServiciosHoteles.Dominio;
+using ServiciosHoteles.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,44 @@ namespace ServiciosHoteles
     {
     
 
-        public List<Dominio.Cliente> AdminClientes(Constantes valor)
+        public List<Dominio.Cliente> AdminClientes(Constantes valor,Cliente clientes )
         {
-            throw new NotImplementedException();
+
+            List<Cliente> lista = new List<Cliente>();
+            IClientes nombre = new Clientes();
+
+            try
+            {
+                if (valor == Constantes.Crear) {
+
+                  lista.Add(nombre.CrearCliente(clientes));
+
+                }
+                else if (valor == Constantes.Modificar) {
+
+                    lista.Add(nombre.ModificarCliente(clientes));
+                }
+
+                else if (valor == Constantes.Eliminar)
+                {
+
+                    nombre.EliminarCliente(clientes);
+                }
+
+                else if (valor == Constantes.Listar)
+                {
+
+                    lista = nombre.ListarClientes();
+                }
+
+
+
+            }
+            catch (FaultException ex) { throw ex; }
+
+
+            return lista;
+
         }
 
         public List<Dominio.TipoDocumento> AdminTDocumentos()

@@ -11,16 +11,16 @@ namespace ServiciosHoteles.Dominio
     public class Habitacion
     {
         [DataMember]
-        public int idHabitacion { get; set; }
+        public int IdHabitacion { get; set; }
 
         [DataMember]
-        public int idTipoHabitacion { get; set; }
+        public int IdTipoHabitacion { get; set; }
         [DataMember]
-        public int numero { get; set; }
+        public int Numero { get; set; }
         [DataMember]
-        public int piso { get; set; }
+        public int Piso { get; set; }
         [DataMember]
-        public string descripcion { get; set; }
+        public string Descripcion { get; set; }
 
 
     }

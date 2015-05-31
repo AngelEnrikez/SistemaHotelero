@@ -12,12 +12,12 @@ namespace ServiciosHoteles.Dominio
     {
 
         [DataMember]
-        public int idServicio { get; set; }
+        public int IdServicio { get; set; }
 
         [DataMember]
-        public string descripcion { get; set; }
+        public string Descripcion { get; set; }
 
         [DataMember]
-        public decimal tarifa { get; set; }
+        public decimal Tarifa { get; set; }
     }
 }
