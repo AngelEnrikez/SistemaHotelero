@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Administracion.svc" />
     <Content Include="Alojamiento.svc" />
+    <Content Include="CheckOut.svc" />
     <Content Include="Clientes.svc" />
     <EmbeddedResource Include="Dominio\Cliente.hbm.xml" />
     <EmbeddedResource Include="Dominio\TipoDocumento.hbm.xml" />
@@ -85,6 +86,9 @@
     <Compile Include="Alojamiento.svc.cs">
       <DependentUpon>Alojamiento.svc</DependentUpon>
     </Compile>
+    <Compile Include="CheckOut.svc.cs">
+      <DependentUpon>CheckOut.svc</DependentUpon>
+    </Compile>
     <Compile Include="Clientes.svc.cs">
       <DependentUpon>Clientes.svc</DependentUpon>
     </Compile>
@@ -95,9 +99,10 @@
     <Compile Include="Dominio\Servicio.cs" />
     <Compile Include="Dominio\TipoDocumento.cs" />
     <Compile Include="Dominio\Pais.cs" />
+    <Compile Include="IAdministracion.cs" />
     <Compile Include="IAlojamiento.cs" />
     <Compile Include="Dominio\TipoHabitacion.cs" />
-    <Compile Include="IAdministracion.cs" />
+    <Compile Include="ICheckOut.cs" />
     <Compile Include="IClientes.cs" />
     <Compile Include="IPaises.cs" />
     <Compile Include="IReservas.cs" />
