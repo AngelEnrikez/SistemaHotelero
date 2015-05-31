@@ -67,6 +67,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administracion.svc" />
     <Content Include="Clientes.svc" />
     <EmbeddedResource Include="Dominio\Cliente.hbm.xml" />
     <EmbeddedResource Include="Dominio\TipoDocumento.hbm.xml" />
@@ -76,12 +77,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administracion.svc.cs">
+      <DependentUpon>Administracion.svc</DependentUpon>
+    </Compile>
     <Compile Include="Clientes.svc.cs">
       <DependentUpon>Clientes.svc</DependentUpon>
     </Compile>
     <Compile Include="Dominio\Cliente.cs" />
+    <Compile Include="Dominio\Habitacion.cs" />
+    <Compile Include="Dominio\Parametro.cs" />
+    <Compile Include="Dominio\Servicio.cs" />
     <Compile Include="Dominio\TipoDocumento.cs" />
     <Compile Include="Dominio\Pais.cs" />
+    <Compile Include="Dominio\TipoHabitacion.cs" />
+    <Compile Include="IAdministracion.cs" />
     <Compile Include="IClientes.cs" />
     <Compile Include="IPaises.cs" />
     <Compile Include="ITiposDocumento.cs" />
