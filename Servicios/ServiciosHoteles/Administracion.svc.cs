@@ -55,9 +55,26 @@ namespace ServiciosHoteles
 
         }
 
-        public List<Dominio.TipoDocumento> AdminTDocumentos()
+        public List<Dominio.TipoDocumento> AdminTDocumentos(Constantes valor)
         {
-            throw new NotImplementedException();
+            List<TipoDocumento> listaTipoDocumento = new List<TipoDocumento>();
+            ITiposDocumento nombre2 = new TiposDocumento();
+
+            try
+            {
+
+                if (valor == Constantes.Listar)
+                {
+
+                    listaTipoDocumento = nombre2.ListarTipoDocumento();
+
+                }
+
+            }
+           catch (FaultException ex) { throw ex; }
+
+
+            return listaTipoDocumento;
         }
 
         public List<Dominio.Habitacion> AdminHabitaciones()
