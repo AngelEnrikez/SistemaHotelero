@@ -10,11 +10,11 @@ namespace ServiciosHoteles.Dominio
     public class Parametro
     {
         [DataMember]
-        public int idConfiguracion { get; set; }
+        public int IdConfiguracion { get; set; }
         [DataMember]
-        public string claveConfig { get; set; }
+        public string ClaveConfig { get; set; }
         [DataMember]
-        public string valorConfig { get; set; }
+        public string ValorConfig { get; set; }
 
     }
 }
