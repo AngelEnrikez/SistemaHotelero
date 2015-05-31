@@ -7,12 +7,18 @@ using System.Web;
 namespace ServiciosHoteles.Util
 {
 
-     [DataContract]
-    public class Constantes
+    [DataContract]
+    public enum Constantes
     {
-
-       [DataMember]
-        enum Days { Sun, Mon, Tue, Wed, Thu, Fri, Sat };
-
+        [EnumMember]
+        Crear,
+        [EnumMember]
+        Modificar,
+        [EnumMember]
+        Eliminar,
+        [EnumMember]
+        Listar,
+        Stolen
     }
+
 }
