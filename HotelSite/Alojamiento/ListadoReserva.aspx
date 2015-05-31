@@ -1,33 +1,31 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.master" AutoEventWireup="true" CodeFile="ListarCliente.aspx.cs" Inherits="Default2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.master" AutoEventWireup="true" CodeFile="ListadoReserva.aspx.cs" Inherits="Default2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="panel panel-primary" style="width: 950px">
-        <div class="panel-heading">Listado de Clientes</div>
+        <div class="panel-heading">Listado de Reservas</div>
 
         <asp:GridView ID="gdListado" CssClass="table" runat="server" Width="100%" AutoGenerateColumns="False" OnRowCommand="gdListado_RowCommand">
             <Columns>
                 <asp:TemplateField HeaderText="Codigo">
                     <ItemTemplate>
-                        <asp:Label ID="lblGridCodigo" runat="server" Text='<%# Eval("IdCliente") %>'></asp:Label>
-                        <asp:HiddenField ID="hdGridCodigo" runat="server" Value='<%# Eval("IdCliente") %>' />
+                        <asp:Label ID="lblGridCodigo" runat="server" Text='<%# Eval("IdReserva") %>'></asp:Label>
+                        <asp:HiddenField ID="hdGridCodigo" runat="server" Value='<%# Eval("IdReserva") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Nombres" DataField="Nombre">
+                <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Cliente" DataField="Nombre">
                     <HeaderStyle CssClass="hidden-xs"></HeaderStyle>
 
                     <ItemStyle CssClass="hidden-xs"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Apellido Paterno" DataField="ApellidoPaterno">
+                <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Habitación" DataField="Numero">
                     <HeaderStyle CssClass="hidden-xs"></HeaderStyle>
 
                     <ItemStyle CssClass="hidden-xs"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField DataField="ApellidoMaterno" HeaderText="Apellido Materno" />
-                <asp:BoundField DataField="NumeroDocumento" HeaderText="Nro Documento" />
-                <asp:BoundField DataField="Email" HeaderText="Email" />
-                <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
+                <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de Llegada" />
+                <asp:BoundField DataField="Observaciones" HeaderText="Observaciones" />
                 <asp:TemplateField HeaderText="Modificar">
                     <ItemTemplate>
                         <asp:Button ID="btnGridModificar" CommandName="ModificarData" class="btn btn-default btn-xs" runat="server" Text="..." />
