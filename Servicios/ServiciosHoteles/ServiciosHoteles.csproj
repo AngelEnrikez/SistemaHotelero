@@ -93,8 +93,8 @@
       <DependentUpon>Clientes.svc</DependentUpon>
     </Compile>
     <Compile Include="Dominio\Cliente.cs" />
-    <Compile Include="Dominio\Reserva.cs" />
     <Compile Include="Dominio\Habitacion.cs" />
+    <Compile Include="Dominio\Reserva.cs" />
     <Compile Include="Dominio\Parametro.cs" />
     <Compile Include="Dominio\Servicio.cs" />
     <Compile Include="Dominio\TipoDocumento.cs" />
