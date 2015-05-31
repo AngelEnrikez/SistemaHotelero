@@ -10,10 +10,10 @@ namespace ServiciosHoteles.Dominio
     public class TipoHabitacion
     {
         [DataMember]
-        public int IdTipoHabitacion { get; set; }
+        public int idTipoHabitacion { get; set; }
         [DataMember]
-        public string Descripcion { get; set; }
+        public string descripcion { get; set; }
         [DataMember]
-        public decimal Tarifa { get; set; }
+        public decimal tarifa { get; set; }
     }
 }
