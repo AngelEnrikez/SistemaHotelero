@@ -14,5 +14,17 @@ namespace ServiciosHoteles
     {
         [OperationContract]
         List<Reserva> ReservarHabitacion();
+
+        [OperationContract]
+        List<Reserva> RegistrarCheckin();
+
+        [OperationContract]
+        List<Reserva> RegistrarCheckout();
+
+        [OperationContract]
+        void CancelarReserva();
+
+        [OperationContract]
+        bool ValidarCancelacion();
     }
 }

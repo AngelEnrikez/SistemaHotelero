@@ -6,45 +6,44 @@ using System.Web;
 
 namespace ServiciosHoteles.Dominio
 {
-     [DataContract]
+    [DataContract]
     public class Reserva
     {
-         [DataMember]
-        public int  IdReserva { get; set; }
-          [DataMember]
-         public Cliente Cliente { get; set; }
-
-
-
-          [DataMember]
-          public DateTime  FechaLlegada { get; set; }
-          [DataMember]
-          public DateTime FechaSalida { get; set; }
-          [DataMember]
-          public DateTime FechaHoraCheckin { get; set; }
-          [DataMember]
-          public string ComentarioCheckin { get; set; }
-          [DataMember]
-          public DateTime FechaHoraCheckout { get; set; }
-          [DataMember]
-          public string comentarioCheckout { get; set; }
-          [DataMember]
-          public string CodFormaPago { get; set; }
-          [DataMember]
-          public string NumeroTarjeta { get; set; }
-          [DataMember]
-          public string TitularTarjeta { get; set; }
-          [DataMember]
-          public int MesExpiraTarjeta { get; set; }
-          [DataMember]
-          public int AnioExpiraTarjeta { get; set; }
-          [DataMember]
-          public int RequerimientosEsp { get; set; }
-          [DataMember]
-          public int Observaciones { get; set; }
-          [DataMember]
-          public bool EstadoCuenta { get; set; }
-          [DataMember]
-          public int  Estado { get; set; }
+        [DataMember]
+        public int IdReserva { get; set; }
+        [DataMember]
+        public Cliente Cliente { get; set; }
+        [DataMember]
+        public Habitacion Habitacion { get; set; }
+        [DataMember]
+        public DateTime FechaLlegada { get; set; }
+        [DataMember]
+        public DateTime FechaSalida { get; set; }
+        [DataMember]
+        public DateTime FechaHoraCheckin { get; set; }
+        [DataMember]
+        public string ComentarioCheckin { get; set; }
+        [DataMember]
+        public DateTime FechaHoraCheckout { get; set; }
+        [DataMember]
+        public string comentarioCheckout { get; set; }
+        [DataMember]
+        public string CodFormaPago { get; set; }
+        [DataMember]
+        public string NumeroTarjeta { get; set; }
+        [DataMember]
+        public string TitularTarjeta { get; set; }
+        [DataMember]
+        public int MesExpiraTarjeta { get; set; }
+        [DataMember]
+        public int AnioExpiraTarjeta { get; set; }
+        [DataMember]
+        public int RequerimientosEsp { get; set; }
+        [DataMember]
+        public int Observaciones { get; set; }
+        [DataMember]
+        public bool EstadoCuenta { get; set; }
+        [DataMember]
+        public int Estado { get; set; }
     }
 }
