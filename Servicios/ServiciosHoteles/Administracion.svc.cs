@@ -101,6 +101,12 @@ namespace ServiciosHoteles
         {
             throw new NotImplementedException();
         }
+
+
+        public List<TipoDocumento> AdminTDocumentos()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
