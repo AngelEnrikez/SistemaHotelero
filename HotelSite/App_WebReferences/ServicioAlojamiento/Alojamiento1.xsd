@@ -6,6 +6,7 @@
       <xs:enumeration value="Modificar" />
       <xs:enumeration value="Eliminar" />
       <xs:enumeration value="Listar" />
+      <xs:enumeration value="Obtener" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="Constantes" nillable="true" type="tns:Constantes" />

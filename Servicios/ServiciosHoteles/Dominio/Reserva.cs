@@ -26,7 +26,7 @@ namespace ServiciosHoteles.Dominio
         [DataMember]
         public DateTime FechaHoraCheckout { get; set; }
         [DataMember]
-        public string comentarioCheckout { get; set; }
+        public string ComentarioCheckout { get; set; }
         [DataMember]
         public string CodFormaPago { get; set; }
         [DataMember]
@@ -40,7 +40,7 @@ namespace ServiciosHoteles.Dominio
         [DataMember]
         public int RequerimientosEsp { get; set; }
         [DataMember]
-        public int Observaciones { get; set; }
+        public string Observaciones { get; set; }
         [DataMember]
         public bool EstadoCuenta { get; set; }
         [DataMember]

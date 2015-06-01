@@ -8,8 +8,8 @@
       <generator class="increment" />
     </id>
     <many-to-one name="Cliente" column="idCliente" />
-    <!--<many-to-one name="Habitacion" column="idHabitacion" />-->
-    <!--<property name="FechaLlegada" column="fechaLlegada" />
+    <many-to-one name="Habitacion" column="idHabitacion" />
+    <property name="FechaLlegada" column="fechaLlegada" />
     <property name="FechaSalida" column="fechaSalida" />
     <property name="FechaHoraCheckin" column="fechaHoraCheckin"  />
     <property name="ComentarioCheckin" column="comentarioCheckin" />
@@ -23,6 +23,6 @@
     <property name="RequerimientosEsp" column="requerimientosEsp" />    
     <property name="Observaciones" column="observaciones" />
     <property name="EstadoCuenta" column="estadoCuenta" />
-    <property name="Estado" column="estado" />-->
+    <property name="Estado" column="estado" />
   </class>
 </hibernate-mapping>

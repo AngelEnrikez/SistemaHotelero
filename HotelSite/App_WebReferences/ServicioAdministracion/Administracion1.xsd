@@ -1,28 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="Reserva">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AnioExpiraTarjeta" type="xs:int" />
-      <xs:element minOccurs="0" name="Cliente" nillable="true" type="tns:Cliente" />
-      <xs:element minOccurs="0" name="CodFormaPago" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ComentarioCheckin" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ComentarioCheckout" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Estado" type="xs:int" />
-      <xs:element minOccurs="0" name="EstadoCuenta" type="xs:boolean" />
-      <xs:element minOccurs="0" name="FechaHoraCheckin" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="FechaHoraCheckout" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="FechaLlegada" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="FechaSalida" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Habitacion" nillable="true" type="tns:Habitacion" />
-      <xs:element minOccurs="0" name="IdReserva" type="xs:int" />
-      <xs:element minOccurs="0" name="MesExpiraTarjeta" type="xs:int" />
-      <xs:element minOccurs="0" name="NumeroTarjeta" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Observaciones" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RequerimientosEsp" type="xs:int" />
-      <xs:element minOccurs="0" name="TitularTarjeta" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Reserva" nillable="true" type="tns:Reserva" />
   <xs:complexType name="Cliente">
     <xs:sequence>
       <xs:element minOccurs="0" name="ApellidoMaterno" nillable="true" type="xs:string" />
@@ -51,6 +28,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TipoDocumento" nillable="true" type="tns:TipoDocumento" />
+  <xs:complexType name="ArrayOfCliente">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cliente" nillable="true" type="tns:Cliente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCliente" nillable="true" type="tns:ArrayOfCliente" />
+  <xs:complexType name="ArrayOfTipoDocumento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TipoDocumento" nillable="true" type="tns:TipoDocumento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTipoDocumento" nillable="true" type="tns:ArrayOfTipoDocumento" />
+  <xs:complexType name="ArrayOfHabitacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Habitacion" nillable="true" type="tns:Habitacion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHabitacion" nillable="true" type="tns:ArrayOfHabitacion" />
   <xs:complexType name="Habitacion">
     <xs:sequence>
       <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
@@ -69,10 +64,44 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TipoHabitacion" nillable="true" type="tns:TipoHabitacion" />
-  <xs:complexType name="ArrayOfReserva">
+  <xs:complexType name="ArrayOfTipoHabitacion">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reserva" nillable="true" type="tns:Reserva" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TipoHabitacion" nillable="true" type="tns:TipoHabitacion" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfReserva" nillable="true" type="tns:ArrayOfReserva" />
+  <xs:element name="ArrayOfTipoHabitacion" nillable="true" type="tns:ArrayOfTipoHabitacion" />
+  <xs:complexType name="ArrayOfPais">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pais" nillable="true" type="tns:Pais" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPais" nillable="true" type="tns:ArrayOfPais" />
+  <xs:complexType name="ArrayOfServicio">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Servicio" nillable="true" type="tns:Servicio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServicio" nillable="true" type="tns:ArrayOfServicio" />
+  <xs:complexType name="Servicio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdServicio" type="xs:int" />
+      <xs:element minOccurs="0" name="Tarifa" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Servicio" nillable="true" type="tns:Servicio" />
+  <xs:complexType name="ArrayOfParametro">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Parametro" nillable="true" type="tns:Parametro" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfParametro" nillable="true" type="tns:ArrayOfParametro" />
+  <xs:complexType name="Parametro">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClaveConfig" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdConfiguracion" type="xs:int" />
+      <xs:element minOccurs="0" name="ValorConfig" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Parametro" nillable="true" type="tns:Parametro" />
 </xs:schema>
