@@ -14,12 +14,12 @@
                         <asp:HiddenField ID="hdGridCodigo" runat="server" Value='<%# Eval("IdReserva") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Cliente" DataField="Nombre">
+                <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Cliente" DataField="Cliente.Nombre">
                     <HeaderStyle CssClass="hidden-xs"></HeaderStyle>
 
                     <ItemStyle CssClass="hidden-xs"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Habitación" DataField="Numero">
+                <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Habitación" DataField="Habitacion.Numero">
                     <HeaderStyle CssClass="hidden-xs"></HeaderStyle>
 
                     <ItemStyle CssClass="hidden-xs"></ItemStyle>
