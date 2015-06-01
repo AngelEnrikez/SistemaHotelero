@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using ServiciosHoteles.Util;
 
 namespace ServiciosHoteles
 {
@@ -13,7 +14,7 @@ namespace ServiciosHoteles
     public interface IAlojamiento
     {
         [OperationContract]
-        List<Reserva> ReservarHabitacion();
+        List<Reserva> ReservarHabitacion( Constantes valor, Reserva reserva,int codigo );
 
         [OperationContract]
         List<Reserva> RegistrarCheckin();

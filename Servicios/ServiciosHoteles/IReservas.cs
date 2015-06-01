@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiciosHoteles.Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,7 +12,16 @@ namespace ServiciosHoteles
     [ServiceContract]
     public interface IReservas
     {
-       
+        [OperationContract]
+        Reserva RegistrarReserva(Reserva reservaACrear);
+        [OperationContract]
+        Reserva ModificarReserva(Reserva reservaAModificar);        
+        [OperationContract]
+        Reserva ObtenerReserva(int codigo);
+        [OperationContract]
+        List<Reserva> ListaReserva();
+        [OperationContract]
+        List<Reserva> BuscarClientes(Cliente cliente, Habitacion habitacion);
 
     }
 }

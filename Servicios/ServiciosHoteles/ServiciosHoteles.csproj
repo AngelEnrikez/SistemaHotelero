@@ -74,6 +74,9 @@
     <EmbeddedResource Include="Dominio\Cliente.hbm.xml" />
     <EmbeddedResource Include="Dominio\TipoDocumento.hbm.xml" />
     <EmbeddedResource Include="Dominio\Pais.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Reserva.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Habitacion.hbm.xml" />
+    <EmbeddedResource Include="Dominio\TipoHabitacion.hbm.xml" />
     <Content Include="Paises.svc" />
     <Content Include="Reservas.svc" />
     <Content Include="TiposDocumento.svc" />
@@ -111,6 +114,8 @@
       <DependentUpon>Paises.svc</DependentUpon>
     </Compile>
     <Compile Include="Persistencia\BaseDAO.cs" />
+    <Compile Include="Persistencia\HabitacionDAO.cs" />
+    <Compile Include="Persistencia\ReservaDAO.cs" />
     <Compile Include="Persistencia\TipoDocumentoDAO.cs" />
     <Compile Include="Persistencia\PaisDAO.cs" />
     <Compile Include="Persistencia\ClienteDAO.cs" />

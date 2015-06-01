@@ -14,7 +14,7 @@ namespace ServiciosHoteles.Dominio
         public int IdHabitacion { get; set; }
 
         [DataMember]
-        public int IdTipoHabitacion { get; set; }
+        public Habitacion IdTipoHabitacion { get; set; }
         [DataMember]
         public int Numero { get; set; }
         [DataMember]

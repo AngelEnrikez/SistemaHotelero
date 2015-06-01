@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="ServiciosHoteles"
+                   namespace="ServiciosHoteles.Dominio"
+                   default-lazy="false">
+  <class name="Reserva" table="t_Reserva">
+    <id name="IdReserva" column="idReserva">
+      <generator class="increment" />
+    </id>
+    <many-to-one name="Cliente" column="idCliente" />
+    <!--<many-to-one name="Habitacion" column="idHabitacion" />-->
+    <!--<property name="FechaLlegada" column="fechaLlegada" />
+    <property name="FechaSalida" column="fechaSalida" />
+    <property name="FechaHoraCheckin" column="fechaHoraCheckin"  />
+    <property name="ComentarioCheckin" column="comentarioCheckin" />
+    <property name="FechaHoraCheckout" column="fechaHoraCheckout" />
+    <property name="ComentarioCheckout" column="comentarioCheckout" />
+    <property name="CodFormaPago" column="codFormaPago" />
+    <property name="NumeroTarjeta" column="numeroTarjeta" />
+    <property name="TitularTarjeta" column="titularTarjeta" />
+    <property name="MesExpiraTarjeta" column="mesExpiraTarjeta" />
+    <property name="AnioExpiraTarjeta" column="anioExpiraTarjeta" />
+    <property name="RequerimientosEsp" column="requerimientosEsp" />    
+    <property name="Observaciones" column="observaciones" />
+    <property name="EstadoCuenta" column="estadoCuenta" />
+    <property name="Estado" column="estado" />-->
+  </class>
+</hibernate-mapping>
