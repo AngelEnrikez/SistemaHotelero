@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:49486/Administracion.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Util" />
+  <xs:import schemaLocation="http://localhost:49486/Administracion.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" />
+  <xs:element name="AdminClientes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Util" minOccurs="0" name="valor" type="q1:Constantes" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="cliente" nillable="true" type="q2:Cliente" />
+        <xs:element minOccurs="0" name="codigo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminClientesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminClientesResult" nillable="true" type="q3:ArrayOfCliente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminTDocumentos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Util" minOccurs="0" name="valor" type="q4:Constantes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminTDocumentosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminTDocumentosResult" nillable="true" type="q5:ArrayOfTipoDocumento" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminHabitaciones">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminHabitacionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminHabitacionesResult" nillable="true" type="q6:ArrayOfHabitacion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminTHabitaciones">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminTHabitacionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminTHabitacionesResult" nillable="true" type="q7:ArrayOfTipoHabitacion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminPaises">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Util" minOccurs="0" name="valor" type="q8:Constantes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminPaisesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminPaisesResult" nillable="true" type="q9:ArrayOfPais" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminServicios">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminServiciosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminServiciosResult" nillable="true" type="q10:ArrayOfServicio" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminParametros">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdminParametrosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminParametrosResult" nillable="true" type="q11:ArrayOfParametro" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

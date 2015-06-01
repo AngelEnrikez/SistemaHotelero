@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ServicioClientes;
+using ServicioAdministracion;
 
 public partial class Default2 : System.Web.UI.Page
 {
@@ -39,9 +39,9 @@ public partial class Default2 : System.Web.UI.Page
         {
             gdListado.DataSource = null;
             gdListado.DataBind();
-            using (ServicioClientes.ClientesClient objCliente = new ClientesClient())
+            using (AdministracionClient objCliente = new AdministracionClient())
             {
-                List<ServicioClientes.Cliente> clientes = objCliente.ListarClientes();
+                List<Cliente> clientes = objCliente.AdminClientes(Constantes.Listar, null,0);
                 if (clientes.Count > 0)
                 {
                     //hdMaxCodigo.Value = (clientes.Max(r => r.IdCliente) + 1).ToString();
@@ -75,9 +75,9 @@ public partial class Default2 : System.Web.UI.Page
             {
                 GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
                 HiddenField hdnDataId = (HiddenField)row.FindControl("hdGridCodigo");
-                using (ServicioClientes.ClientesClient objCliente = new ClientesClient())
+                using (AdministracionClient objCliente = new AdministracionClient())
                 {
-                    objCliente.EliminarCliente( new ServicioClientes.Cliente (){IdCliente=Convert.ToInt32(hdnDataId.Value)});
+                    objCliente.AdminClientes(Constantes.Eliminar, new Cliente (){IdCliente=Convert.ToInt32(hdnDataId.Value)},0);
                 }
                 Listar();
             }

@@ -55,8 +55,8 @@
             </table>
         </div>
         <div class="panel-footer">
-            <asp:Button ID="btnGuardar" class="btn btn-default" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
-            <asp:Button ID="btnCancelar" class="btn btn-default" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+            <asp:Button ID="btnGuardar" class="btn btn-default" runat="server" Text="Guardar" />
+            <asp:Button ID="btnCancelar" class="btn btn-default" runat="server" Text="Cancelar" />
             <asp:HiddenField ID="hdAgregarActualizar" runat="server" />
             <asp:HiddenField ID="hdCodigo" runat="server" Value="0" />
         </div>

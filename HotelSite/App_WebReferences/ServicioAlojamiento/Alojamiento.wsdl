@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Alojamiento" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:49486/Alojamiento.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:49486/Alojamiento.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:49486/Alojamiento.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Util" />
+      <xsd:import schemaLocation="http://localhost:49486/Alojamiento.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAlojamiento_ReservarHabitacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReservarHabitacion" />
+  </wsdl:message>
+  <wsdl:message name="IAlojamiento_ReservarHabitacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReservarHabitacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAlojamiento_RegistrarCheckin_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarCheckin" />
+  </wsdl:message>
+  <wsdl:message name="IAlojamiento_RegistrarCheckin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarCheckinResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAlojamiento_RegistrarCheckout_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarCheckout" />
+  </wsdl:message>
+  <wsdl:message name="IAlojamiento_RegistrarCheckout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarCheckoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAlojamiento_CancelarReserva_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelarReserva" />
+  </wsdl:message>
+  <wsdl:message name="IAlojamiento_CancelarReserva_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelarReservaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAlojamiento_ValidarCancelacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarCancelacion" />
+  </wsdl:message>
+  <wsdl:message name="IAlojamiento_ValidarCancelacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarCancelacionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAlojamiento">
+    <wsdl:operation name="ReservarHabitacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlojamiento/ReservarHabitacion" message="tns:IAlojamiento_ReservarHabitacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlojamiento/ReservarHabitacionResponse" message="tns:IAlojamiento_ReservarHabitacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarCheckin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlojamiento/RegistrarCheckin" message="tns:IAlojamiento_RegistrarCheckin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlojamiento/RegistrarCheckinResponse" message="tns:IAlojamiento_RegistrarCheckin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarCheckout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlojamiento/RegistrarCheckout" message="tns:IAlojamiento_RegistrarCheckout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlojamiento/RegistrarCheckoutResponse" message="tns:IAlojamiento_RegistrarCheckout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelarReserva">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlojamiento/CancelarReserva" message="tns:IAlojamiento_CancelarReserva_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlojamiento/CancelarReservaResponse" message="tns:IAlojamiento_CancelarReserva_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarCancelacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlojamiento/ValidarCancelacion" message="tns:IAlojamiento_ValidarCancelacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlojamiento/ValidarCancelacionResponse" message="tns:IAlojamiento_ValidarCancelacion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAlojamiento" type="tns:IAlojamiento">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReservarHabitacion">
+      <soap:operation soapAction="http://tempuri.org/IAlojamiento/ReservarHabitacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarCheckin">
+      <soap:operation soapAction="http://tempuri.org/IAlojamiento/RegistrarCheckin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarCheckout">
+      <soap:operation soapAction="http://tempuri.org/IAlojamiento/RegistrarCheckout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarReserva">
+      <soap:operation soapAction="http://tempuri.org/IAlojamiento/CancelarReserva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarCancelacion">
+      <soap:operation soapAction="http://tempuri.org/IAlojamiento/ValidarCancelacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Alojamiento">
+    <wsdl:port name="BasicHttpBinding_IAlojamiento" binding="tns:BasicHttpBinding_IAlojamiento">
+      <soap:address location="http://localhost:49486/Alojamiento.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

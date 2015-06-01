@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Administracion" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:49486/Administracion.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:49486/Administracion.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:49486/Administracion.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Util" />
+      <xsd:import schemaLocation="http://localhost:49486/Administracion.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAdministracion_AdminClientes_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdminClientes" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminClientes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdminClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminTDocumentos_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdminTDocumentos" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminTDocumentos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdminTDocumentosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminHabitaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdminHabitaciones" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminHabitaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdminHabitacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminTHabitaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdminTHabitaciones" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminTHabitaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdminTHabitacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminPaises_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdminPaises" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminPaises_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdminPaisesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminServicios_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdminServicios" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminServicios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdminServiciosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminParametros_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdminParametros" />
+  </wsdl:message>
+  <wsdl:message name="IAdministracion_AdminParametros_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdminParametrosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAdministracion">
+    <wsdl:operation name="AdminClientes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdministracion/AdminClientes" message="tns:IAdministracion_AdminClientes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdministracion/AdminClientesResponse" message="tns:IAdministracion_AdminClientes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminTDocumentos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdministracion/AdminTDocumentos" message="tns:IAdministracion_AdminTDocumentos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdministracion/AdminTDocumentosResponse" message="tns:IAdministracion_AdminTDocumentos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminHabitaciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdministracion/AdminHabitaciones" message="tns:IAdministracion_AdminHabitaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdministracion/AdminHabitacionesResponse" message="tns:IAdministracion_AdminHabitaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminTHabitaciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdministracion/AdminTHabitaciones" message="tns:IAdministracion_AdminTHabitaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdministracion/AdminTHabitacionesResponse" message="tns:IAdministracion_AdminTHabitaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminPaises">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdministracion/AdminPaises" message="tns:IAdministracion_AdminPaises_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdministracion/AdminPaisesResponse" message="tns:IAdministracion_AdminPaises_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminServicios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdministracion/AdminServicios" message="tns:IAdministracion_AdminServicios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdministracion/AdminServiciosResponse" message="tns:IAdministracion_AdminServicios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminParametros">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdministracion/AdminParametros" message="tns:IAdministracion_AdminParametros_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdministracion/AdminParametrosResponse" message="tns:IAdministracion_AdminParametros_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAdministracion" type="tns:IAdministracion">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AdminClientes">
+      <soap:operation soapAction="http://tempuri.org/IAdministracion/AdminClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminTDocumentos">
+      <soap:operation soapAction="http://tempuri.org/IAdministracion/AdminTDocumentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminHabitaciones">
+      <soap:operation soapAction="http://tempuri.org/IAdministracion/AdminHabitaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminTHabitaciones">
+      <soap:operation soapAction="http://tempuri.org/IAdministracion/AdminTHabitaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminPaises">
+      <soap:operation soapAction="http://tempuri.org/IAdministracion/AdminPaises" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminServicios">
+      <soap:operation soapAction="http://tempuri.org/IAdministracion/AdminServicios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminParametros">
+      <soap:operation soapAction="http://tempuri.org/IAdministracion/AdminParametros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Administracion">
+    <wsdl:port name="BasicHttpBinding_IAdministracion" binding="tns:BasicHttpBinding_IAdministracion">
+      <soap:address location="http://localhost:49486/Administracion.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

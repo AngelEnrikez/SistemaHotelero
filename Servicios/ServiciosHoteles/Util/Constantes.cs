@@ -17,7 +17,9 @@ namespace ServiciosHoteles.Util
         [EnumMember]
         Eliminar,
         [EnumMember]
-        Listar
+        Listar,
+        [EnumMember]
+        Obtener
     }
 
 }

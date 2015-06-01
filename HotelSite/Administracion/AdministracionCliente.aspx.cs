@@ -4,9 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ServicioClientes;
-using ServicioPaises;
-using ServicioTiposDocumento;
+using ServicioAdministracion;
 
 public partial class Default2 : System.Web.UI.Page
 {
@@ -37,16 +35,16 @@ public partial class Default2 : System.Web.UI.Page
     private void MostrarItems() {
         try
         {
-            using (PaisesClient objPais = new PaisesClient())
+            using (AdministracionClient objPais = new AdministracionClient())
             {
-                cmbPais.DataSource = objPais.ListarPais();
+                cmbPais.DataSource = objPais.AdminPaises(Constantes.Listar);
                 cmbPais.DataTextField = "NombrePais";
                 cmbPais.DataValueField = "IdPais";
                 cmbPais.DataBind();
             }
-            using (TiposDocumentoClient objTipoDocumento = new TiposDocumentoClient())
+            using (AdministracionClient objTipoDocumento = new AdministracionClient())
             {
-                cmbTipoDocumento.DataSource = objTipoDocumento.ListarTipoDocumento();
+                cmbTipoDocumento.DataSource = objTipoDocumento.AdminTDocumentos(Constantes.Listar);
                 cmbTipoDocumento.DataTextField = "Descripcion";
                 cmbTipoDocumento.DataValueField = "IdTipoDocumento";
                 cmbTipoDocumento.DataBind();
@@ -68,10 +66,10 @@ public partial class Default2 : System.Web.UI.Page
         {
             if (hdAgregarActualizar.Value == "A")
             {
-                using (ServicioClientes.ClientesClient objCliente = new ClientesClient())
+                using (AdministracionClient objCliente = new AdministracionClient())
                 {
-                    ServicioClientes.Cliente cliente;
-                    cliente = objCliente.ObtenerCliente(Convert.ToInt32(hdCodigo.Value));
+                    Cliente cliente;
+                    cliente = objCliente.AdminClientes(Constantes.Obtener,null, Convert.ToInt32(hdCodigo.Value))[0] ;
                     txtNombres.Text = cliente.Nombre;
                     txtApellidoPat.Text = cliente.ApellidoPaterno;
                     txtApellidoMat.Text = cliente.ApellidoMaterno;
@@ -99,11 +97,11 @@ public partial class Default2 : System.Web.UI.Page
     {
         try
         {
-            using (ServicioClientes.ClientesClient objCliente = new ClientesClient())
+            using (AdministracionClient objCliente = new AdministracionClient())
             {
-                ServicioClientes.TipoDocumento tipoDocumento = new ServicioClientes.TipoDocumento();
-                ServicioClientes.Pais pais = new ServicioClientes.Pais();
-                ServicioClientes.Cliente cliente = new Cliente();
+                TipoDocumento tipoDocumento = new TipoDocumento();
+                Pais pais = new Pais();
+                Cliente cliente = new Cliente();
                 if (hdAgregarActualizar.Value == "N")
                 {
                     cliente.Nombre = txtNombres.Text.Trim();
@@ -116,7 +114,7 @@ public partial class Default2 : System.Web.UI.Page
                     cliente.Email = txtEmail.Text.Trim();
                     pais.IdPais = Convert.ToInt32(cmbPais.SelectedValue);
                     cliente.Pais = pais;
-                    objCliente.CrearCliente(cliente);
+                    objCliente.AdminClientes(Constantes.Crear ,cliente,0);
                 }
                 else if (hdAgregarActualizar.Value == "A")
                 {
@@ -131,7 +129,7 @@ public partial class Default2 : System.Web.UI.Page
                     cliente.Email = txtEmail.Text.Trim();
                     pais.IdPais = Convert.ToInt32(cmbPais.SelectedValue);
                     cliente.Pais = pais;
-                   objCliente.ModificarCliente(cliente);
+                    objCliente.AdminClientes(Constantes.Modificar, cliente, 0);
                 }
             }
             Response.Redirect("ListarCliente.aspx", true);

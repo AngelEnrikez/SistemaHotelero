@@ -14,8 +14,7 @@ namespace ServiciosHoteles
     public class Administracion : IAdministracion
     {
     
-
-        public List<Dominio.Cliente> AdminClientes(Constantes valor,Cliente clientes )
+        public List<Cliente> AdminClientes(Constantes valor,Cliente clientes,int codigo )
         {
 
             List<Cliente> lista = new List<Cliente>();
@@ -26,84 +25,78 @@ namespace ServiciosHoteles
                 if (valor == Constantes.Crear) {
 
                   lista.Add(nombre.CrearCliente(clientes));
-
                 }
                 else if (valor == Constantes.Modificar) {
-
                     lista.Add(nombre.ModificarCliente(clientes));
                 }
-
+                else if (valor == Constantes.Obtener)
+                {
+                    lista.Add(nombre.ObtenerCliente(codigo));
+                }
                 else if (valor == Constantes.Eliminar)
                 {
-
                     nombre.EliminarCliente(clientes);
                 }
 
                 else if (valor == Constantes.Listar)
                 {
-
                     lista = nombre.ListarClientes();
                 }
 
-
-
             }
             catch (FaultException ex) { throw ex; }
-
-
             return lista;
 
         }
 
-        public List<Dominio.TipoDocumento> AdminTDocumentos(Constantes valor)
+        public List<TipoDocumento> AdminTDocumentos(Constantes valor)
         {
             List<TipoDocumento> listaTipoDocumento = new List<TipoDocumento>();
             ITiposDocumento nombre2 = new TiposDocumento();
 
             try
             {
-
                 if (valor == Constantes.Listar)
                 {
-
                     listaTipoDocumento = nombre2.ListarTipoDocumento();
-
                 }
-
             }
            catch (FaultException ex) { throw ex; }
-
-
             return listaTipoDocumento;
         }
 
-        public List<Dominio.Habitacion> AdminHabitaciones()
+        public List<Habitacion> AdminHabitaciones()
         {
             throw new NotImplementedException();
         }
 
-        public List<Dominio.TipoHabitacion> AdminTHabitaciones()
+        public List<TipoHabitacion> AdminTHabitaciones()
         {
             throw new NotImplementedException();
         }
 
-        public List<Dominio.Pais> AdminPaises()
+        public List<Pais> AdminPaises(Constantes valor)
+        {
+            List<Pais> listaTipoDocumento = new List<Pais>();
+            IPaises nombre2 = new Paises();
+
+            try
+            {
+                if (valor == Constantes.Listar)
+                {
+                    listaTipoDocumento = nombre2.ListarPais();
+                }
+            }
+            catch (FaultException ex) { throw ex; }
+            return listaTipoDocumento;
+        }
+
+        public List<Servicio> AdminServicios()
         {
             throw new NotImplementedException();
         }
 
-        public List<Dominio.Servicio> AdminServicios()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Dominio.Parametro> AdminParametros()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public List<TipoDocumento> AdminTDocumentos()
+        public List<Parametro> AdminParametros()
         {
             throw new NotImplementedException();
         }

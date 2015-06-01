@@ -14,10 +14,10 @@ namespace ServiciosHoteles
     public interface IAdministracion
     {
         [OperationContract]
-        List<Cliente> AdminClientes(Constantes valor, Cliente cliente );
+        List<Cliente> AdminClientes(Constantes valor, Cliente cliente, int codigo);
 
         [OperationContract]
-        List<TipoDocumento> AdminTDocumentos();
+        List<TipoDocumento> AdminTDocumentos(Constantes valor);
 
         [OperationContract]
         List<Habitacion> AdminHabitaciones();
@@ -26,7 +26,7 @@ namespace ServiciosHoteles
         List<TipoHabitacion> AdminTHabitaciones();
 
         [OperationContract]
-        List<Pais> AdminPaises();
+        List<Pais> AdminPaises(Constantes valor);
 
         [OperationContract]
         List<Servicio> AdminServicios();

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d9843627-b20e-4f07-932b-e35111f7d0d2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:49486/Alojamiento.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Alojamiento.xsd" MetadataType="Schema" ID="39272c57-39ac-4d01-b893-b0c3c1c1a206" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?xsd=xsd1" />
+    <MetadataFile FileName="Alojamiento.disco" MetadataType="Disco" ID="a24b3920-290c-4c02-bb84-33228fdb7eb0" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?disco" />
+    <MetadataFile FileName="Alojamiento1.xsd" MetadataType="Schema" ID="c920d54b-aef7-4233-a00d-db15ff53e235" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?xsd=xsd2" />
+    <MetadataFile FileName="Alojamiento.wsdl" MetadataType="Wsdl" ID="bab22507-c3cd-49fe-9acf-c3cad4957360" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?wsdl" />
+    <MetadataFile FileName="Alojamiento2.xsd" MetadataType="Schema" ID="c61c2203-3083-48e1-92bc-d7ed271267ae" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?xsd=xsd0" />
+    <MetadataFile FileName="Alojamiento3.xsd" MetadataType="Schema" ID="9cc65344-3cc9-40df-87dc-d50cd2fdec5b" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
