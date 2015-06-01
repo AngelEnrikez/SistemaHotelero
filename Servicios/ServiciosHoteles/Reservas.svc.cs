@@ -75,7 +75,7 @@ namespace ServiciosHoteles
                 Cliente ClienteExistente = ClienteDAO.Obtener(reservaAModificar.Cliente.IdCliente);
                 Habitacion tipoDocumentoExistente = HabitacionDAO.Obtener(reservaAModificar.Habitacion.IdHabitacion);
 
-                reservaModificado = ReservaDAO.Crear(reservaAModificar);
+                reservaModificado = ReservaDAO.Modificar(reservaAModificar);
             }
             catch (FaultException ex) { throw ex; }
             return reservaModificado;

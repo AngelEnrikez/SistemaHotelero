@@ -30,13 +30,13 @@
                 <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
                 <asp:TemplateField HeaderText="Modificar">
                     <ItemTemplate>
-                        <asp:Button ID="btnGridModificar" CommandName="ModificarData" class="btn btn-default btn-xs" runat="server" Text="..." />
+                        <asp:Button ID="btnGridModificar" Width="40px" CommandName="ModificarData" class="btn btn-default btn-xs" runat="server" Text="..." />
                     </ItemTemplate>
                     <ItemStyle Width="50px" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Eliminar">
                     <ItemTemplate>
-                        <asp:Button ID="btnGridEliminar" CommandName="DeleteData" class="btn btn-default btn-xs" runat="server" OnClientClick="if( !confirm('Está seguro de eliminar el registro?') ) return false;" Text="..." />
+                        <asp:Button ID="btnGridEliminar" Width="40px" CommandName="DeleteData" class="btn btn-default btn-xs" runat="server" OnClientClick="if( !confirm('Está seguro de eliminar el registro?') ) return false;" Text="..." />
                     </ItemTemplate>
                     <ItemStyle Width="50px" />
                 </asp:TemplateField>

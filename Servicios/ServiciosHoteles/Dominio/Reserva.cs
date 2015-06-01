@@ -20,11 +20,11 @@ namespace ServiciosHoteles.Dominio
         [DataMember]
         public DateTime FechaSalida { get; set; }
         [DataMember]
-        public DateTime FechaHoraCheckin { get; set; }
+        public DateTime? FechaHoraCheckin { get; set; }
         [DataMember]
         public string ComentarioCheckin { get; set; }
         [DataMember]
-        public DateTime FechaHoraCheckout { get; set; }
+        public DateTime? FechaHoraCheckout { get; set; }
         [DataMember]
         public string ComentarioCheckout { get; set; }
         [DataMember]

@@ -11,7 +11,21 @@ public partial class Default2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        try
+        {
+            if (!this.IsPostBack)
+            {
+                hdAgregarActualizar.Value = Request.QueryString["accion"].ToString();
+                hdCodigo.Value = Request.QueryString["cod"].ToString();
+                MostrarItems();
+                MostrarRegistro();
+            }
+        }
+        catch (Exception ex)
+        {
+            divError.InnerHtml = ex.Message;
+            divError.Visible = true;
+        }
     }
 
 
@@ -26,7 +40,7 @@ public partial class Default2 : System.Web.UI.Page
             {
                 cmbHbitacion.DataSource = objHabitacion.AdminHabitaciones(ServicioAdministracion.Constantes.Listar );
                 cmbHbitacion.DataTextField = "Descripcion";
-                cmbHbitacion.DataValueField = "IdTipoHabitacion";
+                cmbHbitacion.DataValueField = "IdHabitacion";
                 cmbHbitacion.DataBind();
             }
             using (AdministracionClient objCliente = new AdministracionClient())
@@ -46,4 +60,77 @@ public partial class Default2 : System.Web.UI.Page
     }
 
 
+    /// <summary>
+    /// Muestra los registros 
+    /// </summary>
+    private void MostrarRegistro()
+    {
+        try
+        {
+            if (hdAgregarActualizar.Value == "A")
+            {
+                using (AlojamientoClient objCliente = new AlojamientoClient())
+                {
+                    ServicioAlojamiento.Reserva reserva;
+                    reserva = objCliente.ReservarHabitacion (ServicioAlojamiento.Constantes.Obtener, null, Convert.ToInt32(hdCodigo.Value))[0];                    
+                    cmbCliente.SelectedValue = reserva.Cliente.IdCliente.ToString();
+                    cmbHbitacion.SelectedValue = reserva.Habitacion.IdHabitacion.ToString();
+                    txtFechaLlegada.Text = reserva.FechaLlegada.ToString("dd/MM/yyyy HH:mm:ss");
+                    txtFechaSalida.Text = reserva.FechaSalida.ToString("dd/MM/yyyy HH:mm:ss");
+                    txtObservaciones.Text = reserva.Observaciones;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+
+    }
+
+    protected void btnCancelar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ListadoReserva.aspx", true);
+    }
+    protected void btnGuardar_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            using (AlojamientoClient objReserva = new AlojamientoClient())
+            {
+                ServicioAlojamiento.Cliente cliente = new ServicioAlojamiento.Cliente();
+                ServicioAlojamiento.Habitacion habitacion = new ServicioAlojamiento.Habitacion();
+                Reserva reserva = new Reserva();
+                if (hdAgregarActualizar.Value == "N")
+                {
+                    cliente.IdCliente =Convert.ToInt32( cmbCliente.SelectedValue);
+                    reserva.Cliente = cliente;
+                    habitacion.IdHabitacion = Convert.ToInt32(cmbHbitacion.SelectedValue);
+                    reserva.Habitacion = habitacion;
+                    reserva.FechaLlegada = DateTime.ParseExact(txtFechaLlegada.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    reserva.FechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    reserva.Observaciones = txtObservaciones.Text;
+                    objReserva.ReservarHabitacion(ServicioAlojamiento.Constantes.Crear,reserva, 0);
+                }
+                else if (hdAgregarActualizar.Value == "A")
+                {
+                    reserva.IdReserva = Convert.ToInt32(hdCodigo.Value);
+                    cliente.IdCliente = Convert.ToInt32(cmbCliente.SelectedValue);
+                    reserva.Cliente = cliente;
+                    habitacion.IdHabitacion = Convert.ToInt32(cmbHbitacion.SelectedValue);
+                    reserva.Habitacion = habitacion;
+                    reserva.FechaLlegada = DateTime.ParseExact(txtFechaLlegada.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    reserva.FechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    reserva.Observaciones = txtObservaciones.Text;
+                    objReserva.ReservarHabitacion(ServicioAlojamiento.Constantes.Modificar, reserva, 0);
+                }
+            }
+            Response.Redirect("ListadoReserva.aspx", true);
+        }
+        catch (Exception ex)
+        {
+            divError.InnerHtml = ex.Message;
+            divError.Visible = true;
+        }
+    }
 }

@@ -25,19 +25,14 @@
                     <ItemStyle CssClass="hidden-xs"></ItemStyle>
                 </asp:BoundField>
                 <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de Llegada" />
+                 <asp:BoundField DataField="FechaSalida" HeaderText="Fecha de Salida" />
                 <asp:BoundField DataField="Observaciones" HeaderText="Observaciones" />
                 <asp:TemplateField HeaderText="Modificar">
                     <ItemTemplate>
-                        <asp:Button ID="btnGridModificar" CommandName="ModificarData" class="btn btn-default btn-xs" runat="server" Text="..." />
+                        <asp:Button ID="btnGridModificar" Width="40px" CommandName="ModificarData" class="btn btn-default btn-xs" runat="server" Text="..." />
                     </ItemTemplate>
                     <ItemStyle Width="50px" />
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Eliminar">
-                    <ItemTemplate>
-                        <asp:Button ID="btnGridEliminar" CommandName="DeleteData" class="btn btn-default btn-xs" runat="server" OnClientClick="if( !confirm('Está seguro de eliminar el registro?') ) return false;" Text="..." />
-                    </ItemTemplate>
-                    <ItemStyle Width="50px" />
-                </asp:TemplateField>
+                </asp:TemplateField>                
             </Columns>
             <RowStyle CssClass="rowStyle" />
             <HeaderStyle CssClass="headerStyle" />

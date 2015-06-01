@@ -9,8 +9,8 @@
       <xs:element minOccurs="0" name="ComentarioCheckout" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Estado" type="xs:int" />
       <xs:element minOccurs="0" name="EstadoCuenta" type="xs:boolean" />
-      <xs:element minOccurs="0" name="FechaHoraCheckin" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="FechaHoraCheckout" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaHoraCheckin" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaHoraCheckout" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaLlegada" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaSalida" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Habitacion" nillable="true" type="tns:Habitacion" />

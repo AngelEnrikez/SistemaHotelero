@@ -24,6 +24,10 @@ namespace ServiciosHoteles
                 {
                     lista.Add(reservaServicio.RegistrarReserva(reserva));
                 }
+                else if (valor == Constantes.Obtener)
+                {
+                    lista.Add(reservaServicio.ObtenerReserva(codigo) );
+                }
                 else if (valor == Constantes.Modificar)
                 {
                     lista.Add(reservaServicio.ModificarReserva(reserva));
