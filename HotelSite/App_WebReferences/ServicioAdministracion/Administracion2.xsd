@@ -34,13 +34,15 @@
   </xs:element>
   <xs:element name="AdminHabitaciones">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Util" minOccurs="0" name="valor" type="q6:Constantes" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AdminHabitacionesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminHabitacionesResult" nillable="true" type="q6:ArrayOfHabitacion" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminHabitacionesResult" nillable="true" type="q7:ArrayOfHabitacion" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -52,21 +54,21 @@
   <xs:element name="AdminTHabitacionesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminTHabitacionesResult" nillable="true" type="q7:ArrayOfTipoHabitacion" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminTHabitacionesResult" nillable="true" type="q8:ArrayOfTipoHabitacion" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AdminPaises">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Util" minOccurs="0" name="valor" type="q8:Constantes" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Util" minOccurs="0" name="valor" type="q9:Constantes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AdminPaisesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminPaisesResult" nillable="true" type="q9:ArrayOfPais" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminPaisesResult" nillable="true" type="q10:ArrayOfPais" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -78,7 +80,7 @@
   <xs:element name="AdminServiciosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminServiciosResult" nillable="true" type="q10:ArrayOfServicio" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminServiciosResult" nillable="true" type="q11:ArrayOfServicio" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -90,7 +92,7 @@
   <xs:element name="AdminParametrosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminParametrosResult" nillable="true" type="q11:ArrayOfParametro" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="AdminParametrosResult" nillable="true" type="q12:ArrayOfParametro" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

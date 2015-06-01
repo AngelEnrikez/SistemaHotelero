@@ -56,4 +56,35 @@ public partial class Default2 : System.Web.UI.Page
 
 
     }
+    protected void btnAgregar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ReservarHabitacion.aspx?cod=0&accion=N", true);
+    }
+    protected void gdListado_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            if (e.CommandName == "DeleteData")
+            {
+                GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
+                HiddenField hdnDataId = (HiddenField)row.FindControl("hdGridCodigo");
+                using (AlojamientoClient objReserva = new AlojamientoClient())
+                {
+                    objReserva.ReservarHabitacion(Constantes.Eliminar, new Reserva() { IdReserva = Convert.ToInt32(hdnDataId.Value) }, 0);
+                }
+                Listar();
+            }
+            if (e.CommandName == "ModificarData")
+            {
+                GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
+                HiddenField hdnDataId = (HiddenField)row.FindControl("hdGridCodigo");
+                Response.Redirect("ReservarHabitacion.aspx?cod=" + hdnDataId.Value + "&accion=A", true);
+            }
+        }
+        catch (Exception ex)
+        {
+            divError.InnerHtml = ex.Message;
+            divError.Visible = true;
+        }
+    }
 }

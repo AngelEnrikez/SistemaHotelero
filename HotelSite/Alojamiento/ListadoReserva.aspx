@@ -6,7 +6,7 @@
     <div class="panel panel-primary" style="width: 950px">
         <div class="panel-heading">Listado de Reservas</div>
 
-        <asp:GridView ID="gdListado" CssClass="table" runat="server" Width="100%" AutoGenerateColumns="False">
+        <asp:GridView ID="gdListado" CssClass="table" runat="server" Width="100%" AutoGenerateColumns="False" OnRowCommand="gdListado_RowCommand">
             <Columns>
                 <asp:TemplateField HeaderText="Codigo">
                     <ItemTemplate>
@@ -45,7 +45,7 @@
             <PagerStyle HorizontalAlign="Center" />
         </asp:GridView>
         <div class="panel-footer">
-            <asp:Button ID="btnAgregar" class="btn btn-default" runat="server" Text="Agregar" />
+            <asp:Button ID="btnAgregar" class="btn btn-default" runat="server" Text="Agregar" OnClick="btnAgregar_Click" />
             <asp:HiddenField ID="hdMaxCodigo" runat="server" />
         </div>
         <div id="divError" class="alert alert-info" role="alert" runat="server" visible="false">Mensaje</div>

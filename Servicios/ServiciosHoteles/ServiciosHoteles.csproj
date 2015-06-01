@@ -77,6 +77,7 @@
     <EmbeddedResource Include="Dominio\Reserva.hbm.xml" />
     <EmbeddedResource Include="Dominio\Habitacion.hbm.xml" />
     <EmbeddedResource Include="Dominio\TipoHabitacion.hbm.xml" />
+    <Content Include="Habitaciones.svc" />
     <Content Include="Paises.svc" />
     <Content Include="Reservas.svc" />
     <Content Include="TiposDocumento.svc" />
@@ -102,11 +103,15 @@
     <Compile Include="Dominio\Servicio.cs" />
     <Compile Include="Dominio\TipoDocumento.cs" />
     <Compile Include="Dominio\Pais.cs" />
+    <Compile Include="Habitaciones.svc.cs">
+      <DependentUpon>Habitaciones.svc</DependentUpon>
+    </Compile>
     <Compile Include="IAdministracion.cs" />
     <Compile Include="IAlojamiento.cs" />
     <Compile Include="Dominio\TipoHabitacion.cs" />
     <Compile Include="ICheckOut.cs" />
     <Compile Include="IClientes.cs" />
+    <Compile Include="IHabitaciones.cs" />
     <Compile Include="IPaises.cs" />
     <Compile Include="IReservas.cs" />
     <Compile Include="ITiposDocumento.cs" />

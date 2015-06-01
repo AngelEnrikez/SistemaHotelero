@@ -65,9 +65,20 @@ namespace ServiciosHoteles
             return listaTipoDocumento;
         }
 
-        public List<Habitacion> AdminHabitaciones()
+        public List<Habitacion> AdminHabitaciones(Constantes valor)
         {
-            throw new NotImplementedException();
+            List<Habitacion> listaHabitaciones = new List<Habitacion>();
+            IHabitaciones nombre2 = new Habitaciones();
+
+            try
+            {
+                if (valor == Constantes.Listar)
+                {
+                    listaHabitaciones = nombre2.ListarHabitacion();
+                }
+            }
+            catch (FaultException ex) { throw ex; }
+            return listaHabitaciones;
         }
 
         public List<TipoHabitacion> AdminTHabitaciones()

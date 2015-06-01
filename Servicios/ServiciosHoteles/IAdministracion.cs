@@ -20,7 +20,7 @@ namespace ServiciosHoteles
         List<TipoDocumento> AdminTDocumentos(Constantes valor);
 
         [OperationContract]
-        List<Habitacion> AdminHabitaciones();
+        List<Habitacion> AdminHabitaciones(Constantes valor);
 
         [OperationContract]
         List<TipoHabitacion> AdminTHabitaciones();
