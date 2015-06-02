@@ -217,6 +217,7 @@ namespace ServiciosHoteles
 
         }
 
+        // Se usa bajo el mismo modelo para la reserva
         public List<Cliente> BuscarClientes(string nombre, string numeroDocumento)
         {
             try

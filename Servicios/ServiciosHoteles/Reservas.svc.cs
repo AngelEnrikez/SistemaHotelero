@@ -105,9 +105,21 @@ namespace ServiciosHoteles
             }
         }
 
-        public List<Reserva> BuscarClientes(Cliente cliente, Habitacion habitacion)
+        // buscar reserva 
+        public List<Reserva> BuscarReserva(int codigo_reserva)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                return ReservaDAO.Buscar(codigo_reserva).ToList();
+            }
+            catch (FaultException ex)
+            {
+                throw ex;
+            }
+
+
+
         }
     }
 }
