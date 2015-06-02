@@ -109,6 +109,7 @@ public partial class Default2 : System.Web.UI.Page
                     reserva.Habitacion = habitacion;
                     reserva.FechaLlegada = DateTime.ParseExact(txtFechaLlegada.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
                     reserva.FechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+
                     reserva.Observaciones = txtObservaciones.Text;
                     objReserva.ReservarHabitacion(ServicioAlojamiento.Constantes.Crear,reserva, 0);
                 }
