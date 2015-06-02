@@ -50,7 +50,7 @@
                         <asp:Label ID="lblFormaPago" runat="server" Text="Forma de Pago:"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="cmbFormaPago" runat="server" Height="16px" Width="150px">
+                        <asp:DropDownList ID="cmbFormaPago" runat="server" Height="16px" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="cmbFormaPago_SelectedIndexChanged">
                             <asp:ListItem Value="TM">MasterCard</asp:ListItem>
                             <asp:ListItem Value="TV">Visa</asp:ListItem>
                             <asp:ListItem Value="TA">American Express</asp:ListItem>
