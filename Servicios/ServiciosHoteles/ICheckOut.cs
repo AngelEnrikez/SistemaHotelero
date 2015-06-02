@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ServiciosHoteles.Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace ServiciosHoteles
@@ -11,6 +13,7 @@ namespace ServiciosHoteles
     public interface ICheckOut
     {
         [OperationContract]
-        string RegistrarCheckOut(int idReserva, string comentario);
+        [WebInvoke(Method = "PUT", UriTemplate = "Reservas", ResponseFormat = WebMessageFormat.Json)]
+        Reserva RegistrarCheckOut(Reserva reservaCheckedOut);
     }
 }
