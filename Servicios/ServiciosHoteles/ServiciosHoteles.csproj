@@ -80,6 +80,13 @@
     <Content Include="Habitaciones.svc" />
     <Content Include="Paises.svc" />
     <Content Include="Reservas.svc" />
+    <None Include="Service References\WSReservas\Reservas.disco" />
+    <None Include="Service References\WSReservas\configuration91.svcinfo" />
+    <None Include="Service References\WSReservas\configuration.svcinfo" />
+    <None Include="Service References\WSReservas\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="TiposDocumento.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -130,6 +137,11 @@
     <Compile Include="Reservas.svc.cs">
       <DependentUpon>Reservas.svc</DependentUpon>
     </Compile>
+    <Compile Include="Service References\WSReservas\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="TiposDocumento.svc.cs">
       <DependentUpon>TiposDocumento.svc</DependentUpon>
     </Compile>
@@ -140,12 +152,31 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\WSReservas\Reservas.wsdl" />
+    <None Include="Service References\WSReservas\Reservas.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSReservas\Reservas1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSReservas\Reservas2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\WSReservas\ServiciosHoteles.WSReservas.Reserva.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WSReservas\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
