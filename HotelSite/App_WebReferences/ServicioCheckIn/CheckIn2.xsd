@@ -18,7 +18,7 @@
       <xs:element minOccurs="0" name="MesExpiraTarjeta" type="xs:int" />
       <xs:element minOccurs="0" name="NumeroTarjeta" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Observaciones" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RequerimientosEsp" type="xs:int" />
+      <xs:element minOccurs="0" name="RequerimientosEsp" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TitularTarjeta" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

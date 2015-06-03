@@ -32,9 +32,9 @@
                 <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de Llegada" />
                  <asp:BoundField DataField="FechaSalida" HeaderText="Fecha de Salida" />
                 <asp:BoundField DataField="Observaciones" HeaderText="Observaciones" />
-                <asp:TemplateField HeaderText="Modificar">
+                <asp:TemplateField HeaderText="Acciones">
                     <ItemTemplate>
-                        <asp:Button ID="btnGridModificar" Width="40px" CommandName="ModificarData" class="btn btn-default btn-xs" runat="server" Text="..." />
+                        <asp:Button ID="btnGridModificar" Width="40px" CommandName="CheckOut" class="btn btn-default btn-xs" runat="server" Text="Check Out" />
                     </ItemTemplate>
                     <ItemStyle Width="50px" />
                 </asp:TemplateField>                

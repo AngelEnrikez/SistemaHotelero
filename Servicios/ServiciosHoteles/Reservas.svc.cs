@@ -82,8 +82,8 @@ namespace ServiciosHoteles
                 {
                     throw new FaultException("Debe Ingresar el número de tarjeta para el tipo de tarjeta ");
                 }
-                reservaAModificar.Estado = 0;
-                reservaAModificar.EstadoCuenta = false;
+                //reservaAModificar.Estado = 0;
+                //reservaAModificar.EstadoCuenta = false;
                 Cliente ClienteExistente = ClienteDAO.Obtener(reservaAModificar.Cliente.IdCliente);
                 Habitacion tipoDocumentoExistente = HabitacionDAO.Obtener(reservaAModificar.Habitacion.IdHabitacion);
 

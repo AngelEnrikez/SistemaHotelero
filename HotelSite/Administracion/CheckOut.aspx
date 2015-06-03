@@ -15,74 +15,43 @@
                         <asp:Label ID="Label1" runat="server" Text="Codigo Reserva"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="TextBox1" class="input-group-addon" runat="server" Width="253px"></asp:TextBox>
+                        <asp:TextBox ID="txtCodigo" class="input-group-addon" runat="server" Width="253px" ReadOnly="true"></asp:TextBox>
                     </td>
-                    <td>
-                        <asp:Button ID="btnConsultarReserva" class="btn btn-default" runat="server" Text="Consultar" />
-                    </td>
-
-
                 </tr>
 
                 <tr>
-                    <td>Nombre</td>
+                    <td>Habitacion</td>
                     <td colspan="2">
-                        <asp:TextBox ID="TextBox2" class="input-group-addon" runat="server" Width="253px" ReadOnly="True"></asp:TextBox>
+                        <asp:TextBox ID="txtHabitacion" class="input-group-addon" runat="server" Width="253px" ReadOnly="true"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td>Apellido Paterno</td>
+                    <td>Cliente</td>
                     <td colspan="2">
-                        <asp:TextBox ID="TextBox3" class="input-group-addon" runat="server" Width="253px"></asp:TextBox>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>Apellido Materno</td>
-                    <td colspan="2">
-                        <asp:TextBox ID="TextBox4" class="input-group-addon" runat="server" Width="253px"></asp:TextBox>
+                        <asp:TextBox ID="txtCliente" class="input-group-addon" runat="server" Width="253px" ReadOnly="true"></asp:TextBox>
                     </td>
 
                 </tr>
                 <tr>
                     <td>Tipo de Habitación </td>
                     <td colspan="2">
-                        <asp:TextBox ID="TextBox5" class="input-group-addon" runat="server" Width="253px"></asp:TextBox>
+                        <asp:TextBox ID="txtTipoHabitacion" class="input-group-addon" runat="server" Width="253px" ReadOnly="true"></asp:TextBox>
                     </td>
 
                 </tr>
                 <tr>
-                    <td>Monto </td>
-                    <td colspan="2">
-                        <asp:TextBox ID="TextBox6" class="input-group-addon" runat="server" Width="253px"></asp:TextBox>
-                    </td>
-
-                </tr>
-
-
-
-                <tr>
-                    <td>Fecha Registro</td>
+                    <td>Fecha Check In</td>
                     <td>
-                        <asp:TextBox ID="txtDate" runat="server" ReadOnly="true"></asp:TextBox>
-                        <asp:ImageButton ID="imgPopup" ImageUrl="~/Images/text_calendar.png" ImageAlign="Bottom"
-                            runat="server" Height="20px" Width="28px" />
-                        <cc1:CalendarExtender ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="txtDate"
-                            Format="dd/MM/yyyy">
-                        </cc1:CalendarExtender>
+                        <asp:TextBox ID="txtCheckIn" class="input-group-addon" runat="server" Width="253px" ReadOnly="true"></asp:TextBox>
                     </td>
-                    <td></td>
                 </tr>
 
                 <tr>
                     <td>Comentario  </td>
                     <td colspan="2">
-                        <asp:TextBox ID="TextBox7" class="input-group-addon" runat="server" Width="253px"></asp:TextBox>
+                        <asp:TextBox ID="txtComentario" class="input-group-addon" runat="server" Width="253px"></asp:TextBox>
                     </td>
-
                 </tr>
-
-
             </table>
         </div>
 
@@ -90,10 +59,11 @@
 
 
         <div class="panel-footer">
-            <asp:Button ID="Button1" class="btn btn-default" runat="server" Text="Guardar" />
+            <asp:Button ID="Button1" class="btn btn-default" runat="server" Text="Registrar CheckOut" OnClick="Button1_Click" />
         </div>
-        <div class="alert alert-info" role="alert">El check-out se ha realizado con éxito</div>
 
+        <asp:HiddenField ID="hdCodigo" runat="server" Value="0" />
+        <div id="divError" class="alert alert-info" runat="server" visible="false" role="alert">Mensaje</div>
     </div>
 
 

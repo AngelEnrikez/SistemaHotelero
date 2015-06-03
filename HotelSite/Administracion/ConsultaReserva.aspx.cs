@@ -85,6 +85,12 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
                 HiddenField hdnDataId = (HiddenField)row.FindControl("hdGridCodigo");
                 Response.Redirect("ReservarHabitacion.aspx?cod=" + hdnDataId.Value + "&accion=A", true);
             }
+            if (e.CommandName == "CheckOut")
+            {
+                GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
+                HiddenField hdnDataId = (HiddenField)row.FindControl("hdGridCodigo");
+                Response.Redirect("CheckOut.aspx?cod=" + hdnDataId.Value, true);
+            }
         }
         catch (Exception ex)
         {
@@ -105,6 +111,8 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
         Int32.TryParse(txtCodigo.Value, out codigo);
         Listar(codigo);
     }
+
+
 
     
 }

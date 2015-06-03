@@ -1,6 +1,5 @@
 ﻿using ServiciosHoteles.Dominio;
 using ServiciosHoteles.Util;
-using ServiciosHoteles.WSReservas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,10 +28,12 @@ namespace ServiciosHoteles
                     "La Reserva debe tener la Cuenta Cerrada/Confirmada", HttpStatusCode.PreconditionFailed);
             }
 
-            ReservasClient proxy = new ReservasClient();
             reservaCheckedOut.FechaHoraCheckout = DateTime.Now;
             reservaCheckedOut.Estado = (int)EstadosReserva.CheckedOut;
-            return proxy.ModificarReserva(reservaCheckedOut);
+            //WSReservas.ReservasClient proxy = new WSReservas.ReservasClient();
+            //return proxy.ModificarReserva(reservaCheckedOut);
+            IReservas reserva = new Reservas();
+            return reserva.ModificarReserva(reservaCheckedOut);
         }
     }
 }
