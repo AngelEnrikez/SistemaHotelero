@@ -47,6 +47,29 @@
                 </tr>
                 <tr>
                     <td>
+                        <asp:Label ID="lblFormaPago" runat="server" Text="Forma de Pago:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="cmbFormaPago" runat="server" Height="16px" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="cmbFormaPago_SelectedIndexChanged">
+                            <asp:ListItem Value="TM">MasterCard</asp:ListItem>
+                            <asp:ListItem Value="TV">Visa</asp:ListItem>
+                            <asp:ListItem Value="TA">American Express</asp:ListItem>
+                            <asp:ListItem Value="TD">Dinners Club</asp:ListItem>
+                            <asp:ListItem Value="EF">Efectivo</asp:ListItem>
+                        </asp:DropDownList>
+                       
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="lblNroTarjeta" runat="server" Text="Nro de Tarjeta:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtNroTarjeta" MaxLength="20" class="input-group-addon" runat="server" Width="100px"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <asp:Label ID="lblObservaciones" runat="server" Text="Observaciones:"></asp:Label>
                     </td>
                     <td>

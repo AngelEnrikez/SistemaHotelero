@@ -248,15 +248,15 @@ CREATE TABLE [dbo].[t_Reserva](
 	[comentarioCheckin] [varchar](250) NULL,
 	[fechaHoraCheckout] [datetime] NULL,
 	[comentarioCheckout] [varchar](250) NULL,
-	[codFormaPago] [char](2) NULL,
-	[numeroTarjeta] [varchar](50) NULL,
+	[codFormaPago] [char](2) NOT NULL,
+	[numeroTarjeta] [varchar](50) NOT NULL,
 	[titularTarjeta] [varchar](80) NULL,
 	[mesExpiraTarjeta] [int] NULL,
 	[anioExpiraTarjeta] [int] NULL,
 	[requerimientosEsp] [varchar](250) NULL,
 	[observaciones] [varchar](250) NULL ,
-	[estadoCuenta] [bit] NULL,
-	[estado] [smallint] NULL,
+	[estadoCuenta] [bit] NOT NULL,
+	[estado] [smallint] NOT NULL,
  CONSTRAINT [PK_t_Reserva] PRIMARY KEY CLUSTERED 
 (
 	[idReserva] ASC

@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Administracion.svc" />
     <Content Include="Alojamiento.svc" />
+    <Content Include="CheckIn.svc" />
     <Content Include="CheckOut.svc" />
     <Content Include="Clientes.svc" />
     <EmbeddedResource Include="Dominio\Cliente.hbm.xml" />
@@ -97,6 +98,9 @@
     <Compile Include="Alojamiento.svc.cs">
       <DependentUpon>Alojamiento.svc</DependentUpon>
     </Compile>
+    <Compile Include="CheckIn.svc.cs">
+      <DependentUpon>CheckIn.svc</DependentUpon>
+    </Compile>
     <Compile Include="CheckOut.svc.cs">
       <DependentUpon>CheckOut.svc</DependentUpon>
     </Compile>
@@ -116,6 +120,7 @@
     <Compile Include="IAdministracion.cs" />
     <Compile Include="IAlojamiento.cs" />
     <Compile Include="Dominio\TipoHabitacion.cs" />
+    <Compile Include="ICheckIn.cs" />
     <Compile Include="ICheckOut.cs" />
     <Compile Include="IClientes.cs" />
     <Compile Include="IHabitaciones.cs" />
@@ -203,6 +208,11 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(SQLDBExtensionsRefPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(SQLDBExtensionsRefPath)' == ''" />
+  <PropertyGroup>
+    <SsdtUnitTestVersion>2.0</SsdtUnitTestVersion>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
