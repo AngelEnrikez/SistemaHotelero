@@ -35,7 +35,7 @@ public partial class Mantenimientos_CheckOut : System.Web.UI.Page
         ServicioReservas.ReservasClient proxy = new ServicioReservas.ReservasClient();
         ServicioReservas.Reserva reserva = proxy.ObtenerReserva(Int32.Parse(codigo));
         txtCodigo.Text = codigo;
-        txtHabitacion.Text = reserva.Habitacion.Descripcion;
+        txtHabitacion.Text = reserva.Habitacion.Numero.ToString();
         txtCliente.Text = reserva.Cliente.Nombre + " " + reserva.Cliente.ApellidoPaterno + " " + reserva.Cliente.ApellidoMaterno;
         txtTipoHabitacion.Text = reserva.Habitacion.TipoHabitacion.Descripcion;
         txtCheckIn.Text = reserva.FechaHoraCheckin + "";

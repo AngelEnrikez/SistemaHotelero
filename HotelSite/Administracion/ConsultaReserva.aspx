@@ -34,7 +34,7 @@
                 <asp:BoundField DataField="Observaciones" HeaderText="Observaciones" />
                 <asp:TemplateField HeaderText="Acciones">
                     <ItemTemplate>
-                        <asp:Button ID="btnGridModificar" Width="40px" CommandName="CheckOut" class="btn btn-default btn-xs" runat="server" Text="Check Out" />
+                        <asp:Button ID="btnGridModificar" Width="100px" CommandName="CheckOut" class="btn btn-default btn-xs" runat="server" Text="Check Out" />
                     </ItemTemplate>
                     <ItemStyle Width="50px" />
                 </asp:TemplateField>                
