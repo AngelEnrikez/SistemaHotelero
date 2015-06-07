@@ -15,7 +15,7 @@ namespace HotelUnitTests
                 ServicioClientes.TipoDocumento tipoDocumento = new ServicioClientes.TipoDocumento();
                 ServicioClientes.Pais pais = new ServicioClientes.Pais();
                 ServicioClientes.Cliente clienteNuevo = new Cliente();
-                ServicioClientes.ClientesClient proxy = new ServicioClientes.ClientesClient();
+                ServicioClientes.ClientesClient proxy = new ServicioClientes.ClientesClient();  
 
              
 
