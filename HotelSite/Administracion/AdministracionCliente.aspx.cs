@@ -26,8 +26,9 @@ public partial class Default2 : System.Web.UI.Page
                 if (Request.QueryString["espopup"] != null)
                 {
                     if (Request.QueryString["espopup"].ToString() == "1") { btnCancelar.Visible = false; btnCancelar2.Visible = true; }
-                    if (Request.QueryString["espopup"].ToString() == "0") { btnCancelar.Visible = true; btnCancelar2.Visible = false; }
+                    else { btnCancelar.Visible = true; btnCancelar2.Visible = false; }
                 }
+                else { btnCancelar.Visible = true; btnCancelar2.Visible = false; }
 
                 MostrarItems();
                 MostrarRegistro();
