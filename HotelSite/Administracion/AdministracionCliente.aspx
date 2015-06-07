@@ -81,9 +81,11 @@
         </div>
         <div class="panel-footer">
             <asp:Button ID="btnGuardar" class="btn btn-default" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
-            <asp:Button ID="btnCancelar" class="btn btn-default" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+            <input id="btnCancelar2"   class="btn btn-default" type="button" value="Cancelar" runat="server" onclick="window.close();" />
+            <asp:Button ID="btnCancelar" class="btn btn-default" runat="server" Text="Cancelar" OnClick="btnCancelar_Click"  />
             <asp:HiddenField ID="hdAgregarActualizar" runat="server" />
             <asp:HiddenField ID="hdCodigo" runat="server" Value="0" />
+            <asp:HiddenField ID="hdEspoup" runat="server" Value="0" />
         </div>
         <div id="divError" class="alert alert-info" runat="server" visible="false" role="alert">Mensaje</div>
     </div>

@@ -1,8 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.master" AutoEventWireup="true" CodeFile="ReservarHabitacion.aspx.cs" Inherits="Default2" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+     
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+ 
     <div class="panel panel-primary" style="width: 950px">
         <div class="panel-heading">Mantenimiento de Clientes</div>
 
@@ -15,16 +17,28 @@
                     <td>
                         <asp:DropDownList ID="cmbCliente" runat="server" Height="16px" Width="200px">
                         </asp:DropDownList>
+
+
+                        <input id="btnAgregarCliente" runat="server" class="btn btn-default"  type="button" value="..."/></td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="lblTipoHabitacion" runat="server" Text="Tipo habitación:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="cmbTipoHabitacion" runat="server" Height="16px" Width="100px">
+                        </asp:DropDownList>
+
                     </td>
                 </tr>
-                 <tr>
+                <tr>
                     <td>
                         <asp:Label ID="lblHabitacion" runat="server" Text="Habitación:"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="cmbHbitacion" runat="server" Height="16px" Width="50px">
+                        <asp:DropDownList ID="cmbHbitacion" runat="server" Height="16px" Width="100px">
                         </asp:DropDownList>
-                       
+
                     </td>
                 </tr>
                 <tr>
@@ -32,7 +46,7 @@
                         <asp:Label ID="lblFechaLlegada" runat="server" Text="Fecha llegada Cliente:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtFechaLlegada" MaxLength="100" class="input-group-addon" runat="server" Width="60px"></asp:TextBox>
+                        <asp:TextBox ID="txtFechaLlegada" MaxLength="100" class="input-group-addon" runat="server" Width="70px"></asp:TextBox>
                         <asp:Label ID="lblFormatofecha1" runat="server" Text="dd/MM/yyyy HH:mm:ss"></asp:Label>
                     </td>
                 </tr>
@@ -41,7 +55,7 @@
                         <asp:Label ID="lblFechaSalida" runat="server" Text="Fecha salida Cliente:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtFechaSalida" MaxLength="100" class="input-group-addon" runat="server" Width="60px"></asp:TextBox>
+                        <asp:TextBox ID="txtFechaSalida" MaxLength="100" class="input-group-addon" runat="server" Width="70px"></asp:TextBox>
                         <asp:Label ID="lblFormatofecha2" runat="server" Text="dd/MM/yyyy HH:mm:ss"></asp:Label>
                     </td>
                 </tr>
@@ -57,7 +71,7 @@
                             <asp:ListItem Value="TD">Dinners Club</asp:ListItem>
                             <asp:ListItem Value="EF">Efectivo</asp:ListItem>
                         </asp:DropDownList>
-                       
+
                     </td>
                 </tr>
                 <tr>
@@ -76,11 +90,11 @@
                         <asp:TextBox ID="txtObservaciones" class="input-group-addon" runat="server" MaxLength="20" Width="200px" Height="42px" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
-                
+
             </table>
         </div>
         <div class="panel-footer">
-            <asp:Button ID="btnGuardar" class="btn btn-default" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
+            <asp:Button ID="btnGuardar"  class="btn btn-default" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
             <asp:Button ID="btnCancelar" class="btn btn-default" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
             <asp:HiddenField ID="hdAgregarActualizar" runat="server" />
             <asp:HiddenField ID="hdCodigo" runat="server" Value="0" />

@@ -8,14 +8,27 @@ using ServicioAdministracion;
 
 public partial class Default2 : System.Web.UI.Page
 {
+    protected override void OnPreInit(EventArgs e)
+    {
+        this.MasterPageFile = "~/MasterBlank.master";
+        base.OnPreInit(e);
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         try
         {
             if (!this.IsPostBack)
             {
-                hdAgregarActualizar.Value = Request.QueryString["accion"].ToString() ;
+                btnCancelar.Visible = false; btnCancelar2.Visible = false;
+                hdAgregarActualizar.Value = Request.QueryString["accion"].ToString();
                 hdCodigo.Value = Request.QueryString["cod"].ToString();
+                if (Request.QueryString["espopup"] != null)
+                {
+                    if (Request.QueryString["espopup"].ToString() == "1") { btnCancelar.Visible = false; btnCancelar2.Visible = true; }
+                    if (Request.QueryString["espopup"].ToString() == "0") { btnCancelar.Visible = true; btnCancelar2.Visible = false; }
+                }
+
                 MostrarItems();
                 MostrarRegistro();
             }
@@ -25,14 +38,15 @@ public partial class Default2 : System.Web.UI.Page
             divError.InnerHtml = ex.Message;
             divError.Visible = true;
         }
-       
+
     }
 
 
     /// <summary>
     /// muestra el listado pais y tipo documento
     /// </summary>
-    private void MostrarItems() {
+    private void MostrarItems()
+    {
         try
         {
             using (AdministracionClient objPais = new AdministracionClient())
@@ -52,16 +66,17 @@ public partial class Default2 : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            throw ex;            
+            throw ex;
         }
 
-       
+
     }
 
     /// <summary>
     /// Muestra los registros 
     /// </summary>
-    private void MostrarRegistro() {
+    private void MostrarRegistro()
+    {
         try
         {
             if (hdAgregarActualizar.Value == "A")
@@ -69,7 +84,7 @@ public partial class Default2 : System.Web.UI.Page
                 using (AdministracionClient objCliente = new AdministracionClient())
                 {
                     Cliente cliente;
-                    cliente = objCliente.AdminClientes(Constantes.Obtener,null, Convert.ToInt32(hdCodigo.Value))[0] ;
+                    cliente = objCliente.AdminClientes(Constantes.Obtener, null, Convert.ToInt32(hdCodigo.Value))[0];
                     txtNombres.Text = cliente.Nombre;
                     txtApellidoPat.Text = cliente.ApellidoPaterno;
                     txtApellidoMat.Text = cliente.ApellidoMaterno;
@@ -83,9 +98,9 @@ public partial class Default2 : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            throw ex; 
+            throw ex;
         }
-        
+
     }
 
     /// <summary>
@@ -114,11 +129,11 @@ public partial class Default2 : System.Web.UI.Page
                     cliente.Email = txtEmail.Text.Trim();
                     pais.IdPais = Convert.ToInt32(cmbPais.SelectedValue);
                     cliente.Pais = pais;
-                    objCliente.AdminClientes(Constantes.Crear ,cliente,0);
+                    objCliente.AdminClientes(Constantes.Crear, cliente, 0);
                 }
                 else if (hdAgregarActualizar.Value == "A")
                 {
-                    cliente.IdCliente =Convert.ToInt32( hdCodigo.Value);
+                    cliente.IdCliente = Convert.ToInt32(hdCodigo.Value);
                     cliente.Nombre = txtNombres.Text.Trim();
                     cliente.ApellidoPaterno = txtApellidoPat.Text.Trim();
                     cliente.ApellidoMaterno = txtApellidoMat.Text.Trim();
@@ -132,7 +147,9 @@ public partial class Default2 : System.Web.UI.Page
                     objCliente.AdminClientes(Constantes.Modificar, cliente, 0);
                 }
             }
+
             Response.Redirect("ListarCliente.aspx", true);
+
         }
         catch (Exception ex)
         {
@@ -148,6 +165,9 @@ public partial class Default2 : System.Web.UI.Page
     /// <param name="e"></param>
     protected void btnCancelar_Click(object sender, EventArgs e)
     {
+
         Response.Redirect("ListarCliente.aspx", true);
+
+
     }
 }

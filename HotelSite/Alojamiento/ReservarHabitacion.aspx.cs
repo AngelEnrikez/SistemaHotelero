@@ -19,6 +19,7 @@ public partial class Default2 : System.Web.UI.Page
                 hdCodigo.Value = Request.QueryString["cod"].ToString();
                 MostrarItems();
                 MostrarRegistro();
+                btnAgregarCliente.Attributes.Add("OnClick", "OpenPopup('" + Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/") + "Administracion/AdministracionCliente.aspx?cod=0&accion=N&espopup=1" + "',900,900);");                
             }
         }
         catch (Exception ex)
