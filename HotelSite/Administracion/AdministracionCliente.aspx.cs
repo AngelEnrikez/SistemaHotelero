@@ -10,7 +10,9 @@ public partial class Default2 : System.Web.UI.Page
 {
     protected override void OnPreInit(EventArgs e)
     {
-        this.MasterPageFile = "~/MasterBlank.master";
+        if (Request.QueryString["espopup"] != null)
+            if (Request.QueryString["espopup"] == "1")
+                this.MasterPageFile = "~/MasterBlank.master";
         base.OnPreInit(e);
     }
 
@@ -20,18 +22,18 @@ public partial class Default2 : System.Web.UI.Page
         {
             if (!this.IsPostBack)
             {
-                btnCancelar.Visible = false; btnCancelar2.Visible = false;
                 hdAgregarActualizar.Value = Request.QueryString["accion"].ToString();
                 hdCodigo.Value = Request.QueryString["cod"].ToString();
                 if (Request.QueryString["espopup"] != null)
-                {
-                    if (Request.QueryString["espopup"].ToString() == "1") { btnCancelar.Visible = false; btnCancelar2.Visible = true; }
-                    else { btnCancelar.Visible = true; btnCancelar2.Visible = false; }
-                }
-                else { btnCancelar.Visible = true; btnCancelar2.Visible = false; }
+                    hdEspoup.Value = Request.QueryString["espopup"];
 
                 MostrarItems();
                 MostrarRegistro();
+            }
+            else
+            {
+                if (hdAccion.Value == "C") Cancelar();
+                else if (hdAccion.Value == "G")  Guardar();
             }
         }
         catch (Exception ex)
@@ -109,7 +111,7 @@ public partial class Default2 : System.Web.UI.Page
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    protected void btnGuardar_Click(object sender, EventArgs e)
+    private void Guardar()
     {
         try
         {
@@ -148,8 +150,10 @@ public partial class Default2 : System.Web.UI.Page
                     objCliente.AdminClientes(Constantes.Modificar, cliente, 0);
                 }
             }
-
-            Response.Redirect("ListarCliente.aspx", true);
+            if (hdAccion.Value == "G"  && hdEspoup.Value =="1")
+                ClientScript.RegisterStartupScript(this.GetType(), "cerrar", "<script>window.opener.__doPostBack('','cargarclientes');window.close();</script>");
+            else
+                Response.Redirect("ListarCliente.aspx", true);
 
         }
         catch (Exception ex)
@@ -164,11 +168,5 @@ public partial class Default2 : System.Web.UI.Page
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    protected void btnCancelar_Click(object sender, EventArgs e)
-    {
-
-        Response.Redirect("ListarCliente.aspx", true);
-
-
-    }
+    private void Cancelar() { Response.Redirect("ListarCliente.aspx", true); }
 }
