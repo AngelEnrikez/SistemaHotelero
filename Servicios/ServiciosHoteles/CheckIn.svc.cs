@@ -1,5 +1,6 @@
 ﻿using ServiciosHoteles.Dominio;
 using ServiciosHoteles.Persistencia;
+using ServiciosHoteles.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,12 +29,52 @@ namespace ServiciosHoteles
             }
         }
          
-        public void RegistrarCheckIn(Reserva reserva)
+        public Reserva RegistrarCheckIn(Reserva reservaCheckIn)
         {
-            Reserva reservaModificada = null;
             try
             {
-                reservaModificada = ReservaDAO.Modificar(reserva);
+                reservaCheckIn.FechaHoraCheckin = DateTime.Now;
+                reservaCheckIn.Estado = (int)EstadosReserva.CheckedIn;
+
+                ServicioReserva.Reserva reservaProxyAModificar = new ServicioReserva.Reserva()
+                {
+                    IdReserva = reservaCheckIn.IdReserva,
+                    Cliente = new ServicioReserva.Cliente()
+                    {
+                        IdCliente = reservaCheckIn.Cliente.IdCliente
+                    },
+                    Habitacion = new ServicioReserva.Habitacion() { 
+                        IdHabitacion = reservaCheckIn.Habitacion.IdHabitacion
+                    },
+                    FechaLlegada = reservaCheckIn.FechaLlegada,
+                    FechaHoraCheckin = reservaCheckIn.FechaHoraCheckin,
+                    ComentarioCheckin = reservaCheckIn.ComentarioCheckin,
+                    CodFormaPago = reservaCheckIn.CodFormaPago,
+                    Estado = reservaCheckIn.Estado
+                };
+
+                
+                ServicioReserva.ReservasClient proxy = new ServicioReserva.ReservasClient();
+                ServicioReserva.Reserva reservaProxyModificada = proxy.ModificarReserva(reservaProxyAModificar);
+
+                Reserva reserva = new Reserva() {
+                    IdReserva = reservaProxyModificada.IdReserva,
+                    Cliente = new Cliente()
+                    {
+                        IdCliente = reservaProxyModificada.Cliente.IdCliente
+                    },
+                    Habitacion = new Habitacion()
+                    {
+                        IdHabitacion = reservaProxyModificada.Habitacion.IdHabitacion
+                    },
+                    FechaLlegada = reservaProxyModificada.FechaLlegada,
+                    FechaHoraCheckin = reservaProxyModificada.FechaHoraCheckin,
+                    ComentarioCheckin = reservaProxyModificada.ComentarioCheckin,
+                    CodFormaPago = reservaProxyModificada.CodFormaPago,
+                    Estado = reservaProxyModificada.Estado
+                };
+                
+                return reserva;
             }
             catch (FaultException ex)
             {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4904380f-c417-4491-a91e-2050c8c6df23" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cde6957b-63f0-4db4-ab43-1d5416204fdd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:49486/Reservas.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Reservas.wsdl" MetadataType="Wsdl" ID="686d1111-4911-4031-8319-452f6010b3e7" SourceId="1" SourceUrl="http://localhost:49486/Reservas.svc?wsdl" />
-    <MetadataFile FileName="Reservas.xsd" MetadataType="Schema" ID="f0d007f8-4948-4085-b3b9-211f10bb8ae4" SourceId="1" SourceUrl="http://localhost:49486/Reservas.svc?xsd=xsd0" />
-    <MetadataFile FileName="Reservas1.xsd" MetadataType="Schema" ID="dfb831e1-d094-4709-baa3-4ecaa9cd6b72" SourceId="1" SourceUrl="http://localhost:49486/Reservas.svc?xsd=xsd2" />
-    <MetadataFile FileName="Reservas2.xsd" MetadataType="Schema" ID="5827c36e-5b81-49ca-aef7-03e6f05cffb5" SourceId="1" SourceUrl="http://localhost:49486/Reservas.svc?xsd=xsd1" />
-    <MetadataFile FileName="Reservas.disco" MetadataType="Disco" ID="f3de23e6-91eb-4a3d-837d-6711b0a8b8f2" SourceId="1" SourceUrl="http://localhost:49486/Reservas.svc?disco" />
+    <MetadataFile FileName="Reservas.wsdl" MetadataType="Wsdl" ID="d07911ac-47d2-4db7-8197-80a6b72171f3" SourceId="1" SourceUrl="http://localhost:49486/Reservas.svc?wsdl" />
+    <MetadataFile FileName="Reservas.xsd" MetadataType="Schema" ID="c8aad6ec-5093-4752-974c-dcbdf6913664" SourceId="1" SourceUrl="http://localhost:49486/Reservas.svc?xsd=xsd0" />
+    <MetadataFile FileName="Reservas1.xsd" MetadataType="Schema" ID="0eb2db50-638f-40b6-8adc-c94fa820019a" SourceId="1" SourceUrl="http://localhost:49486/Reservas.svc?xsd=xsd2" />
+    <MetadataFile FileName="Reservas2.xsd" MetadataType="Schema" ID="1b9da838-4c5a-4a9b-bdb2-a22bffdf23b3" SourceId="1" SourceUrl="http://localhost:49486/Reservas.svc?xsd=xsd1" />
+    <MetadataFile FileName="Reservas.disco" MetadataType="Disco" ID="79e79dd7-9174-44b9-a81d-a09f94079448" SourceId="1" SourceUrl="http://localhost:49486/Reservas.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

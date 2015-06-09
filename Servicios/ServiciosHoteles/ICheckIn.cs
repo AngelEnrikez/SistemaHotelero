@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace ServiciosHoteles
@@ -13,6 +14,7 @@ namespace ServiciosHoteles
     public interface ICheckIn
     {
         [OperationContract]
-        void RegistrarCheckIn(Reserva reserva);
+        [WebInvoke(Method = "PUT", UriTemplate = "CheckIn", ResponseFormat = WebMessageFormat.Json)]
+        Reserva RegistrarCheckIn(Reserva reserva);
     }
 }

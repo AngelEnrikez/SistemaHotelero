@@ -81,10 +81,10 @@
     <Content Include="Habitaciones.svc" />
     <Content Include="Paises.svc" />
     <Content Include="Reservas.svc" />
-    <None Include="Service References\WSReservas\Reservas.disco" />
-    <None Include="Service References\WSReservas\configuration91.svcinfo" />
-    <None Include="Service References\WSReservas\configuration.svcinfo" />
-    <None Include="Service References\WSReservas\Reference.svcmap">
+    <None Include="Service References\ServicioReserva\Reservas.disco" />
+    <None Include="Service References\ServicioReserva\configuration91.svcinfo" />
+    <None Include="Service References\ServicioReserva\configuration.svcinfo" />
+    <None Include="Service References\ServicioReserva\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -142,7 +142,7 @@
     <Compile Include="Reservas.svc.cs">
       <DependentUpon>Reservas.svc</DependentUpon>
     </Compile>
-    <Compile Include="Service References\WSReservas\Reference.cs">
+    <Compile Include="Service References\ServicioReserva\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -157,17 +157,17 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WSReservas\Reservas.wsdl" />
-    <None Include="Service References\WSReservas\Reservas.xsd">
+    <None Include="Service References\ServicioReserva\Reservas.wsdl" />
+    <None Include="Service References\ServicioReserva\Reservas.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WSReservas\Reservas1.xsd">
+    <None Include="Service References\ServicioReserva\Reservas1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WSReservas\Reservas2.xsd">
+    <None Include="Service References\ServicioReserva\Reservas2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\WSReservas\ServiciosHoteles.WSReservas.Reserva.datasource">
+    <Content Include="Service References\ServicioReserva\ServiciosHoteles.ServicioReserva.Reserva.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
@@ -181,7 +181,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WSReservas\" />
+    <WCFMetadataStorage Include="Service References\ServicioReserva\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

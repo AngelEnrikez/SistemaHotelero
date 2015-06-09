@@ -31,11 +31,11 @@
   <wsdl:message name="IReservas_ListaReserva_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListaReservaResponse" />
   </wsdl:message>
-  <wsdl:message name="IReservas_BuscarClientes_InputMessage">
-    <wsdl:part name="parameters" element="tns:BuscarClientes" />
+  <wsdl:message name="IReservas_BuscarReserva_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarReserva" />
   </wsdl:message>
-  <wsdl:message name="IReservas_BuscarClientes_OutputMessage">
-    <wsdl:part name="parameters" element="tns:BuscarClientesResponse" />
+  <wsdl:message name="IReservas_BuscarReserva_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarReservaResponse" />
   </wsdl:message>
   <wsdl:portType name="IReservas">
     <wsdl:operation name="RegistrarReserva">
@@ -54,9 +54,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IReservas/ListaReserva" message="tns:IReservas_ListaReserva_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReservas/ListaReservaResponse" message="tns:IReservas_ListaReserva_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="BuscarClientes">
-      <wsdl:input wsaw:Action="http://tempuri.org/IReservas/BuscarClientes" message="tns:IReservas_BuscarClientes_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IReservas/BuscarClientesResponse" message="tns:IReservas_BuscarClientes_OutputMessage" />
+    <wsdl:operation name="BuscarReserva">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservas/BuscarReserva" message="tns:IReservas_BuscarReserva_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservas/BuscarReservaResponse" message="tns:IReservas_BuscarReserva_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReservas" type="tns:IReservas">
@@ -97,8 +97,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="BuscarClientes">
-      <soap:operation soapAction="http://tempuri.org/IReservas/BuscarClientes" style="document" />
+    <wsdl:operation name="BuscarReserva">
+      <soap:operation soapAction="http://tempuri.org/IReservas/BuscarReserva" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
