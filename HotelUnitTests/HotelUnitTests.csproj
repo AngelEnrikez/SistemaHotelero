@@ -38,6 +38,8 @@
     <Reference Include="System" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
@@ -53,11 +55,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Dominio\Cliente.cs" />
+    <Compile Include="Dominio\Habitacion.cs" />
+    <Compile Include="Dominio\Pais.cs" />
+    <Compile Include="Dominio\Reserva.cs" />
+    <Compile Include="Dominio\TipoDocumento.cs" />
+    <Compile Include="Dominio\TipoHabitacion.cs" />
     <Compile Include="Service References\ServicioClientes\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="UnitTestCheckOut.cs" />
     <Compile Include="UnitTestClientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,6 +107,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

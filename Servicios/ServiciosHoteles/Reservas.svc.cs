@@ -58,6 +58,12 @@ namespace ServiciosHoteles
             Reserva reservaCreado = null;
             try
             {
+                if (reservaACrear.CodFormaPago != "EF" && reservaACrear.NumeroTarjeta == "")
+                {
+                    throw new FaultException("Debe Ingresar el número de tarjeta para el tipo de tarjeta ");
+                }
+                reservaACrear.Estado = 0;
+                reservaACrear.EstadoCuenta = false;
                 Cliente ClienteExistente = ClienteDAO.Obtener(reservaACrear.Cliente.IdCliente);
                 Habitacion tipoDocumentoExistente = HabitacionDAO.Obtener(reservaACrear.Habitacion.IdHabitacion);
 
@@ -72,6 +78,12 @@ namespace ServiciosHoteles
             Reserva reservaModificado = null;
             try
             {
+                if (reservaAModificar.CodFormaPago != "EF" && reservaAModificar.NumeroTarjeta == "")
+                {
+                    throw new FaultException("Debe Ingresar el número de tarjeta para el tipo de tarjeta ");
+                }
+                //reservaAModificar.Estado = 0;
+                //reservaAModificar.EstadoCuenta = false;
                 Cliente ClienteExistente = ClienteDAO.Obtener(reservaAModificar.Cliente.IdCliente);
                 Habitacion tipoDocumentoExistente = HabitacionDAO.Obtener(reservaAModificar.Habitacion.IdHabitacion);
 
@@ -105,9 +117,21 @@ namespace ServiciosHoteles
             }
         }
 
-        public List<Reserva> BuscarClientes(Cliente cliente, Habitacion habitacion)
+        // buscar reserva 
+        public List<Reserva> BuscarReserva(int codigo_reserva)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                return ReservaDAO.Buscar(codigo_reserva).ToList();
+            }
+            catch (FaultException ex)
+            {
+                throw ex;
+            }
+
+
+
         }
     }
 }

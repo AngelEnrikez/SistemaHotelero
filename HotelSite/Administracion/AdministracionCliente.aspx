@@ -79,11 +79,13 @@
 
             </table>
         </div>
-        <div class="panel-footer">
-            <asp:Button ID="btnGuardar" class="btn btn-default" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
-            <asp:Button ID="btnCancelar" class="btn btn-default" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+        <div class="panel-footer">            
+            <input id="btnGuardar"   class="btn btn-default" type="button" value="Guardar" onclick="document.getElementById('ContentPlaceHolder1_hdAccion').value = 'G'; CerrarPopup(document.getElementById('ContentPlaceHolder1_hdEspoup').value,'G');" />            
+            <input id="btnCancelar"   class="btn btn-default" type="button" value="Cancelar" onclick="document.getElementById('ContentPlaceHolder1_hdAccion').value = 'C'; CerrarPopup(document.getElementById('ContentPlaceHolder1_hdEspoup').value,'C');" />            
             <asp:HiddenField ID="hdAgregarActualizar" runat="server" />
             <asp:HiddenField ID="hdCodigo" runat="server" Value="0" />
+            <asp:HiddenField ID="hdEspoup" runat="server" Value="0" />
+            <asp:HiddenField ID="hdAccion" runat="server" />
         </div>
         <div id="divError" class="alert alert-info" runat="server" visible="false" role="alert">Mensaje</div>
     </div>

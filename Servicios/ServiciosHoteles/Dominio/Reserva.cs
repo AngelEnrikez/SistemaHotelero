@@ -38,7 +38,7 @@ namespace ServiciosHoteles.Dominio
         [DataMember]
         public int AnioExpiraTarjeta { get; set; }
         [DataMember]
-        public int RequerimientosEsp { get; set; }
+        public string RequerimientosEsp { get; set; }
         [DataMember]
         public string Observaciones { get; set; }
         [DataMember]

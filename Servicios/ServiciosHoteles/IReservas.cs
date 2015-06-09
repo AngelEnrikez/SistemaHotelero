@@ -21,7 +21,8 @@ namespace ServiciosHoteles
         [OperationContract]
         List<Reserva> ListaReserva();
         [OperationContract]
-        List<Reserva> BuscarClientes(Cliente cliente, Habitacion habitacion);
+        // buscar reserva 
+        List<Reserva> BuscarReserva(int codigo);
 
     }
 }

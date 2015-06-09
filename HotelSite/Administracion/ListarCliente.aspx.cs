@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using ServicioAdministracion;
 
 public partial class Default2 : System.Web.UI.Page
-{
+{   
     /// <summary>
     /// Inicio
     /// </summary>
@@ -18,7 +18,7 @@ public partial class Default2 : System.Web.UI.Page
         try
         {
             if (!this.IsPostBack)
-            {
+            {                
                 Listar();
             }
         }

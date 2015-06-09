@@ -21,5 +21,17 @@ namespace ServiciosHoteles.Util
         [EnumMember]
         Obtener
     }
+    [DataContract]
+    public enum EstadosReserva : int
+    {
+        [EnumMember]
+        Pendiente = 0,
+        [EnumMember]
+        Cancelada,
+        [EnumMember]
+        CheckedIn,
+        [EnumMember]
+        CheckedOut
+    }
 
 }
