@@ -23,16 +23,16 @@
         <div style="margin-left: 15px; margin-top: 5px; margin-bottom: 5px">
             Buscar Chekin :
                      <asp:TextBox ID="txtChekIndel" runat="server" ReadOnly="true"></asp:TextBox>
-                        <asp:ImageButton ID="imgPopup" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
+                        <asp:ImageButton ID="ImageButton0" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
                             runat="server" Height="20px" Width="28px" />
-                        <cc1:CalendarExtender ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="txtChekIndel"
+                        <cc1:CalendarExtender ID="CalendarExtender0" PopupButtonID="ImageButton0" runat="server" TargetControlID="txtChekIndel"
                             Format="dd/MM/yyyy">
                         </cc1:CalendarExtender>
             al
                        <asp:TextBox ID="txtChekInal" runat="server" ReadOnly="true"></asp:TextBox>
                         <asp:ImageButton ID="ImageButton1" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
                             runat="server" Height="20px" Width="28px" />
-                        <cc1:CalendarExtender ID="CalendarExtender1" PopupButtonID="imgPopup" runat="server" TargetControlID="txtChekInal"
+                        <cc1:CalendarExtender ID="CalendarExtender1" PopupButtonID="ImageButton1" runat="server" TargetControlID="txtChekInal"
                             Format="dd/MM/yyyy">
                         </cc1:CalendarExtender>
         </div>
@@ -41,14 +41,14 @@
                      <asp:TextBox ID="txtChekOutdel" runat="server" ReadOnly="true"></asp:TextBox>
                         <asp:ImageButton ID="ImageButton2" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
                             runat="server" Height="20px" Width="28px" />
-                        <cc1:CalendarExtender ID="CalendarExtender2" PopupButtonID="imgPopup" runat="server" TargetControlID="txtChekOutdel"
+                        <cc1:CalendarExtender ID="CalendarExtender2" PopupButtonID="ImageButton2" runat="server" TargetControlID="txtChekOutdel"
                             Format="dd/MM/yyyy">
                         </cc1:CalendarExtender>
                            al   
                        <asp:TextBox ID="txtChekOutal" runat="server" ReadOnly="true"></asp:TextBox>
                         <asp:ImageButton ID="ImageButton3" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
                             runat="server" Height="20px" Width="28px" />
-                        <cc1:CalendarExtender ID="CalendarExtender3" PopupButtonID="imgPopup" runat="server" TargetControlID="txtChekOutal"
+                        <cc1:CalendarExtender ID="CalendarExtender3" PopupButtonID="ImageButton3" runat="server" TargetControlID="txtChekOutal"
                             Format="dd/MM/yyyy">
                         </cc1:CalendarExtender>
         </div>

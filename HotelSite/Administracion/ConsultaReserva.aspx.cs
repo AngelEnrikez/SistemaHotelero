@@ -14,7 +14,7 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
         {
             if (!this.IsPostBack)
             {
-                Listar(0);
+                Listar(0,string.Empty,string.Empty);
             }
         }
         catch (Exception ex)
@@ -27,7 +27,7 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
     /// <summary>
     /// Listar el registro
     /// </summary>
-    private void Listar(int codigo)
+    private void Listar(int codigo,string fechaChekIndel,string fechaChekInAl) // agrego parametros 
     {
         try
         {
@@ -39,11 +39,20 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
                 List<Reserva> clientes = objCliente.ReservarHabitacion(Constantes.Listar, null, 0);
                 if (clientes.Count > 0)
                 {
-                    //hdMaxCodigo.Value = (clientes.Max(r => r.IdCliente) + 1).ToString();
 
                     if (codigo > 0) 
                     {
                         clientes = clientes.FindAll(delegate(Reserva r) { return r.IdReserva == codigo; });
+                    }
+
+                    if (fechaChekIndel != "")
+                    {
+                        clientes = clientes.FindAll(delegate(Reserva r) { return r.FechaHoraCheckin >= Convert.ToDateTime(fechaChekIndel); });
+                    }
+
+                    if (fechaChekInAl != "")
+                    {
+                        clientes = clientes.FindAll(delegate(Reserva r) { return r.FechaHoraCheckin <= Convert.ToDateTime(fechaChekInAl); });
                     }
 
                     gdListado.DataSource = clientes;
@@ -77,7 +86,7 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
                 {
                     objReserva.ReservarHabitacion(Constantes.Eliminar, new Reserva() { IdReserva = Convert.ToInt32(hdnDataId.Value) }, 0);
                 }
-                Listar(0);
+                Listar(0, string.Empty, string.Empty);
             }
             if (e.CommandName == "ModificarData")
             {
@@ -109,7 +118,7 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
     {
         Int32 codigo;
         Int32.TryParse(txtCodigo.Value, out codigo);
-        Listar(codigo);
+        Listar(codigo,txtChekInal.Text,txtChekIndel.Text);
     }
 
 
