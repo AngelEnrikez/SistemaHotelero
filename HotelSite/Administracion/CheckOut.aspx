@@ -8,6 +8,8 @@
     <div class="panel panel-primary" style="width: 700px">
         <div class="panel-heading">Realizar Check-Out</div>
 
+
+
         <div class="panel-body">
             <table class="table" style="width: 60%">
                 <tr>
