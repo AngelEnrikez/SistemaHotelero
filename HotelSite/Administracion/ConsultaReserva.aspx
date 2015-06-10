@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.master" AutoEventWireup="true" CodeFile="ConsultaReserva.aspx.cs" Inherits="Administracion_ListarReserva" %>
+﻿
+
+<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.master" AutoEventWireup="true" CodeFile="ConsultaReserva.aspx.cs" Inherits="Administracion_ListarReserva" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -24,7 +26,7 @@
 
                     <ItemStyle CssClass="hidden-xs"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Habitación" DataField="Habitacion.Numero">
+                <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Nro. Habitación" DataField="Habitacion.Numero">
                     <HeaderStyle CssClass="hidden-xs"></HeaderStyle>
 
                     <ItemStyle CssClass="hidden-xs"></ItemStyle>
