@@ -1,16 +1,56 @@
 ﻿
 
 <%@ Page Title="" Language="C#" MasterPageFile="~/Principal.master" AutoEventWireup="true" CodeFile="ConsultaReserva.aspx.cs" Inherits="Administracion_ListarReserva" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+
 </asp:Content>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+        <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </cc1:ToolkitScriptManager>
     <div class="panel panel-primary" style="width: 950px">
         <div class="panel-heading">Listado de Reservas</div>
 
         <div style="margin-left: 15px; margin-top: 5px; margin-bottom: 5px">
-            <input type="text" id="txtCodigo" style="width: 50px; line-height: 1px" runat="server" />
+           Nro Reserva :
+             <input type="text" id="txtCodigo" style="width: 50px; line-height: 1px" runat="server" />
             <asp:Button ID="btnBuscar" OnClick="btnBuscar_Click" class="btn btn-default" runat="server" Text="Buscar" />
+        </div>
+        <div style="margin-left: 15px; margin-top: 5px; margin-bottom: 5px">
+            Buscar Chekin :
+                     <asp:TextBox ID="txtChekIndel" runat="server" ReadOnly="true"></asp:TextBox>
+                        <asp:ImageButton ID="imgPopup" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
+                            runat="server" Height="20px" Width="28px" />
+                        <cc1:CalendarExtender ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="txtChekIndel"
+                            Format="dd/MM/yyyy">
+                        </cc1:CalendarExtender>
+            al
+                       <asp:TextBox ID="txtChekInal" runat="server" ReadOnly="true"></asp:TextBox>
+                        <asp:ImageButton ID="ImageButton1" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
+                            runat="server" Height="20px" Width="28px" />
+                        <cc1:CalendarExtender ID="CalendarExtender1" PopupButtonID="imgPopup" runat="server" TargetControlID="txtChekInal"
+                            Format="dd/MM/yyyy">
+                        </cc1:CalendarExtender>
+        </div>
+       <div style="margin-left: 15px; margin-top: 5px; margin-bottom: 5px">
+            Buscar Chekout :
+                     <asp:TextBox ID="txtChekOutdel" runat="server" ReadOnly="true"></asp:TextBox>
+                        <asp:ImageButton ID="ImageButton2" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
+                            runat="server" Height="20px" Width="28px" />
+                        <cc1:CalendarExtender ID="CalendarExtender2" PopupButtonID="imgPopup" runat="server" TargetControlID="txtChekOutdel"
+                            Format="dd/MM/yyyy">
+                        </cc1:CalendarExtender>
+                           al   
+                       <asp:TextBox ID="txtChekOutal" runat="server" ReadOnly="true"></asp:TextBox>
+                        <asp:ImageButton ID="ImageButton3" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
+                            runat="server" Height="20px" Width="28px" />
+                        <cc1:CalendarExtender ID="CalendarExtender3" PopupButtonID="imgPopup" runat="server" TargetControlID="txtChekOutal"
+                            Format="dd/MM/yyyy">
+                        </cc1:CalendarExtender>
         </div>
 
         <asp:GridView ID="gdListado" CssClass="table" runat="server" Width="100%" AutoGenerateColumns="False" OnRowCommand="gdListado_RowCommand">
@@ -33,6 +73,8 @@
                 </asp:BoundField>
                 <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de Llegada" />
                  <asp:BoundField DataField="FechaSalida" HeaderText="Fecha de Salida" />
+                <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de ChekIn" />
+                <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de Check Out" />
                 <asp:BoundField DataField="Observaciones" HeaderText="Observaciones" />
                 <asp:TemplateField HeaderText="Acciones">
                     <ItemTemplate>

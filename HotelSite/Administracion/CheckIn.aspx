@@ -57,7 +57,7 @@
                     <td>Fecha Ingreso</td>
                     <td>
                         <asp:TextBox ID="txtDateIn" runat="server" ReadOnly="true"></asp:TextBox>
-                        <asp:ImageButton ID="imgPopup" ImageUrl="~/Images/text_calendar.png" ImageAlign="Bottom"
+                        <asp:ImageButton ID="imgPopup" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
                             runat="server" Height="20px" Width="28px" />
                         <cc1:CalendarExtender ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="txtDateIn"
                             Format="dd/MM/yyyy">
@@ -72,7 +72,7 @@
                         <cc1:CalendarExtender ID="txtDate0_CalendarExtender" PopupButtonID="imgPopup0" runat="server" TargetControlID="txtDateOut"
                             Format="dd/MM/yyyy">
                         </cc1:CalendarExtender>
-                        <asp:ImageButton ID="imgPopup0" ImageUrl="~/Images/text_calendar.png" ImageAlign="Bottom"
+                        <asp:ImageButton ID="imgPopup0" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
                             runat="server" Height="20px" Width="28px" />
                     </td>
                     <td></td>
