@@ -22,14 +22,14 @@
         </div>
         <div style="margin-left: 15px; margin-top: 5px; margin-bottom: 5px">
             Buscar Chekin :
-                     <asp:TextBox ID="txtChekIndel" runat="server" ReadOnly="true"></asp:TextBox>
+                     <asp:TextBox ID="txtChekIndel" runat="server"></asp:TextBox>
                         <asp:ImageButton ID="ImageButton0" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
                             runat="server" Height="20px" Width="28px" />
                         <cc1:CalendarExtender ID="CalendarExtender0" PopupButtonID="ImageButton0" runat="server" TargetControlID="txtChekIndel"
                             Format="dd/MM/yyyy">
                         </cc1:CalendarExtender>
             al
-                       <asp:TextBox ID="txtChekInal" runat="server" ReadOnly="true"></asp:TextBox>
+                       <asp:TextBox ID="txtChekInal" runat="server"></asp:TextBox>
                         <asp:ImageButton ID="ImageButton1" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
                             runat="server" Height="20px" Width="28px" />
                         <cc1:CalendarExtender ID="CalendarExtender1" PopupButtonID="ImageButton1" runat="server" TargetControlID="txtChekInal"
@@ -38,14 +38,14 @@
         </div>
        <div style="margin-left: 15px; margin-top: 5px; margin-bottom: 5px">
             Buscar Chekout :
-                     <asp:TextBox ID="txtChekOutdel" runat="server" ReadOnly="true"></asp:TextBox>
+                     <asp:TextBox ID="txtChekOutdel" runat="server"></asp:TextBox>
                         <asp:ImageButton ID="ImageButton2" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
                             runat="server" Height="20px" Width="28px" />
                         <cc1:CalendarExtender ID="CalendarExtender2" PopupButtonID="ImageButton2" runat="server" TargetControlID="txtChekOutdel"
                             Format="dd/MM/yyyy">
                         </cc1:CalendarExtender>
                            al   
-                       <asp:TextBox ID="txtChekOutal" runat="server" ReadOnly="true"></asp:TextBox>
+                       <asp:TextBox ID="txtChekOutal" runat="server"></asp:TextBox>
                         <asp:ImageButton ID="ImageButton3" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
                             runat="server" Height="20px" Width="28px" />
                         <cc1:CalendarExtender ID="CalendarExtender3" PopupButtonID="ImageButton3" runat="server" TargetControlID="txtChekOutal"
@@ -90,8 +90,10 @@
         </asp:GridView>
         <div class="panel-footer">
             <asp:Button ID="btnAgregar" class="btn btn-default" runat="server" Text="Agregar" OnClick="btnAgregar_Click" />
+             <asp:Button ID="Button1" class="btn btn-default" runat="server" Text="Limpiar" OnClick="btnLimpiar_Click" />
             <asp:HiddenField ID="hdMaxCodigo" runat="server" />
         </div>
+        
         <div id="divError" class="alert alert-info" role="alert" runat="server" visible="false">Mensaje</div>
     </div>
 </asp:Content>

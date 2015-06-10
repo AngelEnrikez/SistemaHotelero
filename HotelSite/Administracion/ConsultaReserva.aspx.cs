@@ -14,7 +14,11 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
         {
             if (!this.IsPostBack)
             {
-                Listar(0,string.Empty,string.Empty);
+                txtChekIndel.Attributes.Add("readonly", "readonly");
+                txtChekInal.Attributes.Add("readonly", "readonly");
+                txtChekOutdel.Attributes.Add("readonly", "readonly");
+                txtChekOutal.Attributes.Add("readonly", "readonly");
+                Listar(0,string.Empty,string.Empty,string.Empty,string.Empty);
             }
         }
         catch (Exception ex)
@@ -27,7 +31,7 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
     /// <summary>
     /// Listar el registro
     /// </summary>
-    private void Listar(int codigo,string fechaChekIndel,string fechaChekInAl) // agrego parametros 
+    private void Listar(int codigo, string fechaChekIndel, string fechaChekInAl, string fechaChekOutdel, string fechaChekOutal) // agrego parametros 
     {
         try
         {
@@ -53,6 +57,16 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
                     if (fechaChekInAl != "")
                     {
                         clientes = clientes.FindAll(delegate(Reserva r) { return r.FechaHoraCheckin <= Convert.ToDateTime(fechaChekInAl); });
+                    }
+
+                    if (fechaChekOutdel != "")
+                    {
+                        clientes = clientes.FindAll(delegate(Reserva r) { return r.FechaHoraCheckout >= Convert.ToDateTime(fechaChekOutdel); });
+                    }
+
+                    if (fechaChekOutal != "")
+                    {
+                        clientes = clientes.FindAll(delegate(Reserva r) { return r.FechaHoraCheckout >= Convert.ToDateTime(fechaChekOutal); });
                     }
 
                     gdListado.DataSource = clientes;
@@ -86,7 +100,7 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
                 {
                     objReserva.ReservarHabitacion(Constantes.Eliminar, new Reserva() { IdReserva = Convert.ToInt32(hdnDataId.Value) }, 0);
                 }
-                Listar(0, string.Empty, string.Empty);
+                Listar(0, string.Empty, string.Empty, string.Empty, string.Empty);
             }
             if (e.CommandName == "ModificarData")
             {
@@ -118,9 +132,24 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
     {
         Int32 codigo;
         Int32.TryParse(txtCodigo.Value, out codigo);
-        Listar(codigo,txtChekInal.Text,txtChekIndel.Text);
+        Listar(codigo, txtChekIndel.Text, txtChekInal.Text,txtChekOutdel.Text,txtChekOutal.Text);
     }
 
+
+    protected void btnLimpiar_Click(object sender, EventArgs e)
+    {
+        this.txtCodigo.Value = "";
+        this.txtChekInal.Text = "";
+        this.txtChekIndel.Text = "";
+
+        this.txtChekOutdel.Text = "";
+        this.txtChekOutal.Text = "";
+
+        this.txtCodigo.Focus();
+
+
+
+    }
 
 
     
