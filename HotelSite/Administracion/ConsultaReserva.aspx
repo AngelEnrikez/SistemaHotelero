@@ -21,7 +21,7 @@
             <asp:Button ID="btnBuscar" OnClick="btnBuscar_Click" class="btn btn-default" runat="server" Text="Buscar" />
         </div>
         <div style="margin-left: 15px; margin-top: 5px; margin-bottom: 5px">
-            Buscar Chekin :
+            Buscar Chek-In :
                      <asp:TextBox ID="txtChekIndel" runat="server"></asp:TextBox>
                         <asp:ImageButton ID="ImageButton0" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
                             runat="server" Height="20px" Width="28px" />
@@ -37,7 +37,7 @@
                         </cc1:CalendarExtender>
         </div>
        <div style="margin-left: 15px; margin-top: 5px; margin-bottom: 5px">
-            Buscar Chekout :
+            Buscar Chek-Out :
                      <asp:TextBox ID="txtChekOutdel" runat="server"></asp:TextBox>
                         <asp:ImageButton ID="ImageButton2" ImageUrl="~/Images/fecha.png" ImageAlign="Bottom"
                             runat="server" Height="20px" Width="28px" />
@@ -73,8 +73,8 @@
                 </asp:BoundField>
                 <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de Llegada" />
                  <asp:BoundField DataField="FechaSalida" HeaderText="Fecha de Salida" />
-                <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de ChekIn" />
-                <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de Check Out" />
+                <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de Chek-In" />
+                <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de Check-Out" />
                 <asp:BoundField DataField="Observaciones" HeaderText="Observaciones" />
                 <asp:TemplateField HeaderText="Acciones">
                     <ItemTemplate>
