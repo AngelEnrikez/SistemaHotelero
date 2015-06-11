@@ -1,12 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.master" AutoEventWireup="true" CodeFile="ReservarHabitacion.aspx.cs" Inherits="Default2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
- 
+
     <div class="panel panel-primary" style="width: 950px">
-        <div class="panel-heading">Mantenimiento de Clientes</div>
+        <div class="panel-heading">Mantenimiento de Reservas</div>
 
         <div class="panel-body">
             <table class="table" style="width: 60%">
@@ -19,14 +18,14 @@
                         </asp:DropDownList>
 
 
-                        <input id="btnAgregarCliente" runat="server" class="btn btn-default"  type="button" value="..."/></td>
+                        <input id="btnAgregarCliente" runat="server" class="btn btn-default" type="button" value="..." /></td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Label ID="lblTipoHabitacion" runat="server" Text="Tipo habitación:"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="cmbTipoHabitacion" runat="server" Height="16px" Width="100px" AutoPostBack="True" OnSelectedIndexChanged="cmbTipoHabitacion_SelectedIndexChanged">
+                        <asp:DropDownList ID="cmbTipoHabitacion" runat="server" Height="16px" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="cmbTipoHabitacion_SelectedIndexChanged">
                         </asp:DropDownList>
 
                     </td>
@@ -36,8 +35,49 @@
                         <asp:Label ID="lblHabitacion" runat="server" Text="Habitación:"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="cmbHbitacion" runat="server" Height="16px" Width="100px">
+                        <asp:DropDownList ID="cmbHbitacion" runat="server" Height="16px" Width="130px">
                         </asp:DropDownList>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="lblPasajeros" runat="server" Text="Pasajeros"></asp:Label>
+                    </td>
+                    <td>
+                        <input id="btnPasajero" class="btn btn-default" type="button" value="Agregar Pasajeros" onclick="document.getElementById('ContentPlaceHolder1_hdAccion').value = 'C'; CerrarPopup(document.getElementById('ContentPlaceHolder1_hdEspoup').value, 'C');" /><br />
+
+                        <asp:GridView ID="gdListado" CssClass="table" runat="server" Width="100%" AutoGenerateColumns="False">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Codigo">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblGridCodigo" runat="server" Text='<%# Eval("IdReserva") %>'></asp:Label>
+                                        <asp:HiddenField ID="hdGridCodigo" runat="server" Value='<%# Eval("IdReserva") %>' />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Nombre" DataField="NombrePasajero">
+                                    <HeaderStyle CssClass="hidden-xs"></HeaderStyle>
+
+                                    <ItemStyle CssClass="hidden-xs"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Apellido Paterno" DataField="ApellidoPaterno">
+                                    <HeaderStyle CssClass="hidden-xs"></HeaderStyle>
+
+                                    <ItemStyle CssClass="hidden-xs"></ItemStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="ApellidoMaterno" HeaderText="Apellido Materno" />
+                                <asp:TemplateField HeaderText="Eliminar">
+                                    <ItemTemplate>
+                                        <asp:Button ID="btnGridModificar" Width="40px" CommandName="ModificarData" class="btn btn-default btn-xs" runat="server" Text="..." />
+                                    </ItemTemplate>
+                                    <ItemStyle Width="50px" />
+                                </asp:TemplateField>
+                            </Columns>
+                            <RowStyle CssClass="rowStyle" />
+                            <HeaderStyle CssClass="headerStyle" />
+                            <FooterStyle CssClass="footerStyle" />
+                            <PagerStyle HorizontalAlign="Center" />
+                        </asp:GridView>
 
                     </td>
                 </tr>
@@ -94,7 +134,7 @@
             </table>
         </div>
         <div class="panel-footer">
-            <asp:Button ID="btnGuardar"  class="btn btn-default" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
+            <asp:Button ID="btnGuardar" class="btn btn-default" runat="server" Text="Guardar" OnClick="btnGuardar_Click" />
             <asp:Button ID="btnCancelar" class="btn btn-default" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
             <asp:HiddenField ID="hdAgregarActualizar" runat="server" />
             <asp:HiddenField ID="hdCodigo" runat="server" Value="0" />
