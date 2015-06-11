@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.Data.SqlClient;
+
+
 using System.Text;
 
 namespace ServiciosHoteles
@@ -70,6 +73,15 @@ namespace ServiciosHoteles
                 reservaCreado = ReservaDAO.Crear(reservaACrear);
             }
             catch (FaultException ex) { throw ex; }
+            catch (Exception e)
+            {
+                if (e.InnerException != null)
+                    if (e.InnerException.GetType() == typeof(SqlException)) {
+
+                        throw e.InnerException; 
+                    }
+
+            }
             return reservaCreado;
         }
 
@@ -109,7 +121,33 @@ namespace ServiciosHoteles
         {
             try
             {
-                return ReservaDAO.Listar().ToList();
+                return ReservaDAO.Listar().Select(x => new Reserva
+                {
+                    IdReserva = x.IdReserva,
+                    Cliente=x.Cliente,
+                    CodFormaPago = x.CodFormaPago,
+                    Habitacion=x.Habitacion,
+                    Pasajero = x.Pasajero.Select(pas => new Pasajero
+                    {
+                        IdPasajero = pas.IdPasajero,
+                        NombrePasajero=pas.NombrePasajero,
+                        ApellidoPaterno=pas.ApellidoPaterno,
+                        ApellidoMaterno=pas.ApellidoMaterno
+                    }).ToList(),
+                    FechaLlegada=x.FechaLlegada,
+                    FechaSalida=x.FechaSalida,
+                    FechaHoraCheckin=x.FechaHoraCheckin,
+                    ComentarioCheckin=x.ComentarioCheckin,
+                    FechaHoraCheckout=x.FechaHoraCheckout,
+                    ComentarioCheckout=x.ComentarioCheckout,
+                    NumeroTarjeta=x.NumeroTarjeta,
+                    MesExpiraTarjeta=x.MesExpiraTarjeta,
+                    AnioExpiraTarjeta=x.AnioExpiraTarjeta,
+                    RequerimientosEsp=x.RequerimientosEsp,
+                    Observaciones=x.Observaciones,
+                    EstadoCuenta=x.EstadoCuenta,
+                    Estado=x.Estado
+                }).ToList();
             }
             catch (FaultException ex)
             {

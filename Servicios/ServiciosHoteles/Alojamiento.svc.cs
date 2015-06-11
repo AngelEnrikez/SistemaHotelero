@@ -6,7 +6,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-
 namespace ServiciosHoteles
 {
     public class Alojamiento : IAlojamiento

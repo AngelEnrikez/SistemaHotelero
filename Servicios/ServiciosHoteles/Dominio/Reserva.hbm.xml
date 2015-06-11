@@ -9,6 +9,15 @@
     </id>
     <many-to-one name="Cliente" column="idCliente" />
     <many-to-one name="Habitacion" column="idHabitacion" />
+    <bag name="Pasajero" lazy="false" >
+      <key column="IdReserva"></key>
+      <one-to-many class="Pasajero"></one-to-many>
+    </bag>
+    <!--<list name="Pasajero"  access="field.camelcase-underscore" inverse="true" >
+      <key column="IdPasajero" />
+      <one-to-many class="Pasajero" />
+    </list>-->
+
     <property name="FechaLlegada" column="fechaLlegada" />
     <property name="FechaSalida" column="fechaSalida" />
     <property name="FechaHoraCheckin" column="fechaHoraCheckin"  />

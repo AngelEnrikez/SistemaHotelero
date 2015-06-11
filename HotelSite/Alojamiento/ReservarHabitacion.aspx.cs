@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -24,7 +25,7 @@ public partial class Default2 : System.Web.UI.Page
             else
             {
                 if (Request["__EVENTARGUMENT"] != null)
-                    if (Request["__EVENTARGUMENT"] == "cargarclientes") 
+                    if (Request["__EVENTARGUMENT"] == "cargarclientes")
                         CargarClientes();
             }
         }
@@ -37,7 +38,7 @@ public partial class Default2 : System.Web.UI.Page
 
 
     /// <summary>
-    /// muestra el listado pais y tipo documento
+    /// muestra el listado pais, tipo documento, habitaciones
     /// </summary>
     private void MostrarItems()
     {
@@ -45,10 +46,30 @@ public partial class Default2 : System.Web.UI.Page
         {
             using (AdministracionClient objHabitacion = new AdministracionClient())
             {
-                cmbHbitacion.DataSource = objHabitacion.AdminHabitaciones(ServicioAdministracion.Constantes.Listar);
-                cmbHbitacion.DataTextField = "Descripcion";
+                List<ServicioAdministracion.TipoHabitacion> listatipohabitacion = new List<ServicioAdministracion.TipoHabitacion>();
+                List<ServicioAdministracion.Habitacion> listahabitacion = objHabitacion.AdminHabitaciones(ServicioAdministracion.Constantes.Listar);
+
+                foreach (ServicioAdministracion.Habitacion habi in listahabitacion)
+                {
+                    if (habi.TipoHabitacion != null)
+                    {
+                        if (listatipohabitacion.Where(g => g.IdTipoHabitacion == habi.TipoHabitacion.IdTipoHabitacion).Count() == 0)
+                            listatipohabitacion.Add(habi.TipoHabitacion);
+                    }
+
+                }
+
+                cmbTipoHabitacion.DataSource = listatipohabitacion;
+                cmbTipoHabitacion.DataTextField = "Descripcion";
+                cmbTipoHabitacion.DataValueField = "IdTipoHabitacion";
+                cmbTipoHabitacion.DataBind();
+                cmbTipoHabitacion.SelectedIndex = 0;
+
+                cmbHbitacion.DataSource = listahabitacion.Where(f => f.TipoHabitacion.IdTipoHabitacion == Convert.ToInt32(cmbTipoHabitacion.SelectedValue)).ToList();
+                cmbHbitacion.DataTextField = "Numero";
                 cmbHbitacion.DataValueField = "IdHabitacion";
                 cmbHbitacion.DataBind();
+
             }
             CargarClientes();
         }
@@ -162,5 +183,29 @@ public partial class Default2 : System.Web.UI.Page
     {
         if (cmbFormaPago.SelectedValue == "EF") { txtNroTarjeta.Text = ""; txtNroTarjeta.Enabled = false; }
         else { txtNroTarjeta.Text = ""; txtNroTarjeta.Enabled = true; }
+    }
+
+
+    protected void cmbTipoHabitacion_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            using (AdministracionClient objHabitacion = new AdministracionClient())
+            {
+                List<ServicioAdministracion.Habitacion> listahabitacion = objHabitacion.AdminHabitaciones(ServicioAdministracion.Constantes.Listar);
+
+                cmbHbitacion.DataSource = listahabitacion.Where(f => f.TipoHabitacion.IdTipoHabitacion == Convert.ToInt32(cmbTipoHabitacion.SelectedValue)).ToList();
+                cmbHbitacion.DataTextField = "Numero";
+                cmbHbitacion.DataValueField = "IdHabitacion";
+                cmbHbitacion.DataBind();
+
+            }
+            CargarClientes();
+        }
+        catch (Exception ex)
+        {
+            divError.InnerHtml = ex.Message;
+            divError.Visible = true;
+        }
     }
 }

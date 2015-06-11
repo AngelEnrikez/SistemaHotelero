@@ -16,6 +16,8 @@ namespace ServiciosHoteles.Dominio
         [DataMember]
         public Habitacion Habitacion { get; set; }
         [DataMember]
+        public IList<Pasajero> Pasajero { get; set; }
+        [DataMember]
         public DateTime FechaLlegada { get; set; }
         [DataMember]
         public DateTime FechaSalida { get; set; }

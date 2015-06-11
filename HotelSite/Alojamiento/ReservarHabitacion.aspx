@@ -26,7 +26,7 @@
                         <asp:Label ID="lblTipoHabitacion" runat="server" Text="Tipo habitación:"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="cmbTipoHabitacion" runat="server" Height="16px" Width="100px">
+                        <asp:DropDownList ID="cmbTipoHabitacion" runat="server" Height="16px" Width="100px" AutoPostBack="True" OnSelectedIndexChanged="cmbTipoHabitacion_SelectedIndexChanged">
                         </asp:DropDownList>
 
                     </td>
@@ -79,7 +79,7 @@
                         <asp:Label ID="lblNroTarjeta" runat="server" Text="Nro de Tarjeta:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtNroTarjeta" MaxLength="20" class="input-group-addon" runat="server" Width="100px"></asp:TextBox>
+                        <asp:TextBox ID="txtNroTarjeta" MaxLength="30" class="input-group-addon" runat="server" Width="100px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -87,7 +87,7 @@
                         <asp:Label ID="lblObservaciones" runat="server" Text="Observaciones:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtObservaciones" class="input-group-addon" runat="server" MaxLength="20" Width="200px" Height="42px" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox ID="txtObservaciones" class="input-group-addon" runat="server" MaxLength="250" Width="200px" Height="42px" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
 

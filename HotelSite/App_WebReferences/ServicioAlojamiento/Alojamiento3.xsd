@@ -18,6 +18,7 @@
       <xs:element minOccurs="0" name="MesExpiraTarjeta" type="xs:int" />
       <xs:element minOccurs="0" name="NumeroTarjeta" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Observaciones" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pasajero" nillable="true" type="tns:ArrayOfPasajero" />
       <xs:element minOccurs="0" name="RequerimientosEsp" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TitularTarjeta" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -69,6 +70,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TipoHabitacion" nillable="true" type="tns:TipoHabitacion" />
+  <xs:complexType name="ArrayOfPasajero">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pasajero" nillable="true" type="tns:Pasajero" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPasajero" nillable="true" type="tns:ArrayOfPasajero" />
+  <xs:complexType name="Pasajero">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApellidoMaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApellidoPaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdPasajero" type="xs:int" />
+      <xs:element minOccurs="0" name="NombrePasajero" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reserva" nillable="true" type="tns:Reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Pasajero" nillable="true" type="tns:Pasajero" />
   <xs:complexType name="ArrayOfReserva">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Reserva" nillable="true" type="tns:Reserva" />
