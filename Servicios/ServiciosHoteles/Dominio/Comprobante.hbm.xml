@@ -14,7 +14,7 @@
     <property name="Igv" column="igv" />
     <property name="ImporteIgv" column="importeIgv" />    
     <property name="ImporteTotal" column="importeTotal" />    
-    <property name="Estado" column="estado1" />    
+    <property name="Estado" column="estado" />    
     <many-to-one name="Reserva" column="idReserva" />
   </class>
 </hibernate-mapping>
