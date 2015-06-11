@@ -31,6 +31,8 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
     /// <summary>
     /// Listar el registro
     /// </summary>
+    /// 
+
     private void Listar(int codigo, string fechaChekIndel, string fechaChekInAl, string fechaChekOutdel, string fechaChekOutal) // agrego parametros 
     {
         try
