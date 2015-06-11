@@ -64,4 +64,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ObtenerReserva">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" type="xs:int" />
+        <xs:element minOccurs="0" name="fechaChekIndel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaChekInAl" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaChekOutdel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaChekOutal" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerReservaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="ObtenerReservaResult" nillable="true" type="q6:ArrayOfReserva" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

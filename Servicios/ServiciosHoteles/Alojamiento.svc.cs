@@ -58,5 +58,50 @@ namespace ServiciosHoteles
         {
             throw new NotImplementedException();
         }
+
+        //obtener reserva 
+        public List<Reserva> ObtenerReserva(int codigo, string fechaChekIndel, string fechaChekInAl, string fechaChekOutdel, string fechaChekOutal)
+        {
+            List<Reserva> lista = new List<Reserva>();
+            IReservas reservaServicio = new Reservas();
+
+
+            lista = reservaServicio.ListaReserva();
+
+
+            if (lista.Count > 0)
+            {
+
+                if (codigo > 0)
+                {
+                    lista = lista.FindAll(delegate(Reserva r) { return r.IdReserva == codigo; });
+                }
+
+                if (fechaChekIndel != "")
+                {
+                    lista = lista.FindAll(delegate(Reserva r) { return r.FechaHoraCheckin >= Convert.ToDateTime(fechaChekIndel); });
+                }
+
+                if (fechaChekInAl != "")
+                {
+                    lista = lista.FindAll(delegate(Reserva r) { return r.FechaHoraCheckin <= Convert.ToDateTime(fechaChekInAl); });
+                }
+
+                if (fechaChekOutdel != "")
+                {
+                    lista = lista.FindAll(delegate(Reserva r) { return r.FechaHoraCheckout >= Convert.ToDateTime(fechaChekOutdel); });
+                }
+
+                if (fechaChekOutal != "")
+                {
+                    lista = lista.FindAll(delegate(Reserva r) { return r.FechaHoraCheckout >= Convert.ToDateTime(fechaChekOutal); });
+                }
+
+
+            }
+
+            return lista;
+
+        }
     }
 }

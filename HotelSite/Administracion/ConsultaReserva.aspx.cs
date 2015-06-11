@@ -35,48 +35,15 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
     {
         try
         {
-            gdListado.DataSource = null;
+ 
+            ServicioAlojamiento.AlojamientoClient proxy = new ServicioAlojamiento.AlojamientoClient();
+            List<ServicioAlojamiento.Reserva> reserva = proxy.ObtenerReserva(codigo, fechaChekIndel, fechaChekInAl, fechaChekOutdel, fechaChekOutal);
+
+
+
+            gdListado.DataSource = reserva;
             gdListado.DataBind();
-            using (AlojamientoClient objCliente = new AlojamientoClient())
-            {
 
-                List<Reserva> clientes = objCliente.ReservarHabitacion(Constantes.Listar, null, 0);
-                if (clientes.Count > 0)
-                {
-
-                    if (codigo > 0) 
-                    {
-                        clientes = clientes.FindAll(delegate(Reserva r) { return r.IdReserva == codigo; });
-                    }
-
-                    if (fechaChekIndel != "")
-                    {
-                        clientes = clientes.FindAll(delegate(Reserva r) { return r.FechaHoraCheckin >= Convert.ToDateTime(fechaChekIndel); });
-                    }
-
-                    if (fechaChekInAl != "")
-                    {
-                        clientes = clientes.FindAll(delegate(Reserva r) { return r.FechaHoraCheckin <= Convert.ToDateTime(fechaChekInAl); });
-                    }
-
-                    if (fechaChekOutdel != "")
-                    {
-                        clientes = clientes.FindAll(delegate(Reserva r) { return r.FechaHoraCheckout >= Convert.ToDateTime(fechaChekOutdel); });
-                    }
-
-                    if (fechaChekOutal != "")
-                    {
-                        clientes = clientes.FindAll(delegate(Reserva r) { return r.FechaHoraCheckout >= Convert.ToDateTime(fechaChekOutal); });
-                    }
-
-                    gdListado.DataSource = clientes;
-                    gdListado.DataBind();
-                }
-                else
-                {
-                    hdMaxCodigo.Value = "1";
-                }
-            }
         }
         catch (Exception ex)
         {
