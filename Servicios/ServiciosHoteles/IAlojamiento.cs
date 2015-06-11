@@ -27,5 +27,10 @@ namespace ServiciosHoteles
 
         [OperationContract]
         bool ValidarCancelacion();
+
+
+        [OperationContract]
+        List<Reserva> ObtenerReserva(int codigo, string fechaChekIndel, string fechaChekInAl, string fechaChekOutdel, string fechaChekOutal);
+
     }
 }

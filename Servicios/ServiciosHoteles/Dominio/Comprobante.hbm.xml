@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="ServiciosHoteles"
+                   namespace="ServiciosHoteles.Dominio"
+                   default-lazy="false">
+  <class name="Comprobante" table="t_Comprobante">
+    <id name="IdComprobante" column="idComprobante">
+      <generator class="increment" />
+    </id>    
+    <property name="Serie" column="serie" />
+    <property name="Numero" column="numero" />
+    <property name="FechaEmision" column="fechaEmision" />
+    <property name="Importe" column="importe" />    
+    <property name="Igv" column="igv" />
+    <property name="ImporteIgv" column="importeIgv" />    
+    <property name="ImporteTotal" column="importeTotal" />    
+    <property name="Estado" column="estado" />    
+    <many-to-one name="Reserva" column="idReserva" />
+  </class>
+</hibernate-mapping>
