@@ -38,6 +38,12 @@
   <wsdl:message name="IAlojamiento_ValidarCancelacion_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidarCancelacionResponse" />
   </wsdl:message>
+  <wsdl:message name="IAlojamiento_ObtenerReserva_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerReserva" />
+  </wsdl:message>
+  <wsdl:message name="IAlojamiento_ObtenerReserva_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerReservaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAlojamiento">
     <wsdl:operation name="ReservarHabitacion">
       <wsdl:input wsaw:Action="http://tempuri.org/IAlojamiento/ReservarHabitacion" message="tns:IAlojamiento_ReservarHabitacion_InputMessage" />
@@ -58,6 +64,10 @@
     <wsdl:operation name="ValidarCancelacion">
       <wsdl:input wsaw:Action="http://tempuri.org/IAlojamiento/ValidarCancelacion" message="tns:IAlojamiento_ValidarCancelacion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAlojamiento/ValidarCancelacionResponse" message="tns:IAlojamiento_ValidarCancelacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerReserva">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlojamiento/ObtenerReserva" message="tns:IAlojamiento_ObtenerReserva_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlojamiento/ObtenerReservaResponse" message="tns:IAlojamiento_ObtenerReserva_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAlojamiento" type="tns:IAlojamiento">
@@ -100,6 +110,15 @@
     </wsdl:operation>
     <wsdl:operation name="ValidarCancelacion">
       <soap:operation soapAction="http://tempuri.org/IAlojamiento/ValidarCancelacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerReserva">
+      <soap:operation soapAction="http://tempuri.org/IAlojamiento/ObtenerReserva" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
