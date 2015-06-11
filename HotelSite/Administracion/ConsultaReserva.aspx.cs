@@ -41,8 +41,6 @@ public partial class Administracion_ListarReserva : System.Web.UI.Page
             ServicioAlojamiento.AlojamientoClient proxy = new ServicioAlojamiento.AlojamientoClient();
             List<ServicioAlojamiento.Reserva> reserva = proxy.ObtenerReserva(codigo, fechaChekIndel, fechaChekInAl, fechaChekOutdel, fechaChekOutal);
 
-
-
             gdListado.DataSource = reserva;
             gdListado.DataBind();
 

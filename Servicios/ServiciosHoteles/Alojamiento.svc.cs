@@ -3,6 +3,7 @@ using ServiciosHoteles.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Messaging;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
@@ -65,9 +66,7 @@ namespace ServiciosHoteles
             List<Reserva> lista = new List<Reserva>();
             IReservas reservaServicio = new Reservas();
 
-
             lista = reservaServicio.ListaReserva();
-
 
             if (lista.Count > 0)
             {
@@ -98,6 +97,19 @@ namespace ServiciosHoteles
                 }
 
 
+                //// Encolar la lista 
+
+                //string rutaCola = @".\private$\jpascual";
+                //if (!MessageQueue.Exists(rutaCola))
+                //{
+                //    MessageQueue.Create(rutaCola);
+                //}
+
+                //MessageQueue cola = new MessageQueue(rutaCola);
+                //Message mensaje = new Message();
+                //mensaje.Label = "Listado de Reservas";
+                //mensaje.Body = new Reserva() { lista };
+                //cola.Send(mensaje);
             }
 
             return lista;
