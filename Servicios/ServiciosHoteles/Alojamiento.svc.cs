@@ -19,7 +19,7 @@ namespace ServiciosHoteles
             try
             {
                 if (valor == Constantes.Crear)
-                {
+                {                    
                     lista.Add(reservaServicio.RegistrarReserva(reserva));
                 }
                 else if (valor == Constantes.Obtener)

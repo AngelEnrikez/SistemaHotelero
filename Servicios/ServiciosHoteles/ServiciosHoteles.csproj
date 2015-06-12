@@ -95,6 +95,7 @@
     <EmbeddedResource Include="Dominio\Servicio.hbm.xml" />
     <Content Include="Habitaciones.svc" />
     <Content Include="Paises.svc" />
+    <Content Include="Pasajeros.svc" />
     <Content Include="Reservas.svc" />
     <Content Include="packages.config" />
     <None Include="Service References\ServicioCuenta\Cuentas.wsdl" />
@@ -171,15 +172,20 @@
     <Compile Include="ICuentas.cs" />
     <Compile Include="IHabitaciones.cs" />
     <Compile Include="IPaises.cs" />
+    <Compile Include="IPasajeros.cs" />
     <Compile Include="IReservas.cs" />
     <Compile Include="ITiposDocumento.cs" />
     <Compile Include="Paises.svc.cs">
       <DependentUpon>Paises.svc</DependentUpon>
     </Compile>
+    <Compile Include="Pasajeros.svc.cs">
+      <DependentUpon>Pasajeros.svc</DependentUpon>
+    </Compile>
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\CuentaDAO.cs" />
     <Compile Include="Persistencia\ComprobanteDAO.cs" />
     <Compile Include="Persistencia\HabitacionDAO.cs" />
+    <Compile Include="Persistencia\PasajeroDAO.cs" />
     <Compile Include="Persistencia\ReservaDAO.cs" />
     <Compile Include="Persistencia\TipoDocumentoDAO.cs" />
     <Compile Include="Persistencia\PaisDAO.cs" />
