@@ -13,7 +13,7 @@ namespace ServiciosHoteles
     public interface ICheckOut
     {
         [OperationContract]
-        [WebInvoke(Method = "PUT", UriTemplate = "Reservas", ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "PUT", UriTemplate = "CheckOut", ResponseFormat = WebMessageFormat.Json)]
         Reserva RegistrarCheckOut(Reserva reservaCheckedOut);
     }
 }

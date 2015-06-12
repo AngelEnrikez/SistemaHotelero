@@ -1,4 +1,5 @@
-﻿using ServiciosHoteles.Dominio;
+﻿using AutoMapper;
+using ServiciosHoteles.Dominio;
 using ServiciosHoteles.Util;
 using System;
 using System.Collections.Generic;
@@ -30,10 +31,16 @@ namespace ServiciosHoteles
 
             reservaCheckedOut.FechaHoraCheckout = DateTime.Now;
             reservaCheckedOut.Estado = (int)EstadosReserva.CheckedOut;
-            //WSReservas.ReservasClient proxy = new WSReservas.ReservasClient();
-            //return proxy.ModificarReserva(reservaCheckedOut);
-            IReservas reserva = new Reservas();
-            return reserva.ModificarReserva(reservaCheckedOut);
+
+            ServicioReserva.ReservasClient proxy = new ServicioReserva.ReservasClient();
+            Mapper.CreateMap<Reserva, ServicioReserva.Reserva>();
+            ServicioReserva.Reserva reservaAModificar = new ServicioReserva.Reserva();
+            Mapper.Map(reservaCheckedOut, reservaAModificar);
+            ServicioReserva.Reserva reservaModificada = proxy.ModificarReserva(reservaAModificar);
+            Reserva reservaRetorno = new Reserva();
+            Mapper.Map(reservaModificada, reservaRetorno);
+
+            return reservaRetorno;
         }
     }
 }
