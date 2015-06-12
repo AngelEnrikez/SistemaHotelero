@@ -89,7 +89,10 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Comprobantes.svc" />
+    <EmbeddedResource Include="Dominio\Cuenta.hbm.xml" />
+    <Content Include="Cuentas.svc" />
     <Content Include="Dominio\Comprobante.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Servicio.hbm.xml" />
     <Content Include="Habitaciones.svc" />
     <Content Include="Paises.svc" />
     <Content Include="Pasajeros.svc" />
@@ -124,8 +127,12 @@
     <Compile Include="Comprobantes.svc.cs">
       <DependentUpon>Comprobantes.svc</DependentUpon>
     </Compile>
+    <Compile Include="Cuentas.svc.cs">
+      <DependentUpon>Cuentas.svc</DependentUpon>
+    </Compile>
     <Compile Include="Dominio\Cliente.cs" />
     <Compile Include="Dominio\Comprobante.cs" />
+    <Compile Include="Dominio\Cuenta.cs" />
     <Compile Include="Dominio\Habitacion.cs" />
     <Compile Include="Dominio\Pasajero.cs" />
     <Compile Include="Dominio\Reserva.cs" />
@@ -143,6 +150,7 @@
     <Compile Include="ICheckOut.cs" />
     <Compile Include="IClientes.cs" />
     <Compile Include="IComprobantes.cs" />
+    <Compile Include="ICuentas.cs" />
     <Compile Include="IHabitaciones.cs" />
     <Compile Include="IPaises.cs" />
     <Compile Include="IPasajeros.cs" />
@@ -155,6 +163,7 @@
       <DependentUpon>Pasajeros.svc</DependentUpon>
     </Compile>
     <Compile Include="Persistencia\BaseDAO.cs" />
+    <Compile Include="Persistencia\CuentaDAO.cs" />
     <Compile Include="Persistencia\ComprobanteDAO.cs" />
     <Compile Include="Persistencia\HabitacionDAO.cs" />
     <Compile Include="Persistencia\PasajeroDAO.cs" />
