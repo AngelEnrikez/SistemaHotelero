@@ -7,6 +7,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using AutoMapper;
+using System.Net;
+using System.ServiceModel.Web;
 
 namespace ServiciosHoteles
 {
@@ -33,46 +36,42 @@ namespace ServiciosHoteles
         {
             try
             {
-                reservaCheckIn.FechaHoraCheckin = DateTime.Now;
+                if (reservaCheckIn.Estado != (int)EstadosReserva.Pendiente)
+                {
+                    throw new WebFaultException<string>(
+                        "La Reserva debe tener estado Pendiente", HttpStatusCode.PreconditionFailed);
+                }
+
+                DateTime horaCheckIn = DateTime.Now;
+               
+                if(horaCheckIn.ToString("%h").Equals("15")){
+                    throw new WebFaultException<string>(
+                        "La hora minima para hacer checkin es 3:00 pm", HttpStatusCode.PreconditionFailed);
+                }
+                
+                
+                reservaCheckIn.FechaHoraCheckin = horaCheckIn;
                 reservaCheckIn.Estado = (int)EstadosReserva.CheckedIn;
 
-                ServicioReserva.Reserva reservaProxyAModificar = new ServicioReserva.Reserva()
-                {
-                    IdReserva = reservaCheckIn.IdReserva,
-                    Cliente = new ServicioReserva.Cliente()
-                    {
-                        IdCliente = reservaCheckIn.Cliente.IdCliente
-                    },
-                    Habitacion = new ServicioReserva.Habitacion() { 
-                        IdHabitacion = reservaCheckIn.Habitacion.IdHabitacion
-                    },
-                    FechaLlegada = reservaCheckIn.FechaLlegada,
-                    FechaHoraCheckin = reservaCheckIn.FechaHoraCheckin,
-                    ComentarioCheckin = reservaCheckIn.ComentarioCheckin,
-                    CodFormaPago = reservaCheckIn.CodFormaPago,
-                    Estado = reservaCheckIn.Estado
-                };
+                Mapper.CreateMap<Reserva, ServicioReserva.Reserva>();
+                Mapper.CreateMap<Cliente, ServicioReserva.Cliente>();
+                Mapper.CreateMap<Habitacion, ServicioReserva.Habitacion>();
 
+                ServicioReserva.Reserva reservaProxyAModificar = new ServicioReserva.Reserva();
+
+                Mapper.Map(reservaCheckIn, reservaProxyAModificar);
                 
                 ServicioReserva.ReservasClient proxy = new ServicioReserva.ReservasClient();
                 ServicioReserva.Reserva reservaProxyModificada = proxy.ModificarReserva(reservaProxyAModificar);
 
-                Reserva reserva = new Reserva() {
-                    IdReserva = reservaProxyModificada.IdReserva,
-                    Cliente = new Cliente()
-                    {
-                        IdCliente = reservaProxyModificada.Cliente.IdCliente
-                    },
-                    Habitacion = new Habitacion()
-                    {
-                        IdHabitacion = reservaProxyModificada.Habitacion.IdHabitacion
-                    },
-                    FechaLlegada = reservaProxyModificada.FechaLlegada,
-                    FechaHoraCheckin = reservaProxyModificada.FechaHoraCheckin,
-                    ComentarioCheckin = reservaProxyModificada.ComentarioCheckin,
-                    CodFormaPago = reservaProxyModificada.CodFormaPago,
-                    Estado = reservaProxyModificada.Estado
-                };
+                Mapper.CreateMap<ServicioReserva.Reserva, Reserva>();
+                Mapper.CreateMap<ServicioReserva.Cliente, Cliente>();
+                Mapper.CreateMap<ServicioReserva.Habitacion, Habitacion>();
+                
+                Reserva reserva = new Reserva();
+                Mapper.Map(reservaProxyModificada, reserva);
+
+
                 
                 return reserva;
             }

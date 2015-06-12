@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="ServiciosHoteles"
+                   namespace="ServiciosHoteles.Dominio"
+                   default-lazy="false">
+  <class name="Servicio" table="t_Servicio">
+    <id name="IdServicio" column="idServicio">
+      <generator class="increment" />
+    </id>
+    <property name="Descripcion" column="descripcion" />
+    <property name="Tarifa" column="tarifa" />
+  </class>
+</hibernate-mapping>
