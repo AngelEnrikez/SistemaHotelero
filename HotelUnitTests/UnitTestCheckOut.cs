@@ -21,7 +21,7 @@ namespace HotelUnitTests
             string postdata = "{\"IdReserva\":1,\"Cliente\":{\"IdCliente\":1},\"Habitacion\":{\"IdHabitacion\":\"1\"},\"FechaLlegada\":\"/Date(62831853071)/\",\"FechaSalida\":\"/Date(62831853071)/\",\"FechaHoraCheckin\":\"/Date(62831853071)/\",\"ComentarioCheckin\":\"CheckIn sin problemas\",\"FechaHoraCheckout\":\"/Date(62831853071)/\",\"ComentarioCheckout\":\"CheckOut sin problemas\",\"CodFormaPago\":\"EF\",\"NumeroTarjeta\":\"2312312\",\"TitularTarjeta\":\"asdasdas\",\"MesExpiraTarjeta\":\"8\",\"AnioExpiraTarjeta\":\"2015\",\"RequerimientosEsp\":\"Sin requerimientos\",\"Observaciones\":\"\",\"EstadoCuenta\":true,\"Estado\":2}"; //JSON
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
-                .Create("http://localhost:49486/CheckOut.svc/Reservas");
+                .Create("http://localhost:49486/CheckOut.svc/CheckOut");
             req.Method = "PUT";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -53,7 +53,7 @@ namespace HotelUnitTests
             string postdata = "{\"IdReserva\":1,\"Cliente\":{\"IdCliente\":1},\"Habitacion\":{\"IdHabitacion\":\"1\"},\"FechaLlegada\":\"/Date(62831853071)/\",\"FechaSalida\":\"/Date(62831853071)/\",\"FechaHoraCheckin\":\"/Date(62831853071)/\",\"ComentarioCheckin\":\"CheckIn sin problemas\",\"FechaHoraCheckout\":\"/Date(62831853071)/\",\"ComentarioCheckout\":\"CheckOut sin problemas\",\"CodFormaPago\":\"EF\",\"NumeroTarjeta\":\"2312312\",\"TitularTarjeta\":\"asdasdas\",\"MesExpiraTarjeta\":\"8\",\"AnioExpiraTarjeta\":\"2015\",\"RequerimientosEsp\":\"Sin requerimientos\",\"Observaciones\":\"\",\"EstadoCuenta\":false,\"Estado\":2}"; //JSON
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
-                .Create("http://localhost:49486/CheckOut.svc/Reservas");
+                .Create("http://localhost:49486/CheckOut.svc/CheckOut");
             req.Method = "PUT";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -85,7 +85,7 @@ namespace HotelUnitTests
             string postdata = "{\"IdReserva\":1,\"Cliente\":{\"IdCliente\":1},\"Habitacion\":{\"IdHabitacion\":\"1\"},\"FechaLlegada\":\"/Date(62831853071)/\",\"FechaSalida\":\"/Date(62831853071)/\",\"FechaHoraCheckin\":\"/Date(62831853071)/\",\"ComentarioCheckin\":\"CheckIn sin problemas\",\"FechaHoraCheckout\":\"/Date(62831853071)/\",\"ComentarioCheckout\":\"CheckOut sin problemas\",\"CodFormaPago\":\"EF\",\"NumeroTarjeta\":\"2312312\",\"TitularTarjeta\":\"asdasdas\",\"MesExpiraTarjeta\":\"8\",\"AnioExpiraTarjeta\":\"2015\",\"RequerimientosEsp\":\"Sin requerimientos\",\"Observaciones\":\"\",\"EstadoCuenta\":true,\"Estado\":3}"; //JSON
             byte[] data = Encoding.UTF8.GetBytes(postdata);
             HttpWebRequest req = (HttpWebRequest)WebRequest
-                .Create("http://localhost:49486/CheckOut.svc/Reservas");
+                .Create("http://localhost:49486/CheckOut.svc/CheckOut");
             req.Method = "PUT";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
