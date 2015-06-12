@@ -44,15 +44,53 @@
                     <td>
                         <asp:Label ID="lblPasajeros" runat="server" Text="Pasajeros"></asp:Label>
                     </td>
-                    <td>
-                        <input id="btnPasajero" class="btn btn-default" type="button" value="Agregar Pasajeros" onclick="document.getElementById('ContentPlaceHolder1_hdAccion').value = 'C'; CerrarPopup(document.getElementById('ContentPlaceHolder1_hdEspoup').value, 'C');" /><br />
+                    <td>                        
+                        <asp:Button ID="btnAgregarPasajero" class="btn btn-default" runat="server" Text="Agregar pasajero" OnClick="btnAgregarPasajero_Click" />
+                        <br />
+                        <asp:Panel ID="pnPasajero" runat="server" Visible="False">
+                            <table class="table" style="width: 60%">
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="lblNombres" runat="server" Text="Nombres:"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="txtNombres" class="input-group-addon" MaxLength="80" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="lblApellidoPat" runat="server" Text="Apellido Paterno:"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="txtApellidoPat" class="input-group-addon" MaxLength="100" runat="server" Width="300px"></asp:TextBox>
 
-                        <asp:GridView ID="gdListado" CssClass="table" runat="server" Width="100%" AutoGenerateColumns="False">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="lblApellidoMat" runat="server" Text="Apellido Materno:"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="txtApellidoMat" MaxLength="100" class="input-group-addon" runat="server" Width="300px"></asp:TextBox>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2">                                        
+                                        <asp:Button ID="btnGuardarPasajero"  class="btn btn-default" runat="server" Text="Guardar" OnClick="btnGuardarPasajero_Click" />
+                                        <asp:Button ID="btnCancelarPasajero"  class="btn btn-default" runat="server" Text="Cancelar" OnClick="btnCancelarPasajero_Click" />
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </asp:Panel>
+
+                        <asp:GridView ID="gdListadoPasajeros" CssClass="table" runat="server" EnableViewState="true" Width="100%" AutoGenerateColumns="False">
                             <Columns>
-                                <asp:TemplateField HeaderText="Codigo">
+                                <asp:TemplateField HeaderText="Codigo" Visible="false">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblGridCodigo" runat="server" Text='<%# Eval("IdReserva") %>'></asp:Label>
-                                        <asp:HiddenField ID="hdGridCodigo" runat="server" Value='<%# Eval("IdReserva") %>' />
+                                        <asp:Label ID="lblGridCodigo" runat="server" Text='<%# Eval("IdPasajero") %>'></asp:Label>
+                                        <asp:HiddenField ID="hdGridCodigo" runat="server" Value='<%# Eval("IdPasajero") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Nombre" DataField="NombrePasajero">

@@ -13,7 +13,7 @@ public partial class Default2 : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         try
-        {
+        {            
             if (!this.IsPostBack)
             {
                 hdAgregarActualizar.Value = Request.QueryString["accion"].ToString();
@@ -21,12 +21,17 @@ public partial class Default2 : System.Web.UI.Page
                 MostrarItems();
                 MostrarRegistro();
                 btnAgregarCliente.Attributes.Add("OnClick", "OpenPopup('" + Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/") + "Administracion/AdministracionCliente.aspx?cod=0&accion=N&espopup=1" + "',900,900);");
+                //btnAgregarPasajero.Attributes.Add("OnClick", "OpenPopup('" + Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/") + "Alojamiento/AdministracionPasajero.aspx?cod=0&accion=N&espopup=1" + "',900,650);");
             }
             else
             {
                 if (Request["__EVENTARGUMENT"] != null)
                     if (Request["__EVENTARGUMENT"] == "cargarclientes")
                         CargarClientes();
+
+                //if (Request["__EVENTTARGET"] != null)
+                //    if (Request["__EVENTTARGET"] == "GuardarPasajero")
+                //        CargarPasajeros(Request["__EVENTARGUMENT"].ToString());
             }
         }
         catch (Exception ex)
@@ -97,7 +102,35 @@ public partial class Default2 : System.Web.UI.Page
             throw ex;
         }
     }
+    private void CargarPasajeros(string nombre,string apellidopaterno,string apellidomaterno)
+    {
+        try
+        {
+            List<Pasajero> listaPasajeros = new List<Pasajero>() ;
+            if (ViewState["Pasajeros"] != null)
+                listaPasajeros = (List<Pasajero>)ViewState["Pasajeros"];
 
+            Pasajero pasajero = new Pasajero()
+            {
+                NombrePasajero = nombre,
+                ApellidoPaterno = apellidopaterno,
+                ApellidoMaterno = apellidomaterno
+            };
+            listaPasajeros.Add(pasajero);
+            gdListadoPasajeros.DataSource = listaPasajeros;
+            gdListadoPasajeros.DataBind();
+            ViewState["Pasajeros"] = listaPasajeros;
+        
+            pnPasajero.Visible = false;
+            txtNombres.Text = "";
+            txtApellidoMat.Text = "";
+            txtApellidoPat.Text = "";
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
 
     /// <summary>
     /// Muestra los registros 
@@ -137,6 +170,10 @@ public partial class Default2 : System.Web.UI.Page
     {
         try
         {
+            List<Pasajero> listapasajeros = new List<Pasajero>();
+            if (ViewState["Pasajeros"] != null)
+                listapasajeros = (List<Pasajero>)ViewState["Pasajeros"];
+
             using (AlojamientoClient objReserva = new AlojamientoClient())
             {
                 ServicioAlojamiento.Cliente cliente = new ServicioAlojamiento.Cliente();
@@ -148,6 +185,7 @@ public partial class Default2 : System.Web.UI.Page
                     reserva.Cliente = cliente;
                     habitacion.IdHabitacion = Convert.ToInt32(cmbHbitacion.SelectedValue);
                     reserva.Habitacion = habitacion;
+                    reserva.Pasajero = listapasajeros;
                     reserva.FechaLlegada = DateTime.ParseExact(txtFechaLlegada.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
                     reserva.FechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
                     reserva.CodFormaPago = cmbFormaPago.SelectedValue.ToString();
@@ -162,6 +200,7 @@ public partial class Default2 : System.Web.UI.Page
                     reserva.Cliente = cliente;
                     habitacion.IdHabitacion = Convert.ToInt32(cmbHbitacion.SelectedValue);
                     reserva.Habitacion = habitacion;
+                    reserva.Pasajero = listapasajeros;
                     reserva.FechaLlegada = DateTime.ParseExact(txtFechaLlegada.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
                     reserva.FechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
                     reserva.CodFormaPago = cmbFormaPago.SelectedValue.ToString();
@@ -207,5 +246,31 @@ public partial class Default2 : System.Web.UI.Page
             divError.InnerHtml = ex.Message;
             divError.Visible = true;
         }
+    }
+    protected void btnAgregarPasajero_Click(object sender, EventArgs e)
+    {
+        pnPasajero.Visible = true;
+        txtNombres.Text = "";
+        txtApellidoMat.Text = "";
+        txtApellidoPat.Text = "";
+    }
+    protected void btnCancelarPasajero_Click(object sender, EventArgs e)
+    {
+        pnPasajero.Visible = false;
+        txtNombres.Text = "";
+        txtApellidoMat.Text = "";
+        txtApellidoPat.Text = "";
+    }
+    protected void btnGuardarPasajero_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            CargarPasajeros(txtNombres.Text, txtApellidoPat.Text, txtApellidoMat.Text);
+        }
+        catch (Exception ex)
+        {
+            divError.InnerHtml = ex.Message;
+            divError.Visible = true;
+        }        
     }
 }
