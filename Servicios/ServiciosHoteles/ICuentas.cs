@@ -22,5 +22,7 @@ namespace ServiciosHoteles
         Cuenta ObtenerCuenta(int codigo);
         [OperationContract]
         List<Cuenta> ListarCuentas();
+        [OperationContract]
+        List<Cuenta> ListarCuentasPorReserva(int idReserva);
     }
 }

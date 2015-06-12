@@ -37,6 +37,12 @@
   <wsdl:message name="ICuentas_ListarCuentas_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarCuentasResponse" />
   </wsdl:message>
+  <wsdl:message name="ICuentas_ListarCuentasPorReserva_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCuentasPorReserva" />
+  </wsdl:message>
+  <wsdl:message name="ICuentas_ListarCuentasPorReserva_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCuentasPorReservaResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICuentas">
     <wsdl:operation name="CrearCuenta">
       <wsdl:input wsaw:Action="http://tempuri.org/ICuentas/CrearCuenta" message="tns:ICuentas_CrearCuenta_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="ListarCuentas">
       <wsdl:input wsaw:Action="http://tempuri.org/ICuentas/ListarCuentas" message="tns:ICuentas_ListarCuentas_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICuentas/ListarCuentasResponse" message="tns:ICuentas_ListarCuentas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCuentasPorReserva">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICuentas/ListarCuentasPorReserva" message="tns:ICuentas_ListarCuentasPorReserva_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICuentas/ListarCuentasPorReservaResponse" message="tns:ICuentas_ListarCuentasPorReserva_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICuentas" type="tns:ICuentas">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListarCuentas">
       <soap:operation soapAction="http://tempuri.org/ICuentas/ListarCuentas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCuentasPorReserva">
+      <soap:operation soapAction="http://tempuri.org/ICuentas/ListarCuentasPorReserva" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

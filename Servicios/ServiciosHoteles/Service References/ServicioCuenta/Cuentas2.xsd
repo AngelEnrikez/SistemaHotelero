@@ -67,4 +67,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ListarCuentasPorReserva">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idReserva" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCuentasPorReservaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="ListarCuentasPorReservaResult" nillable="true" type="q8:ArrayOfCuenta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

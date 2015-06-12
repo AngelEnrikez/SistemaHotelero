@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ParametrosConf" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:49486/ParametrosConf.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:49486/ParametrosConf.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:49486/ParametrosConf.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IParametrosConf_ModificarParametro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarParametro" />
+  </wsdl:message>
+  <wsdl:message name="IParametrosConf_ModificarParametro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarParametroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParametrosConf_ObtenerParametro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerParametro" />
+  </wsdl:message>
+  <wsdl:message name="IParametrosConf_ObtenerParametro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerParametroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParametrosConf_ListarParametros_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarParametros" />
+  </wsdl:message>
+  <wsdl:message name="IParametrosConf_ListarParametros_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarParametrosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IParametrosConf">
+    <wsdl:operation name="ModificarParametro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParametrosConf/ModificarParametro" message="tns:IParametrosConf_ModificarParametro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParametrosConf/ModificarParametroResponse" message="tns:IParametrosConf_ModificarParametro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerParametro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParametrosConf/ObtenerParametro" message="tns:IParametrosConf_ObtenerParametro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParametrosConf/ObtenerParametroResponse" message="tns:IParametrosConf_ObtenerParametro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarParametros">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParametrosConf/ListarParametros" message="tns:IParametrosConf_ListarParametros_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParametrosConf/ListarParametrosResponse" message="tns:IParametrosConf_ListarParametros_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IParametrosConf" type="tns:IParametrosConf">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ModificarParametro">
+      <soap:operation soapAction="http://tempuri.org/IParametrosConf/ModificarParametro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerParametro">
+      <soap:operation soapAction="http://tempuri.org/IParametrosConf/ObtenerParametro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarParametros">
+      <soap:operation soapAction="http://tempuri.org/IParametrosConf/ListarParametros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ParametrosConf">
+    <wsdl:port name="BasicHttpBinding_IParametrosConf" binding="tns:BasicHttpBinding_IParametrosConf">
+      <soap:address location="http://localhost:49486/ParametrosConf.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

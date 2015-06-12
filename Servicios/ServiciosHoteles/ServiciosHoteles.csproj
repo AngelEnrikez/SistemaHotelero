@@ -91,7 +91,7 @@
     <Content Include="Comprobantes.svc" />
     <EmbeddedResource Include="Dominio\Cuenta.hbm.xml" />
     <Content Include="Cuentas.svc" />
-    <Content Include="Dominio\Comprobante.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Comprobante.hbm.xml" />
     <EmbeddedResource Include="Dominio\Servicio.hbm.xml" />
     <EmbeddedResource Include="Dominio\Parametro.hbm.xml" />
     <Content Include="Habitaciones.svc" />
@@ -100,6 +100,39 @@
     <Content Include="Pasajeros.svc" />
     <Content Include="Reservas.svc" />
     <Content Include="packages.config" />
+    <None Include="Service References\ServicioComprobante\Comprobantes.wsdl" />
+    <None Include="Service References\ServicioComprobante\Comprobantes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioComprobante\Comprobantes1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioComprobante\Comprobantes2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\ServicioComprobante\ServiciosHoteles.ServicioComprobante.Comprobante.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ServicioConfig\ParametrosConf.wsdl" />
+    <None Include="Service References\ServicioConfig\ParametrosConf.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioConfig\ParametrosConf1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioConfig\ParametrosConf2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioComprobante\Comprobantes.disco" />
+    <None Include="Service References\ServicioComprobante\configuration91.svcinfo" />
+    <None Include="Service References\ServicioComprobante\configuration.svcinfo" />
+    <None Include="Service References\ServicioComprobante\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\ServicioConfig\ServiciosHoteles.ServicioConfig.Parametro.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ServicioCuenta\Cuentas.wsdl" />
     <None Include="Service References\ServicioCuenta\Cuentas.xsd">
       <SubType>Designer</SubType>
@@ -109,6 +142,13 @@
     </None>
     <None Include="Service References\ServicioCuenta\Cuentas2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioConfig\ParametrosConf.disco" />
+    <None Include="Service References\ServicioConfig\configuration91.svcinfo" />
+    <None Include="Service References\ServicioConfig\configuration.svcinfo" />
+    <None Include="Service References\ServicioConfig\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Service References\ServicioCuenta\ServiciosHoteles.ServicioCuenta.Cuenta.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -203,6 +243,16 @@
     <Compile Include="Reservas.svc.cs">
       <DependentUpon>Reservas.svc</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServicioComprobante\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServicioConfig\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServicioCuenta\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -247,6 +297,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServicioComprobante\" />
+    <WCFMetadataStorage Include="Service References\ServicioConfig\" />
     <WCFMetadataStorage Include="Service References\ServicioCuenta\" />
     <WCFMetadataStorage Include="Service References\ServicioReserva\" />
   </ItemGroup>

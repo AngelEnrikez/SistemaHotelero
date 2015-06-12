@@ -8,37 +8,49 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServiciosHoteles.ServicioCuenta {
+namespace ServiciosHoteles.ServicioComprobante {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Cuenta", Namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Comprobante", Namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio")]
     [System.SerializableAttribute()]
-    public partial class Cuenta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Comprobante : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CantidadField;
+        private int EstadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double CostoUnitarioField;
+        private System.DateTime FechaEmisionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdCuentaField;
+        private int IdComprobanteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ServiciosHoteles.ServicioCuenta.Reserva ReservaField;
+        private decimal IgvField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ServiciosHoteles.ServicioCuenta.Servicio ServicioField;
+        private decimal ImporteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double TotalField;
+        private decimal ImporteIgvField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ImporteTotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NumeroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ServiciosHoteles.ServicioComprobante.Reserva ReservaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SerieField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -51,46 +63,111 @@ namespace ServiciosHoteles.ServicioCuenta {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Cantidad {
+        public int Estado {
             get {
-                return this.CantidadField;
+                return this.EstadoField;
             }
             set {
-                if ((this.CantidadField.Equals(value) != true)) {
-                    this.CantidadField = value;
-                    this.RaisePropertyChanged("Cantidad");
+                if ((this.EstadoField.Equals(value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public double CostoUnitario {
+        public System.DateTime FechaEmision {
             get {
-                return this.CostoUnitarioField;
+                return this.FechaEmisionField;
             }
             set {
-                if ((this.CostoUnitarioField.Equals(value) != true)) {
-                    this.CostoUnitarioField = value;
-                    this.RaisePropertyChanged("CostoUnitario");
+                if ((this.FechaEmisionField.Equals(value) != true)) {
+                    this.FechaEmisionField = value;
+                    this.RaisePropertyChanged("FechaEmision");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdCuenta {
+        public int IdComprobante {
             get {
-                return this.IdCuentaField;
+                return this.IdComprobanteField;
             }
             set {
-                if ((this.IdCuentaField.Equals(value) != true)) {
-                    this.IdCuentaField = value;
-                    this.RaisePropertyChanged("IdCuenta");
+                if ((this.IdComprobanteField.Equals(value) != true)) {
+                    this.IdComprobanteField = value;
+                    this.RaisePropertyChanged("IdComprobante");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiciosHoteles.ServicioCuenta.Reserva Reserva {
+        public decimal Igv {
+            get {
+                return this.IgvField;
+            }
+            set {
+                if ((this.IgvField.Equals(value) != true)) {
+                    this.IgvField = value;
+                    this.RaisePropertyChanged("Igv");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Importe {
+            get {
+                return this.ImporteField;
+            }
+            set {
+                if ((this.ImporteField.Equals(value) != true)) {
+                    this.ImporteField = value;
+                    this.RaisePropertyChanged("Importe");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal ImporteIgv {
+            get {
+                return this.ImporteIgvField;
+            }
+            set {
+                if ((this.ImporteIgvField.Equals(value) != true)) {
+                    this.ImporteIgvField = value;
+                    this.RaisePropertyChanged("ImporteIgv");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal ImporteTotal {
+            get {
+                return this.ImporteTotalField;
+            }
+            set {
+                if ((this.ImporteTotalField.Equals(value) != true)) {
+                    this.ImporteTotalField = value;
+                    this.RaisePropertyChanged("ImporteTotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Numero {
+            get {
+                return this.NumeroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NumeroField, value) != true)) {
+                    this.NumeroField = value;
+                    this.RaisePropertyChanged("Numero");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ServiciosHoteles.ServicioComprobante.Reserva Reserva {
             get {
                 return this.ReservaField;
             }
@@ -103,27 +180,14 @@ namespace ServiciosHoteles.ServicioCuenta {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiciosHoteles.ServicioCuenta.Servicio Servicio {
+        public string Serie {
             get {
-                return this.ServicioField;
+                return this.SerieField;
             }
             set {
-                if ((object.ReferenceEquals(this.ServicioField, value) != true)) {
-                    this.ServicioField = value;
-                    this.RaisePropertyChanged("Servicio");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Total {
-            get {
-                return this.TotalField;
-            }
-            set {
-                if ((this.TotalField.Equals(value) != true)) {
-                    this.TotalField = value;
-                    this.RaisePropertyChanged("Total");
+                if ((object.ReferenceEquals(this.SerieField, value) != true)) {
+                    this.SerieField = value;
+                    this.RaisePropertyChanged("Serie");
                 }
             }
         }
@@ -151,7 +215,7 @@ namespace ServiciosHoteles.ServicioCuenta {
         private int AnioExpiraTarjetaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ServiciosHoteles.ServicioCuenta.Cliente ClienteField;
+        private ServiciosHoteles.ServicioComprobante.Cliente ClienteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CodFormaPagoField;
@@ -181,7 +245,7 @@ namespace ServiciosHoteles.ServicioCuenta {
         private System.DateTime FechaSalidaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ServiciosHoteles.ServicioCuenta.Habitacion HabitacionField;
+        private ServiciosHoteles.ServicioComprobante.Habitacion HabitacionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdReservaField;
@@ -196,7 +260,7 @@ namespace ServiciosHoteles.ServicioCuenta {
         private string ObservacionesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ServiciosHoteles.ServicioCuenta.Pasajero[] PasajeroField;
+        private ServiciosHoteles.ServicioComprobante.Pasajero[] PasajeroField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RequerimientosEspField;
@@ -228,7 +292,7 @@ namespace ServiciosHoteles.ServicioCuenta {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiciosHoteles.ServicioCuenta.Cliente Cliente {
+        public ServiciosHoteles.ServicioComprobante.Cliente Cliente {
             get {
                 return this.ClienteField;
             }
@@ -358,7 +422,7 @@ namespace ServiciosHoteles.ServicioCuenta {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiciosHoteles.ServicioCuenta.Habitacion Habitacion {
+        public ServiciosHoteles.ServicioComprobante.Habitacion Habitacion {
             get {
                 return this.HabitacionField;
             }
@@ -423,7 +487,7 @@ namespace ServiciosHoteles.ServicioCuenta {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiciosHoteles.ServicioCuenta.Pasajero[] Pasajero {
+        public ServiciosHoteles.ServicioComprobante.Pasajero[] Pasajero {
             get {
                 return this.PasajeroField;
             }
@@ -473,83 +537,6 @@ namespace ServiciosHoteles.ServicioCuenta {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Servicio", Namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio")]
-    [System.SerializableAttribute()]
-    public partial class Servicio : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescripcionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdServicioField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal TarifaField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Descripcion {
-            get {
-                return this.DescripcionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
-                    this.DescripcionField = value;
-                    this.RaisePropertyChanged("Descripcion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdServicio {
-            get {
-                return this.IdServicioField;
-            }
-            set {
-                if ((this.IdServicioField.Equals(value) != true)) {
-                    this.IdServicioField = value;
-                    this.RaisePropertyChanged("IdServicio");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Tarifa {
-            get {
-                return this.TarifaField;
-            }
-            set {
-                if ((this.TarifaField.Equals(value) != true)) {
-                    this.TarifaField = value;
-                    this.RaisePropertyChanged("Tarifa");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Cliente", Namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio")]
     [System.SerializableAttribute()]
     public partial class Cliente : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -576,13 +563,13 @@ namespace ServiciosHoteles.ServicioCuenta {
         private string NumeroDocumentoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ServiciosHoteles.ServicioCuenta.Pais PaisField;
+        private ServiciosHoteles.ServicioComprobante.Pais PaisField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TelefonoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ServiciosHoteles.ServicioCuenta.TipoDocumento TipoDocumentoField;
+        private ServiciosHoteles.ServicioComprobante.TipoDocumento TipoDocumentoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -673,7 +660,7 @@ namespace ServiciosHoteles.ServicioCuenta {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiciosHoteles.ServicioCuenta.Pais Pais {
+        public ServiciosHoteles.ServicioComprobante.Pais Pais {
             get {
                 return this.PaisField;
             }
@@ -699,7 +686,7 @@ namespace ServiciosHoteles.ServicioCuenta {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiciosHoteles.ServicioCuenta.TipoDocumento TipoDocumento {
+        public ServiciosHoteles.ServicioComprobante.TipoDocumento TipoDocumento {
             get {
                 return this.TipoDocumentoField;
             }
@@ -743,7 +730,7 @@ namespace ServiciosHoteles.ServicioCuenta {
         private int PisoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ServiciosHoteles.ServicioCuenta.TipoHabitacion TipoHabitacionField;
+        private ServiciosHoteles.ServicioComprobante.TipoHabitacion TipoHabitacionField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -808,7 +795,7 @@ namespace ServiciosHoteles.ServicioCuenta {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiciosHoteles.ServicioCuenta.TipoHabitacion TipoHabitacion {
+        public ServiciosHoteles.ServicioComprobante.TipoHabitacion TipoHabitacion {
             get {
                 return this.TipoHabitacionField;
             }
@@ -852,7 +839,7 @@ namespace ServiciosHoteles.ServicioCuenta {
         private string NombrePasajeroField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ServiciosHoteles.ServicioCuenta.Reserva ReservaField;
+        private ServiciosHoteles.ServicioComprobante.Reserva ReservaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -917,7 +904,7 @@ namespace ServiciosHoteles.ServicioCuenta {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ServiciosHoteles.ServicioCuenta.Reserva Reserva {
+        public ServiciosHoteles.ServicioComprobante.Reserva Reserva {
             get {
                 return this.ReservaField;
             }
@@ -1139,119 +1126,63 @@ namespace ServiciosHoteles.ServicioCuenta {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServicioCuenta.ICuentas")]
-    public interface ICuentas {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServicioComprobante.IComprobantes")]
+    public interface IComprobantes {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentas/CrearCuenta", ReplyAction="http://tempuri.org/ICuentas/CrearCuentaResponse")]
-        ServiciosHoteles.ServicioCuenta.Cuenta CrearCuenta(ServiciosHoteles.ServicioCuenta.Cuenta cuentaNueva);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IComprobantes/CrearComprobante", ReplyAction="http://tempuri.org/IComprobantes/CrearComprobanteResponse")]
+        ServiciosHoteles.ServicioComprobante.Comprobante CrearComprobante(ServiciosHoteles.ServicioComprobante.Comprobante comprobanteNuevo);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentas/CrearCuenta", ReplyAction="http://tempuri.org/ICuentas/CrearCuentaResponse")]
-        System.Threading.Tasks.Task<ServiciosHoteles.ServicioCuenta.Cuenta> CrearCuentaAsync(ServiciosHoteles.ServicioCuenta.Cuenta cuentaNueva);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IComprobantes/CrearComprobante", ReplyAction="http://tempuri.org/IComprobantes/CrearComprobanteResponse")]
+        System.Threading.Tasks.Task<ServiciosHoteles.ServicioComprobante.Comprobante> CrearComprobanteAsync(ServiciosHoteles.ServicioComprobante.Comprobante comprobanteNuevo);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentas/ModificarCuenta", ReplyAction="http://tempuri.org/ICuentas/ModificarCuentaResponse")]
-        ServiciosHoteles.ServicioCuenta.Cuenta ModificarCuenta(ServiciosHoteles.ServicioCuenta.Cuenta cuentaModificada);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IComprobantes/ObtenerComprobante", ReplyAction="http://tempuri.org/IComprobantes/ObtenerComprobanteResponse")]
+        ServiciosHoteles.ServicioComprobante.Comprobante ObtenerComprobante(int idComprobante);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentas/ModificarCuenta", ReplyAction="http://tempuri.org/ICuentas/ModificarCuentaResponse")]
-        System.Threading.Tasks.Task<ServiciosHoteles.ServicioCuenta.Cuenta> ModificarCuentaAsync(ServiciosHoteles.ServicioCuenta.Cuenta cuentaModificada);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentas/EliminarCuenta", ReplyAction="http://tempuri.org/ICuentas/EliminarCuentaResponse")]
-        void EliminarCuenta(ServiciosHoteles.ServicioCuenta.Cuenta cuentaEliminar);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentas/EliminarCuenta", ReplyAction="http://tempuri.org/ICuentas/EliminarCuentaResponse")]
-        System.Threading.Tasks.Task EliminarCuentaAsync(ServiciosHoteles.ServicioCuenta.Cuenta cuentaEliminar);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentas/ObtenerCuenta", ReplyAction="http://tempuri.org/ICuentas/ObtenerCuentaResponse")]
-        ServiciosHoteles.ServicioCuenta.Cuenta ObtenerCuenta(int codigo);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentas/ObtenerCuenta", ReplyAction="http://tempuri.org/ICuentas/ObtenerCuentaResponse")]
-        System.Threading.Tasks.Task<ServiciosHoteles.ServicioCuenta.Cuenta> ObtenerCuentaAsync(int codigo);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentas/ListarCuentas", ReplyAction="http://tempuri.org/ICuentas/ListarCuentasResponse")]
-        ServiciosHoteles.ServicioCuenta.Cuenta[] ListarCuentas();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentas/ListarCuentas", ReplyAction="http://tempuri.org/ICuentas/ListarCuentasResponse")]
-        System.Threading.Tasks.Task<ServiciosHoteles.ServicioCuenta.Cuenta[]> ListarCuentasAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentas/ListarCuentasPorReserva", ReplyAction="http://tempuri.org/ICuentas/ListarCuentasPorReservaResponse")]
-        ServiciosHoteles.ServicioCuenta.Cuenta[] ListarCuentasPorReserva(int idReserva);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentas/ListarCuentasPorReserva", ReplyAction="http://tempuri.org/ICuentas/ListarCuentasPorReservaResponse")]
-        System.Threading.Tasks.Task<ServiciosHoteles.ServicioCuenta.Cuenta[]> ListarCuentasPorReservaAsync(int idReserva);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IComprobantes/ObtenerComprobante", ReplyAction="http://tempuri.org/IComprobantes/ObtenerComprobanteResponse")]
+        System.Threading.Tasks.Task<ServiciosHoteles.ServicioComprobante.Comprobante> ObtenerComprobanteAsync(int idComprobante);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ICuentasChannel : ServiciosHoteles.ServicioCuenta.ICuentas, System.ServiceModel.IClientChannel {
+    public interface IComprobantesChannel : ServiciosHoteles.ServicioComprobante.IComprobantes, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class CuentasClient : System.ServiceModel.ClientBase<ServiciosHoteles.ServicioCuenta.ICuentas>, ServiciosHoteles.ServicioCuenta.ICuentas {
+    public partial class ComprobantesClient : System.ServiceModel.ClientBase<ServiciosHoteles.ServicioComprobante.IComprobantes>, ServiciosHoteles.ServicioComprobante.IComprobantes {
         
-        public CuentasClient() {
+        public ComprobantesClient() {
         }
         
-        public CuentasClient(string endpointConfigurationName) : 
+        public ComprobantesClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public CuentasClient(string endpointConfigurationName, string remoteAddress) : 
+        public ComprobantesClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public CuentasClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ComprobantesClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public CuentasClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ComprobantesClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public ServiciosHoteles.ServicioCuenta.Cuenta CrearCuenta(ServiciosHoteles.ServicioCuenta.Cuenta cuentaNueva) {
-            return base.Channel.CrearCuenta(cuentaNueva);
+        public ServiciosHoteles.ServicioComprobante.Comprobante CrearComprobante(ServiciosHoteles.ServicioComprobante.Comprobante comprobanteNuevo) {
+            return base.Channel.CrearComprobante(comprobanteNuevo);
         }
         
-        public System.Threading.Tasks.Task<ServiciosHoteles.ServicioCuenta.Cuenta> CrearCuentaAsync(ServiciosHoteles.ServicioCuenta.Cuenta cuentaNueva) {
-            return base.Channel.CrearCuentaAsync(cuentaNueva);
+        public System.Threading.Tasks.Task<ServiciosHoteles.ServicioComprobante.Comprobante> CrearComprobanteAsync(ServiciosHoteles.ServicioComprobante.Comprobante comprobanteNuevo) {
+            return base.Channel.CrearComprobanteAsync(comprobanteNuevo);
         }
         
-        public ServiciosHoteles.ServicioCuenta.Cuenta ModificarCuenta(ServiciosHoteles.ServicioCuenta.Cuenta cuentaModificada) {
-            return base.Channel.ModificarCuenta(cuentaModificada);
+        public ServiciosHoteles.ServicioComprobante.Comprobante ObtenerComprobante(int idComprobante) {
+            return base.Channel.ObtenerComprobante(idComprobante);
         }
         
-        public System.Threading.Tasks.Task<ServiciosHoteles.ServicioCuenta.Cuenta> ModificarCuentaAsync(ServiciosHoteles.ServicioCuenta.Cuenta cuentaModificada) {
-            return base.Channel.ModificarCuentaAsync(cuentaModificada);
-        }
-        
-        public void EliminarCuenta(ServiciosHoteles.ServicioCuenta.Cuenta cuentaEliminar) {
-            base.Channel.EliminarCuenta(cuentaEliminar);
-        }
-        
-        public System.Threading.Tasks.Task EliminarCuentaAsync(ServiciosHoteles.ServicioCuenta.Cuenta cuentaEliminar) {
-            return base.Channel.EliminarCuentaAsync(cuentaEliminar);
-        }
-        
-        public ServiciosHoteles.ServicioCuenta.Cuenta ObtenerCuenta(int codigo) {
-            return base.Channel.ObtenerCuenta(codigo);
-        }
-        
-        public System.Threading.Tasks.Task<ServiciosHoteles.ServicioCuenta.Cuenta> ObtenerCuentaAsync(int codigo) {
-            return base.Channel.ObtenerCuentaAsync(codigo);
-        }
-        
-        public ServiciosHoteles.ServicioCuenta.Cuenta[] ListarCuentas() {
-            return base.Channel.ListarCuentas();
-        }
-        
-        public System.Threading.Tasks.Task<ServiciosHoteles.ServicioCuenta.Cuenta[]> ListarCuentasAsync() {
-            return base.Channel.ListarCuentasAsync();
-        }
-        
-        public ServiciosHoteles.ServicioCuenta.Cuenta[] ListarCuentasPorReserva(int idReserva) {
-            return base.Channel.ListarCuentasPorReserva(idReserva);
-        }
-        
-        public System.Threading.Tasks.Task<ServiciosHoteles.ServicioCuenta.Cuenta[]> ListarCuentasPorReservaAsync(int idReserva) {
-            return base.Channel.ListarCuentasPorReservaAsync(idReserva);
+        public System.Threading.Tasks.Task<ServiciosHoteles.ServicioComprobante.Comprobante> ObtenerComprobanteAsync(int idComprobante) {
+            return base.Channel.ObtenerComprobanteAsync(idComprobante);
         }
     }
 }

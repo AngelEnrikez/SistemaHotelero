@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2686c6ef-be6a-4812-ba32-19307a616fcc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:49486/Comprobantes.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Comprobantes.xsd" MetadataType="Schema" ID="6bd07a1b-4081-4b3c-b608-0b8ffa5db6cf" SourceId="1" SourceUrl="http://localhost:49486/Comprobantes.svc?xsd=xsd2" />
+    <MetadataFile FileName="Comprobantes1.xsd" MetadataType="Schema" ID="917b0cb5-0ff9-43f8-a01c-094421609d8d" SourceId="1" SourceUrl="http://localhost:49486/Comprobantes.svc?xsd=xsd0" />
+    <MetadataFile FileName="Comprobantes2.xsd" MetadataType="Schema" ID="3d6d68f4-af4e-4cc9-9f7b-996ad0551797" SourceId="1" SourceUrl="http://localhost:49486/Comprobantes.svc?xsd=xsd1" />
+    <MetadataFile FileName="Comprobantes.disco" MetadataType="Disco" ID="f08186d6-5c3b-4cbf-8792-7a39d2487546" SourceId="1" SourceUrl="http://localhost:49486/Comprobantes.svc?disco" />
+    <MetadataFile FileName="Comprobantes.wsdl" MetadataType="Wsdl" ID="2e715757-b686-4ff7-b651-52bb6dcaf00e" SourceId="1" SourceUrl="http://localhost:49486/Comprobantes.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

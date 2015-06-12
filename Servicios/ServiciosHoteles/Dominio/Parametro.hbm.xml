@@ -4,7 +4,7 @@
                    namespace="ServiciosHoteles.Dominio"
                    default-lazy="false">
   <class name="Parametro" table="t_Configuracion">
-    <id name="IdConfiguracion" column="idConfiuracion">
+    <id name="IdConfiguracion" column="idConfiguracion">
       <generator class="increment" />
     </id>
     <property name="ClaveConfig" column="claveConfig" />

@@ -48,9 +48,61 @@ namespace ServiciosHoteles
             Reserva reservaRetorno = new Reserva();
             Mapper.Map(reservaModificada, reservaRetorno);
 
-            //Se registra el Comprobante de Pago
+            //Obtenemos los sgtes parámetros de configuración: IGV, Serie y Último Número de comprobante
+            decimal igv = 0;
+            string serie = "";
+            int ultNumero = 0;
+            string numeroComp = "";
+            ServicioConfig.ParametrosConfClient proxyConfig = new ServicioConfig.ParametrosConfClient();
+            List<ServicioConfig.Parametro> parametrosConf = proxyConfig.ListarParametros().ToList();
+            foreach (ServicioConfig.Parametro parametro in parametrosConf)
+            {
+                if (parametro.ClaveConfig == "IGV")
+                {
+                    igv = Decimal.Parse(parametro.ValorConfig);
+                }
+                else if (parametro.ClaveConfig == "SERIECOMP")
+                {
+                    serie = parametro.ValorConfig;
+                }
+                else if (parametro.ClaveConfig == "ULTNROCOMP")
+                {
+                    ultNumero = Int32.Parse(parametro.ValorConfig);
+                    ultNumero++;
+                    parametro.ValorConfig = ultNumero.ToString();
+                    proxyConfig.ModificarParametro(parametro);
+                    numeroComp = String.Format("{0:0000000}", ultNumero);
+                }
+            }
 
+            //Obtenemos todos los items de la Cuenta asociada a la Reserva
+            decimal importeSinIgv = 0;
+            ServicioCuenta.CuentasClient proxyCuenta = new ServicioCuenta.CuentasClient();
+            List<ServicioCuenta.Cuenta> listaCuentas = proxyCuenta.ListarCuentasPorReserva(reservaRetorno.IdReserva).ToList();
+            foreach (ServicioCuenta.Cuenta cuenta in listaCuentas)
+            {
+                importeSinIgv = importeSinIgv + (decimal)cuenta.Total;
+            }
+            decimal importeIgv = importeSinIgv * igv;
+            decimal importeTotal = importeSinIgv + importeIgv;
 
+            //Creamos un objeto Comprobante y lo grabamos en la base de datos
+            ServicioComprobante.ComprobantesClient proxyComprobante = new ServicioComprobante.ComprobantesClient();
+            ServicioComprobante.Comprobante nuevoComprobante = new ServicioComprobante.Comprobante()
+            {
+                Reserva = new ServicioComprobante.Reserva() { IdReserva = reservaRetorno.IdReserva },
+                Serie = serie,
+                Numero = numeroComp,
+                FechaEmision = DateTime.Now,
+                Importe = importeSinIgv,
+                Igv = igv,
+                ImporteIgv = importeIgv,
+                ImporteTotal = importeTotal,
+                Estado = 0
+            };
+            proxyComprobante.CrearComprobante(nuevoComprobante);
+
+            //Retornar la reserva actualizada con el CheckOut
             return reservaRetorno;
         }
     }

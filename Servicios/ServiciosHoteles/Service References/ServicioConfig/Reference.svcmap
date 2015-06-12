@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ccb80d79-f5e9-413d-b8fc-de8a72e0dfbd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:49486/ParametrosConf.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ParametrosConf.xsd" MetadataType="Schema" ID="7906aa59-2423-478e-af28-65463a412140" SourceId="1" SourceUrl="http://localhost:49486/ParametrosConf.svc?xsd=xsd0" />
+    <MetadataFile FileName="ParametrosConf1.xsd" MetadataType="Schema" ID="c8632aad-fea3-4a29-89e3-739b0ab29dec" SourceId="1" SourceUrl="http://localhost:49486/ParametrosConf.svc?xsd=xsd2" />
+    <MetadataFile FileName="ParametrosConf2.xsd" MetadataType="Schema" ID="809de01a-8088-40e7-934a-b46d666820ac" SourceId="1" SourceUrl="http://localhost:49486/ParametrosConf.svc?xsd=xsd1" />
+    <MetadataFile FileName="ParametrosConf.wsdl" MetadataType="Wsdl" ID="b03728a8-53e5-4b45-a2b6-7c7d99441379" SourceId="1" SourceUrl="http://localhost:49486/ParametrosConf.svc?wsdl" />
+    <MetadataFile FileName="ParametrosConf.disco" MetadataType="Disco" ID="1efe5c3a-490d-4de2-a5b3-057a7ca0c027" SourceId="1" SourceUrl="http://localhost:49486/ParametrosConf.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

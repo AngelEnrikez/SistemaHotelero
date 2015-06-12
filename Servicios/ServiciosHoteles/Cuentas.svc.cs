@@ -77,5 +77,9 @@ namespace ServiciosHoteles
         {
             return CuentaDAO.Listar().ToList();
         }
+        public List<Dominio.Cuenta> ListarCuentasPorReserva(int idReserva)
+        {
+            return CuentaDAO.Buscar(idReserva).ToList();
+        }
     }
 }
