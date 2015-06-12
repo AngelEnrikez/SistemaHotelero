@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 namespace ServiciosHoteles.Dominio
 {
     [DataContract]
+    [Serializable]
     public class Pais
     {
         [DataMember]

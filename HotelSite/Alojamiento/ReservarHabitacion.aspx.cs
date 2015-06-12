@@ -13,7 +13,7 @@ public partial class Default2 : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         try
-        {            
+        {
             if (!this.IsPostBack)
             {
                 hdAgregarActualizar.Value = Request.QueryString["accion"].ToString();
@@ -61,7 +61,6 @@ public partial class Default2 : System.Web.UI.Page
                         if (listatipohabitacion.Where(g => g.IdTipoHabitacion == habi.TipoHabitacion.IdTipoHabitacion).Count() == 0)
                             listatipohabitacion.Add(habi.TipoHabitacion);
                     }
-
                 }
 
                 cmbTipoHabitacion.DataSource = listatipohabitacion;
@@ -102,11 +101,11 @@ public partial class Default2 : System.Web.UI.Page
             throw ex;
         }
     }
-    private void CargarPasajeros(string nombre,string apellidopaterno,string apellidomaterno)
+    private void CargarPasajeros(string nombre, string apellidopaterno, string apellidomaterno)
     {
         try
         {
-            List<Pasajero> listaPasajeros = new List<Pasajero>() ;
+            List<Pasajero> listaPasajeros = new List<Pasajero>();
             if (ViewState["Pasajeros"] != null)
                 listaPasajeros = (List<Pasajero>)ViewState["Pasajeros"];
 
@@ -120,7 +119,7 @@ public partial class Default2 : System.Web.UI.Page
             gdListadoPasajeros.DataSource = listaPasajeros;
             gdListadoPasajeros.DataBind();
             ViewState["Pasajeros"] = listaPasajeros;
-        
+
             pnPasajero.Visible = false;
             txtNombres.Text = "";
             txtApellidoMat.Text = "";
@@ -141,17 +140,38 @@ public partial class Default2 : System.Web.UI.Page
         {
             if (hdAgregarActualizar.Value == "A")
             {
-                using (AlojamientoClient objCliente = new AlojamientoClient())
+                using (AlojamientoClient objReserva = new AlojamientoClient())
                 {
                     ServicioAlojamiento.Reserva reserva;
-                    reserva = objCliente.ReservarHabitacion(ServicioAlojamiento.Constantes.Obtener, null, Convert.ToInt32(hdCodigo.Value))[0];
-                    cmbCliente.SelectedValue = reserva.Cliente.IdCliente.ToString();
-                    cmbHbitacion.SelectedValue = reserva.Habitacion.IdHabitacion.ToString();
+                    reserva = objReserva.ReservarHabitacion(ServicioAlojamiento.Constantes.Obtener, null, Convert.ToInt32(hdCodigo.Value))[0];
+                    cmbCliente.SelectedValue = reserva.Cliente.IdCliente.ToString();                  
                     txtFechaLlegada.Text = reserva.FechaLlegada.ToString("dd/MM/yyyy HH:mm:ss");
                     txtFechaSalida.Text = reserva.FechaSalida.ToString("dd/MM/yyyy HH:mm:ss");
                     cmbFormaPago.SelectedValue = reserva.CodFormaPago;
                     txtNroTarjeta.Text = reserva.NumeroTarjeta;
                     txtObservaciones.Text = reserva.Observaciones;
+                    cmbTipoHabitacion.SelectedValue = reserva.Habitacion.TipoHabitacion.IdTipoHabitacion.ToString();                    
+
+                    using (AdministracionClient objHabitacion = new AdministracionClient())
+                    {
+                        cmbHbitacion.DataSource = objHabitacion.AdminHabitaciones(ServicioAdministracion.Constantes.Listar).Where(f => f.TipoHabitacion.IdTipoHabitacion == Convert.ToInt32(cmbTipoHabitacion.SelectedValue)).ToList();
+                        cmbHbitacion.DataTextField = "Numero";
+                        cmbHbitacion.DataValueField = "IdHabitacion";
+                        cmbHbitacion.DataBind();
+                    }
+                    cmbHbitacion.SelectedValue = reserva.Habitacion.IdHabitacion.ToString();
+
+
+                    if (cmbFormaPago.SelectedValue == "EF") { txtNroTarjeta.Enabled = false; }
+                    else {  txtNroTarjeta.Enabled = true; }
+
+                    if (reserva.Pasajero != null)
+                    {
+                        ViewState["Pasajeros"] = reserva.Pasajero;
+                        gdListadoPasajeros.DataSource = (List<Pasajero>)ViewState["Pasajeros"];
+                        gdListadoPasajeros.DataBind();
+                    }
+                                          
                 }
             }
         }
@@ -224,7 +244,6 @@ public partial class Default2 : System.Web.UI.Page
         else { txtNroTarjeta.Text = ""; txtNroTarjeta.Enabled = true; }
     }
 
-
     protected void cmbTipoHabitacion_SelectedIndexChanged(object sender, EventArgs e)
     {
         try
@@ -239,7 +258,6 @@ public partial class Default2 : System.Web.UI.Page
                 cmbHbitacion.DataBind();
 
             }
-            CargarClientes();
         }
         catch (Exception ex)
         {
@@ -271,6 +289,29 @@ public partial class Default2 : System.Web.UI.Page
         {
             divError.InnerHtml = ex.Message;
             divError.Visible = true;
-        }        
+        }
     }
+    protected void gdListadoPasajeros_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        try
+        {
+            if (e.CommandName == "EliminarData")
+            {
+                GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
+                //gdListadoPasajeros.DeleteRow(row.RowIndex);
+                //ViewState["Pasajeros"] = (List<Pasajero>) gdListadoPasajeros.DataSource;
+                List<Pasajero> lista = (List<Pasajero>)ViewState["Pasajeros"];
+                lista.Remove(  lista.Where( f=> f.NombrePasajero==row.Cells[0].Text && f.ApellidoPaterno==row.Cells[1].Text && f.ApellidoMaterno==row.Cells[2].Text  ).First() );
+                ViewState["Pasajeros"] = lista;
+                gdListadoPasajeros.DataSource = lista;
+                gdListadoPasajeros.DataBind();
+            }
+        }
+        catch (Exception ex)
+        {
+            divError.InnerHtml = ex.Message;
+            divError.Visible = true;
+        }
+    }
+
 }

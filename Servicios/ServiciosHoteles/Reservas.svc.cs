@@ -3,12 +3,14 @@ using ServiciosHoteles.Persistencia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Data.SqlClient;
 
 
 using System.Text;
+using System.Messaging;
 
 namespace ServiciosHoteles
 {
@@ -71,9 +73,16 @@ namespace ServiciosHoteles
 
         public Reserva RegistrarReserva(Reserva reservaACrear)
         {
+            Reserva reservaCola = new Reserva();
             Reserva reservaCreado = null;
             try
             {
+                reservaCola = reservaACrear;
+
+                foreach (Pasajero pa in reservaCola.Pasajero) {
+                    pa.Reserva = null;
+                }
+
                 if (reservaACrear.CodFormaPago != "EF" && reservaACrear.NumeroTarjeta == "")
                 {
                     throw new FaultException("Debe Ingresar el número de tarjeta para el tipo de tarjeta ");
@@ -97,17 +106,33 @@ namespace ServiciosHoteles
                         objPasajero.CrearPasajero(pasajero);
                     }
                 }
-              
+
             }
             catch (FaultException ex) { throw ex; }
             catch (Exception e)
             {
                 if (e.InnerException != null)
-                    if (e.InnerException.GetType() == typeof(SqlException)) {
+                    if (e.InnerException.GetType() == typeof(SqlException))
+                    {
+                        string rutaCola = @".\private$\Reservas";
+                        if (!MessageQueue.Exists(rutaCola))
+                        {
+                            MessageQueue.Create(rutaCola);
+                        }
+                        MessageQueue cola = new MessageQueue(rutaCola);
+                        Message mensaje = new Message();
+                        mensaje.Recoverable = true;
+                        cola.Formatter = new BinaryMessageFormatter();
 
-                        throw e.InnerException; 
+
+                        mensaje.Label = "Reservas-Pasajeros";
+                        mensaje.Body = reservaCola;
+
+                        mensaje.Formatter = new BinaryMessageFormatter();
+
+                        cola.Send(mensaje);                  
                     }
-                throw e.InnerException; 
+                throw new Exception(e.InnerException.Message + "</br>" + "Se envió un mensaje con la reserva creada.");
             }
             return reservaCreado;
         }
@@ -123,24 +148,27 @@ namespace ServiciosHoteles
                 }
                 //reservaAModificar.Estado = 0;
                 //reservaAModificar.EstadoCuenta = false;
-                Cliente ClienteExistente = ClienteDAO.Obtener(reservaAModificar.Cliente.IdCliente);
-                Habitacion tipoDocumentoExistente = HabitacionDAO.Obtener(reservaAModificar.Habitacion.IdHabitacion);
+                //Cliente ClienteExistente = ClienteDAO.Obtener(reservaAModificar.Cliente.IdCliente);
+                //Habitacion tipoDocumentoExistente = HabitacionDAO.Obtener(reservaAModificar.Habitacion.IdHabitacion);
 
                 Pasajeros objPasajero = new Pasajeros();
                 IList<Pasajero> pasajeross = reservaAModificar.Pasajero;
                 reservaAModificar.Pasajero = null;
 
-                reservaModificado = ReservaDAO.Modificar(reservaAModificar);
-
-
                 if (pasajeross != null)
-                {                    
-                    foreach (Pasajero pasajeroeliminar in objPasajero.ListarPasajeros().Where(h => h.Reserva.IdReserva == reservaAModificar.IdReserva).ToList())
+                {
+                    foreach (Pasajero pasajeroeliminar in objPasajero.ListarPasajeros().Where(h => h.Reserva.IdReserva == reservaAModificar.IdReserva).Select(g => new Pasajero { IdPasajero = g.IdPasajero }).ToList())
                     {
                         pasajeroeliminar.Reserva = null;
                         objPasajero.EliminarPasajero(pasajeroeliminar);
                     }
+                }
 
+                reservaModificado = ReservaDAO.Modificar(reservaAModificar);
+
+
+                if (pasajeross != null)
+                {
                     foreach (Pasajero pasajeromodificar in pasajeross)
                     {
                         pasajeromodificar.Reserva = new Reserva() { IdReserva = reservaAModificar.IdReserva };
@@ -159,7 +187,7 @@ namespace ServiciosHoteles
             Reserva x;
             try
             {
-                x=  ReservaDAO.Obtener(codigo);
+                x = ReservaDAO.Obtener(codigo);
                 x = new Reserva()
                 {
                     IdReserva = x.IdReserva,
@@ -199,33 +227,33 @@ namespace ServiciosHoteles
         public List<Reserva> ListaReserva()
         {
             try
-            {
+            {          
                 return ReservaDAO.Listar().Select(x => new Reserva
                 {
                     IdReserva = x.IdReserva,
-                    Cliente=x.Cliente,
+                    Cliente = x.Cliente,
                     CodFormaPago = x.CodFormaPago,
-                    Habitacion=x.Habitacion,
+                    Habitacion = x.Habitacion,
                     Pasajero = x.Pasajero.Select(pas => new Pasajero
                     {
                         IdPasajero = pas.IdPasajero,
-                        NombrePasajero=pas.NombrePasajero,
-                        ApellidoPaterno=pas.ApellidoPaterno,
-                        ApellidoMaterno=pas.ApellidoMaterno
+                        NombrePasajero = pas.NombrePasajero,
+                        ApellidoPaterno = pas.ApellidoPaterno,
+                        ApellidoMaterno = pas.ApellidoMaterno
                     }).ToList(),
-                    FechaLlegada=x.FechaLlegada,
-                    FechaSalida=x.FechaSalida,
-                    FechaHoraCheckin=x.FechaHoraCheckin,
-                    ComentarioCheckin=x.ComentarioCheckin,
-                    FechaHoraCheckout=x.FechaHoraCheckout,
-                    ComentarioCheckout=x.ComentarioCheckout,
-                    NumeroTarjeta=x.NumeroTarjeta,
-                    MesExpiraTarjeta=x.MesExpiraTarjeta,
-                    AnioExpiraTarjeta=x.AnioExpiraTarjeta,
-                    RequerimientosEsp=x.RequerimientosEsp,
-                    Observaciones=x.Observaciones,
-                    EstadoCuenta=x.EstadoCuenta,
-                    Estado=x.Estado
+                    FechaLlegada = x.FechaLlegada,
+                    FechaSalida = x.FechaSalida,
+                    FechaHoraCheckin = x.FechaHoraCheckin,
+                    ComentarioCheckin = x.ComentarioCheckin,
+                    FechaHoraCheckout = x.FechaHoraCheckout,
+                    ComentarioCheckout = x.ComentarioCheckout,
+                    NumeroTarjeta = x.NumeroTarjeta,
+                    MesExpiraTarjeta = x.MesExpiraTarjeta,
+                    AnioExpiraTarjeta = x.AnioExpiraTarjeta,
+                    RequerimientosEsp = x.RequerimientosEsp,
+                    Observaciones = x.Observaciones,
+                    EstadoCuenta = x.EstadoCuenta,
+                    Estado = x.Estado
                 }).ToList();
             }
             catch (FaultException ex)

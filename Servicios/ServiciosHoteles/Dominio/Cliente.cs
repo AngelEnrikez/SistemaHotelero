@@ -7,6 +7,7 @@ using System.Web;
 namespace ServiciosHoteles.Dominio
 {
     [DataContract]
+    [Serializable]
     public class Cliente
     {
         [DataMember]

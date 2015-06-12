@@ -85,14 +85,8 @@
                             </table>
                         </asp:Panel>
 
-                        <asp:GridView ID="gdListadoPasajeros" CssClass="table" runat="server" EnableViewState="true" Width="100%" AutoGenerateColumns="False">
-                            <Columns>
-                                <asp:TemplateField HeaderText="Codigo" Visible="false">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblGridCodigo" runat="server" Text='<%# Eval("IdPasajero") %>'></asp:Label>
-                                        <asp:HiddenField ID="hdGridCodigo" runat="server" Value='<%# Eval("IdPasajero") %>' />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                        <asp:GridView ID="gdListadoPasajeros" CssClass="table" runat="server" EnableViewState="true" Width="100%" AutoGenerateColumns="False" OnRowCommand="gdListadoPasajeros_RowCommand" >
+                            <Columns>                                
                                 <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Nombre" DataField="NombrePasajero">
                                     <HeaderStyle CssClass="hidden-xs"></HeaderStyle>
 
