@@ -19,6 +19,7 @@ namespace ServiciosHoteles
         private ClienteDAO clienteDAO = null;
         private ReservaDAO reservaDAO = null;
         private HabitacionDAO habitacionDAO = null;
+        private PasajeroDAO pasajeroDAO = null;
         private HabitacionDAO HabitacionDAO
         {
             get
@@ -55,6 +56,18 @@ namespace ServiciosHoteles
                 return reservaDAO;
             }
         }
+        private PasajeroDAO PasajeroDAO
+        {
+            get
+            {
+                if (pasajeroDAO == null)
+                {
+                    pasajeroDAO = new PasajeroDAO();
+                }
+
+                return pasajeroDAO;
+            }
+        }
 
         public Reserva RegistrarReserva(Reserva reservaACrear)
         {
@@ -67,10 +80,24 @@ namespace ServiciosHoteles
                 }
                 reservaACrear.Estado = 0;
                 reservaACrear.EstadoCuenta = false;
-                Cliente ClienteExistente = ClienteDAO.Obtener(reservaACrear.Cliente.IdCliente);
-                Habitacion tipoDocumentoExistente = HabitacionDAO.Obtener(reservaACrear.Habitacion.IdHabitacion);
+                //Cliente ClienteExistente = ClienteDAO.Obtener(reservaACrear.Cliente.IdCliente);
+                //Habitacion tipoDocumentoExistente = HabitacionDAO.Obtener(reservaACrear.Habitacion.IdHabitacion);   
+
+                Pasajeros objPasajero = new Pasajeros();
+                IList<Pasajero> pasajeross = reservaACrear.Pasajero;
+                reservaACrear.Pasajero = null;
 
                 reservaCreado = ReservaDAO.Crear(reservaACrear);
+
+                if (pasajeross != null)
+                {
+                    foreach (Pasajero pasajero in pasajeross)
+                    {
+                        pasajero.Reserva = new Reserva() { IdReserva = reservaACrear.IdReserva };
+                        objPasajero.CrearPasajero(pasajero);
+                    }
+                }
+              
             }
             catch (FaultException ex) { throw ex; }
             catch (Exception e)
@@ -80,7 +107,7 @@ namespace ServiciosHoteles
 
                         throw e.InnerException; 
                     }
-
+                throw e.InnerException; 
             }
             return reservaCreado;
         }
@@ -99,7 +126,29 @@ namespace ServiciosHoteles
                 Cliente ClienteExistente = ClienteDAO.Obtener(reservaAModificar.Cliente.IdCliente);
                 Habitacion tipoDocumentoExistente = HabitacionDAO.Obtener(reservaAModificar.Habitacion.IdHabitacion);
 
+                Pasajeros objPasajero = new Pasajeros();
+                IList<Pasajero> pasajeross = reservaAModificar.Pasajero;
+                reservaAModificar.Pasajero = null;
+
                 reservaModificado = ReservaDAO.Modificar(reservaAModificar);
+
+
+                if (pasajeross != null)
+                {                    
+                    foreach (Pasajero pasajeroeliminar in objPasajero.ListarPasajeros().Where(h => h.Reserva.IdReserva == reservaAModificar.IdReserva).ToList())
+                    {
+                        pasajeroeliminar.Reserva = null;
+                        objPasajero.EliminarPasajero(pasajeroeliminar);
+                    }
+
+                    foreach (Pasajero pasajeromodificar in pasajeross)
+                    {
+                        pasajeromodificar.Reserva = new Reserva() { IdReserva = reservaAModificar.IdReserva };
+                        objPasajero.CrearPasajero(pasajeromodificar);
+                    }
+                }
+
+
             }
             catch (FaultException ex) { throw ex; }
             return reservaModificado;
@@ -107,14 +156,44 @@ namespace ServiciosHoteles
 
         public Reserva ObtenerReserva(int codigo)
         {
+            Reserva x;
             try
             {
-                return ReservaDAO.Obtener(codigo);
+                x=  ReservaDAO.Obtener(codigo);
+                x = new Reserva()
+                {
+                    IdReserva = x.IdReserva,
+                    Cliente = x.Cliente,
+                    CodFormaPago = x.CodFormaPago,
+                    Habitacion = x.Habitacion,
+                    Pasajero = x.Pasajero.Select(pas => new Pasajero
+                    {
+                        IdPasajero = pas.IdPasajero,
+                        NombrePasajero = pas.NombrePasajero,
+                        ApellidoPaterno = pas.ApellidoPaterno,
+                        ApellidoMaterno = pas.ApellidoMaterno
+                    }).ToList(),
+                    FechaLlegada = x.FechaLlegada,
+                    FechaSalida = x.FechaSalida,
+                    FechaHoraCheckin = x.FechaHoraCheckin,
+                    ComentarioCheckin = x.ComentarioCheckin,
+                    FechaHoraCheckout = x.FechaHoraCheckout,
+                    ComentarioCheckout = x.ComentarioCheckout,
+                    NumeroTarjeta = x.NumeroTarjeta,
+                    MesExpiraTarjeta = x.MesExpiraTarjeta,
+                    AnioExpiraTarjeta = x.AnioExpiraTarjeta,
+                    RequerimientosEsp = x.RequerimientosEsp,
+                    Observaciones = x.Observaciones,
+                    EstadoCuenta = x.EstadoCuenta,
+                    Estado = x.Estado
+
+                };
             }
             catch (FaultException ex)
             {
                 throw ex;
             }
+            return x;
         }
 
         public List<Reserva> ListaReserva()
