@@ -82,6 +82,7 @@
     <EmbeddedResource Include="Dominio\Pasajero.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="Comprobantes.svc" />
     <Content Include="Dominio\Comprobante.hbm.xml" />
     <Content Include="Habitaciones.svc" />
     <Content Include="Paises.svc" />
@@ -112,6 +113,9 @@
     <Compile Include="Clientes.svc.cs">
       <DependentUpon>Clientes.svc</DependentUpon>
     </Compile>
+    <Compile Include="Comprobantes.svc.cs">
+      <DependentUpon>Comprobantes.svc</DependentUpon>
+    </Compile>
     <Compile Include="Dominio\Cliente.cs" />
     <Compile Include="Dominio\Comprobante.cs" />
     <Compile Include="Dominio\Habitacion.cs" />
@@ -130,6 +134,7 @@
     <Compile Include="ICheckIn.cs" />
     <Compile Include="ICheckOut.cs" />
     <Compile Include="IClientes.cs" />
+    <Compile Include="IComprobantes.cs" />
     <Compile Include="IHabitaciones.cs" />
     <Compile Include="IPaises.cs" />
     <Compile Include="IReservas.cs" />
