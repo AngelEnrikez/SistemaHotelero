@@ -43,8 +43,9 @@ namespace ServiciosHoteles
                 }
 
                 DateTime horaCheckIn = DateTime.Now;
+                int hora = Int32.Parse(horaCheckIn.ToString("HH"));
                
-                if(horaCheckIn.ToString("%h").Equals("15")){
+                if(hora < 15){
                     throw new WebFaultException<string>(
                         "La hora minima para hacer checkin es 3:00 pm", HttpStatusCode.PreconditionFailed);
                 }
@@ -55,24 +56,46 @@ namespace ServiciosHoteles
 
                 Mapper.CreateMap<Reserva, ServicioReserva.Reserva>();
                 Mapper.CreateMap<Cliente, ServicioReserva.Cliente>();
+                Mapper.CreateMap<Pais, ServicioReserva.Pais>();
+                Mapper.CreateMap<TipoDocumento, ServicioReserva.TipoDocumento>();
+                Mapper.CreateMap<TipoHabitacion, ServicioReserva.TipoHabitacion>();
                 Mapper.CreateMap<Habitacion, ServicioReserva.Habitacion>();
 
                 ServicioReserva.Reserva reservaProxyAModificar = new ServicioReserva.Reserva();
 
                 Mapper.Map(reservaCheckIn, reservaProxyAModificar);
                 
-                ServicioReserva.ReservasClient proxy = new ServicioReserva.ReservasClient();
-                ServicioReserva.Reserva reservaProxyModificada = proxy.ModificarReserva(reservaProxyAModificar);
+                ServicioReserva.ReservasClient Reservaproxy = new ServicioReserva.ReservasClient();
+                ServicioReserva.Reserva reservaProxyModificada = Reservaproxy.ModificarReserva(reservaProxyAModificar);
 
                 Mapper.CreateMap<ServicioReserva.Reserva, Reserva>();
                 Mapper.CreateMap<ServicioReserva.Cliente, Cliente>();
+                Mapper.CreateMap<ServicioReserva.Pais, Pais>();
+                Mapper.CreateMap<ServicioReserva.TipoDocumento, TipoDocumento>();
+                Mapper.CreateMap<ServicioReserva.TipoHabitacion, TipoHabitacion>();
                 Mapper.CreateMap<ServicioReserva.Habitacion, Habitacion>();
                 
                 Reserva reserva = new Reserva();
                 Mapper.Map(reservaProxyModificada, reserva);
 
+                ServicioCuenta.Cuenta cuenta = new ServicioCuenta.Cuenta()
+                {
+                    Reserva = new ServicioCuenta.Reserva() 
+                    { 
+                        IdReserva = reserva.IdReserva
+                    },
+                    Servicio = new ServicioCuenta.Servicio()
+                    {
+                        IdServicio = 1
+                    },
+                    Cantidad = 1,
+                    CostoUnitario = 0,
+                    Total = 0
+                };
 
-                
+                ServicioCuenta.CuentasClient cuentaProxy = new ServicioCuenta.CuentasClient();
+                cuentaProxy.CrearCuenta(cuenta);
+
                 return reserva;
             }
             catch (FaultException ex)

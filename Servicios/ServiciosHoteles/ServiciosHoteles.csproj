@@ -97,10 +97,29 @@
     <Content Include="Paises.svc" />
     <Content Include="Reservas.svc" />
     <Content Include="packages.config" />
+    <None Include="Service References\ServicioCuenta\Cuentas.wsdl" />
+    <None Include="Service References\ServicioCuenta\Cuentas.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioCuenta\Cuentas1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioCuenta\Cuentas2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\ServicioCuenta\ServiciosHoteles.ServicioCuenta.Cuenta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ServicioReserva\Reservas.disco" />
     <None Include="Service References\ServicioReserva\configuration91.svcinfo" />
     <None Include="Service References\ServicioReserva\configuration.svcinfo" />
     <None Include="Service References\ServicioReserva\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServicioCuenta\configuration91.svcinfo" />
+    <None Include="Service References\ServicioCuenta\configuration.svcinfo" />
+    <None Include="Service References\ServicioCuenta\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -171,6 +190,11 @@
     <Compile Include="Reservas.svc.cs">
       <DependentUpon>Reservas.svc</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServicioCuenta\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServicioReserva\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -210,6 +234,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServicioCuenta\" />
     <WCFMetadataStorage Include="Service References\ServicioReserva\" />
   </ItemGroup>
   <PropertyGroup>

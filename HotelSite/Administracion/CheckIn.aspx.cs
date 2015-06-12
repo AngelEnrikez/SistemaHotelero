@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ServicioReservas;
+using System.Web.Script.Serialization;
+using System.Text;
+using System.Net;
+using System.IO;
 
 public partial class Mantenimientos_CheckIn : System.Web.UI.Page
 {
@@ -12,127 +16,83 @@ public partial class Mantenimientos_CheckIn : System.Web.UI.Page
     //Acá se implementará el código de búsqueda y checkin de huéspedes
     protected void Page_Load(object sender, EventArgs e)
     {
-
-    }
-    protected void btnConsultarReserva_Click(object sender, EventArgs e)
-    {
-        if (txtCodigoReserva.Text.Trim() != string.Empty)
-        {
-            ConsultarReserva(Int32.Parse(txtCodigoReserva.Text.Trim()));
-        }
-        else
-        {
-            MostrarMensaje("Ingrese un código de reserva");
-        }
-    }
-
-    public void ConsultarReserva(int codReserva)
-    {
         try
         {
-            Reserva reserva = null;
-
-            using (ReservasClient objReserva = new ReservasClient())
+            if (!this.IsPostBack)
             {
-
-                /*Data de Prueba*/
-                reserva = new Reserva();
-                reserva.IdReserva = codReserva;
-                reserva.Cliente = new Cliente();
-                reserva.Cliente.Nombre = "Cynthia";
-                reserva.Cliente.ApellidoPaterno = "Carbonel";
-                reserva.Cliente.ApellidoMaterno = "Arce";
-                reserva.Habitacion = new Habitacion();
-                reserva.Habitacion.TipoHabitacion = new TipoHabitacion();
-                reserva.Habitacion.TipoHabitacion.Descripcion = "Duplex";
-                /*Data de Prueba*/
-
-                //reserva = objReserva.ObtenerReserva(codReserva);
-                if (reserva != null)
-                {
-                    hdfCodigoReserva.Value = string.Empty + reserva.IdReserva;
-                    txtNombre.Text = reserva.Cliente.Nombre;
-                    txtApePat.Text = reserva.Cliente.ApellidoPaterno;
-                    txtApeMat.Text = reserva.Cliente.ApellidoMaterno;
-                    txtTipoHabitacion.Text = reserva.Habitacion.TipoHabitacion.Descripcion;
-                    ClearMessage();
-                }
-                else
-                {
-                    MostrarMensaje("Reserva no encontrada");
-                    hdfCodigoReserva.Value = "-1";
-                }
+                string codigo = Request.QueryString["cod"].ToString();
+                hdfCodigoReserva.Value = codigo;
+                cargarDatos(codigo);
             }
         }
         catch (Exception ex)
         {
-            hdfCodigoReserva.Value = "-1";
-            throw ex;
+            divError.InnerHtml = ex.Message;
+            divError.Visible = true;
         }
     }
 
-    public void MostrarMensaje(string mensaje)
+    private void cargarDatos(string codigo)
     {
-        lblMessage.Text = mensaje;
-        lblMessage.Visible = true;
+        ServicioReservas.ReservasClient proxy = new ServicioReservas.ReservasClient();
+        ServicioReservas.Reserva reserva = proxy.ObtenerReserva(Int32.Parse(codigo));
+        txtCodigoReserva.Text = codigo;
+        txtHabitacion.Text = reserva.Habitacion.Numero.ToString();
+        txtCliente.Text = reserva.Cliente.Nombre + " " + reserva.Cliente.ApellidoPaterno + " " + reserva.Cliente.ApellidoMaterno;
+        txtTipoHabitacion.Text = reserva.Habitacion.TipoHabitacion.Descripcion;
+        txtFechaInicio.Text = reserva.FechaLlegada.ToString("dd'/'MM'/'yyyy");
+        txtFechaFin.Text = reserva.FechaLlegada.ToString("dd'/'MM'/'yyyy");
     }
-
-    public void ClearMessage()
-    {
-        lblMessage.Text = string.Empty;
-        lblMessage.Visible = false;
-    }
+    
 
     protected void btnCheckIn_Click(object sender, EventArgs e)
     {
-        try{
-            if (hdfCodigoReserva.Value != "-1")
+        try
+        {
+            ServicioReservas.ReservasClient proxy = new ServicioReservas.ReservasClient();
+            string codigo = hdfCodigoReserva.Value;
+            ServicioReservas.Reserva reserva = proxy.ObtenerReserva(Int32.Parse(codigo));
+            reserva.ComentarioCheckin = txtComentarios.Text;
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            string json = js.Serialize(reserva);
+            byte[] data = Encoding.UTF8.GetBytes(json);
+            HttpWebRequest req = (HttpWebRequest)WebRequest
+                .Create("http://localhost:49486/CheckIn.svc/CheckIn");
+            req.Method = "PUT";
+            req.ContentLength = data.Length;
+            req.ContentType = "application/json";
+            var reqStream = req.GetRequestStream();
+            reqStream.Write(data, 0, data.Length);
+
+            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+            StreamReader reader = new StreamReader(res.GetResponseStream());
+            string reservaJson = reader.ReadToEnd();
+            JavaScriptSerializer js2 = new JavaScriptSerializer();
+            Reserva reservaModificada = js2.Deserialize<Reserva>(reservaJson);
+
+            if (reservaModificada != null)
             {
-
-                DateTime In = DateTime.Parse(txtDateIn.Text);
-                DateTime Out = DateTime.Parse(txtDateOut.Text);
-
-                if (Out > In)
-                {
-                    MostrarMensaje("La fecha de Entrada debe de ser mayor a la fecha de Salida.");
-                }
-                else{
-                    RealizarCheckIn(In, Out, txtComentarios.Text);
-                }
-                
+                divError.InnerHtml = "Check In registrado correctamente";
+                divError.Visible = true;
             }
-            else
-            {
-                MostrarMensaje("Debe consultar la reserva primero.");
-            }     
+
         }
-        catch {
-            MostrarMensaje("Fechas inválidas.");
+        catch (WebException ex)
+        {
+            HttpStatusCode code = ((HttpWebResponse)ex.Response).StatusCode;
+            string message = ((HttpWebResponse)ex.Response).StatusDescription;
+            StreamReader reader = new StreamReader(ex.Response.GetResponseStream());
+            string error = reader.ReadToEnd();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            string mensaje = js.Deserialize<string>(error);
+
+            divError.InnerHtml = mensaje;
+            divError.Visible = true;
         }
-       
     }
-
-    private void RealizarCheckIn(DateTime In, DateTime Out, string ComentarioCheckIn)
+    protected void btnCancelar_Click(object sender, EventArgs e)
     {
-        try{
-            using (ReservasClient objReserva = new ReservasClient())
-            {
-                Reserva reserva = objReserva.ObtenerReserva(Int32.Parse(hdfCodigoReserva.Value));
-                reserva.FechaHoraCheckin = DateTime.Parse(txtDateIn.Text);
-                reserva.FechaLlegada = DateTime.Parse(txtDateIn.Text);
-                reserva.FechaSalida = DateTime.Parse(txtDateOut.Text);
-                reserva.ComentarioCheckin = ComentarioCheckIn;
-
-                //objReserva.RegistrarCheckIn(reserva);
-                //ServicioCheckIn.CheckInClient CheckInClient = new ServicioCheckIn.CheckInClient();
-                //CheckInClient.RegistrarCheckIn(reserva);
-            }
-           
-            ClearMessage();
-            MostrarMensaje("Checkin Exitoso");
-        }
-        catch(Exception ex){
-            throw ex;
-        }
+        Response.Redirect("ConsultaReserva.aspx", true);
     }
 }

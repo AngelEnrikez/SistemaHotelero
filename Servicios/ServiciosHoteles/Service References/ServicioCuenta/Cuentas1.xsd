@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Cuenta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="CostoUnitario" type="xs:double" />
+      <xs:element minOccurs="0" name="IdCuenta" type="xs:int" />
+      <xs:element minOccurs="0" name="Reserva" nillable="true" type="tns:Reserva" />
+      <xs:element minOccurs="0" name="Servicio" nillable="true" type="tns:Servicio" />
+      <xs:element minOccurs="0" name="Total" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cuenta" nillable="true" type="tns:Cuenta" />
   <xs:complexType name="Reserva">
     <xs:sequence>
       <xs:element minOccurs="0" name="AnioExpiraTarjeta" type="xs:int" />
@@ -18,6 +29,7 @@
       <xs:element minOccurs="0" name="MesExpiraTarjeta" type="xs:int" />
       <xs:element minOccurs="0" name="NumeroTarjeta" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Observaciones" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pasajero" nillable="true" type="tns:ArrayOfPasajero" />
       <xs:element minOccurs="0" name="RequerimientosEsp" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TitularTarjeta" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -69,4 +81,34 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TipoHabitacion" nillable="true" type="tns:TipoHabitacion" />
+  <xs:complexType name="ArrayOfPasajero">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pasajero" nillable="true" type="tns:Pasajero" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPasajero" nillable="true" type="tns:ArrayOfPasajero" />
+  <xs:complexType name="Pasajero">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApellidoMaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApellidoPaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdPasajero" type="xs:int" />
+      <xs:element minOccurs="0" name="NombrePasajero" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reserva" nillable="true" type="tns:Reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Pasajero" nillable="true" type="tns:Pasajero" />
+  <xs:complexType name="Servicio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdServicio" type="xs:int" />
+      <xs:element minOccurs="0" name="Tarifa" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Servicio" nillable="true" type="tns:Servicio" />
+  <xs:complexType name="ArrayOfCuenta">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cuenta" nillable="true" type="tns:Cuenta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCuenta" nillable="true" type="tns:ArrayOfCuenta" />
 </xs:schema>
