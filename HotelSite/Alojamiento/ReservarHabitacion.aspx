@@ -68,7 +68,7 @@
                                 <asp:BoundField DataField="ApellidoMaterno" HeaderText="Apellido Materno" />
                                 <asp:TemplateField HeaderText="Eliminar">
                                     <ItemTemplate>
-                                        <asp:Button ID="btnGridModificar" Width="40px" CommandName="ModificarData" class="btn btn-default btn-xs" runat="server" Text="..." />
+                                        <asp:Button ID="btnGridEliminar" Width="40px" CommandName="EliminarData" class="btn btn-default btn-xs" runat="server" Text="..." />
                                     </ItemTemplate>
                                     <ItemStyle Width="50px" />
                                 </asp:TemplateField>
