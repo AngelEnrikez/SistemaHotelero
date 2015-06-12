@@ -77,16 +77,19 @@ namespace ServiciosHoteles
             Reserva reservaCreado = null;
             try
             {
-                reservaCola = reservaACrear;
+                if (reservaACrear.Pasajero == null || reservaACrear.Pasajero.Count() == 0)
+                    throw new FaultException("Debe haber por lo menos un pasajero.");
 
-                foreach (Pasajero pa in reservaCola.Pasajero) {
+                if (reservaACrear.CodFormaPago != "EF" && reservaACrear.NumeroTarjeta == "")
+                    throw new FaultException("Debe Ingresar el número de tarjeta para el tipo de tarjeta.");
+
+
+                reservaCola = reservaACrear;
+                foreach (Pasajero pa in reservaCola.Pasajero)
+                {
                     pa.Reserva = null;
                 }
 
-                if (reservaACrear.CodFormaPago != "EF" && reservaACrear.NumeroTarjeta == "")
-                {
-                    throw new FaultException("Debe Ingresar el número de tarjeta para el tipo de tarjeta ");
-                }
                 reservaACrear.Estado = 0;
                 reservaACrear.EstadoCuenta = false;
                 //Cliente ClienteExistente = ClienteDAO.Obtener(reservaACrear.Cliente.IdCliente);
@@ -130,7 +133,7 @@ namespace ServiciosHoteles
 
                         mensaje.Formatter = new BinaryMessageFormatter();
 
-                        cola.Send(mensaje);                  
+                        cola.Send(mensaje);
                     }
                 throw new Exception(e.InnerException.Message + "</br>" + "Se envió un mensaje con la reserva creada.");
             }
@@ -227,7 +230,7 @@ namespace ServiciosHoteles
         public List<Reserva> ListaReserva()
         {
             try
-            {          
+            {
                 return ReservaDAO.Listar().Select(x => new Reserva
                 {
                     IdReserva = x.IdReserva,

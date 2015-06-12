@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.master" AutoEventWireup="true" CodeFile="ReservarHabitacion.aspx.cs" Inherits="Default2" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -44,7 +46,7 @@
                     <td>
                         <asp:Label ID="lblPasajeros" runat="server" Text="Pasajeros"></asp:Label>
                     </td>
-                    <td>                        
+                    <td>
                         <asp:Button ID="btnAgregarPasajero" class="btn btn-default" runat="server" Text="Agregar pasajero" OnClick="btnAgregarPasajero_Click" />
                         <br />
                         <asp:Panel ID="pnPasajero" runat="server" Visible="False">
@@ -76,17 +78,17 @@
                                 </tr>
 
                                 <tr>
-                                    <td colspan="2">                                        
-                                        <asp:Button ID="btnGuardarPasajero"  class="btn btn-default" runat="server" Text="Guardar" OnClick="btnGuardarPasajero_Click" />
-                                        <asp:Button ID="btnCancelarPasajero"  class="btn btn-default" runat="server" Text="Cancelar" OnClick="btnCancelarPasajero_Click" />
+                                    <td colspan="2">
+                                        <asp:Button ID="btnGuardarPasajero" class="btn btn-default" runat="server" Text="Guardar" OnClick="btnGuardarPasajero_Click" />
+                                        <asp:Button ID="btnCancelarPasajero" class="btn btn-default" runat="server" Text="Cancelar" OnClick="btnCancelarPasajero_Click" />
                                     </td>
                                 </tr>
 
                             </table>
                         </asp:Panel>
 
-                        <asp:GridView ID="gdListadoPasajeros" CssClass="table" runat="server" EnableViewState="true" Width="100%" AutoGenerateColumns="False" OnRowCommand="gdListadoPasajeros_RowCommand" >
-                            <Columns>                                
+                        <asp:GridView ID="gdListadoPasajeros" CssClass="table" runat="server" EnableViewState="true" Width="100%" AutoGenerateColumns="False" OnRowCommand="gdListadoPasajeros_RowCommand">
+                            <Columns>
                                 <asp:BoundField HeaderStyle-CssClass="hidden-xs" ItemStyle-CssClass="hidden-xs" HeaderText="Nombre" DataField="NombrePasajero">
                                     <HeaderStyle CssClass="hidden-xs"></HeaderStyle>
 
@@ -118,8 +120,34 @@
                         <asp:Label ID="lblFechaLlegada" runat="server" Text="Fecha llegada Cliente:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtFechaLlegada" MaxLength="100" class="input-group-addon" runat="server" Width="70px"></asp:TextBox>
-                        <asp:Label ID="lblFormatofecha1" runat="server" Text="dd/MM/yyyy HH:mm:ss"></asp:Label>
+                        <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+                        </cc1:ToolkitScriptManager>
+
+                        <asp:TextBox ID="txtFechaLlegada" MaxLength="100" ValidationGroup="MKE" class="input-group-addon" runat="server" Width="100px"></asp:TextBox>
+
+                        <asp:TextBox ID="txtHoraLlegada" MaxLength="50" ValidationGroup="MKE" class="input-group-addon" runat="server" Width="50px"></asp:TextBox>
+
+                        <cc1:MaskedEditExtender ID="MaskedEditExtender5" runat="server"
+                            TargetControlID="txtFechaLlegada"
+                            Mask="99/99/9999"
+                            MessageValidatorTip="true"
+                            OnFocusCssClass="MaskedEditFocus"
+                            OnInvalidCssClass="MaskedEditError"
+                            MaskType="Date"
+                            DisplayMoney="Left"
+                            AcceptNegative="Left"
+                            ErrorTooltipEnabled="True" UserDateFormat="DayMonthYear" />
+                        <cc1:CalendarExtender ID="CalendarExtender1" runat="server" Format="dd/MM/yyyy" TargetControlID="txtFechaLlegada" PopupButtonID="ImgBntCalc" />
+
+                        <cc1:MaskedEditExtender ID="MaskedEditExtender3" runat="server"
+                            TargetControlID="txtHoraLlegada"
+                            Mask="99:99:99"
+                            MessageValidatorTip="true"
+                            OnFocusCssClass="MaskedEditFocus"
+                            OnInvalidCssClass="MaskedEditError"
+                            MaskType="Time"
+                            AcceptAMPM="False"
+                            ErrorTooltipEnabled="True" />
                     </td>
                 </tr>
                 <tr>
@@ -128,7 +156,30 @@
                     </td>
                     <td>
                         <asp:TextBox ID="txtFechaSalida" MaxLength="100" class="input-group-addon" runat="server" Width="70px"></asp:TextBox>
-                        <asp:Label ID="lblFormatofecha2" runat="server" Text="dd/MM/yyyy HH:mm:ss"></asp:Label>
+                        <asp:TextBox ID="txtHoraSalida" MaxLength="50" ValidationGroup="MKE" class="input-group-addon" runat="server" Width="50px"></asp:TextBox>
+
+                        <cc1:MaskedEditExtender ID="MaskedEditExtender1" runat="server"
+                            TargetControlID="txtFechaSalida"
+                            Mask="99/99/9999"
+                            MessageValidatorTip="true"
+                            OnFocusCssClass="MaskedEditFocus"
+                            OnInvalidCssClass="MaskedEditError"
+                            MaskType="Date"
+                            DisplayMoney="Left"
+                            AcceptNegative="Left"
+                            ErrorTooltipEnabled="True" UserDateFormat="DayMonthYear" />
+                        <cc1:CalendarExtender ID="CalendarExtender2" runat="server" Format="dd/MM/yyyy" TargetControlID="txtFechaSalida" PopupButtonID="ImgBntCalc" />
+
+                        <cc1:MaskedEditExtender ID="MaskedEditExtender2" runat="server"
+                            TargetControlID="txtHoraSalida"
+                            Mask="99:99:99"
+                            MessageValidatorTip="true"
+                            OnFocusCssClass="MaskedEditFocus"
+                            OnInvalidCssClass="MaskedEditError"
+                            MaskType="Time"
+                            AcceptAMPM="False"
+                            ErrorTooltipEnabled="True" />
+
                     </td>
                 </tr>
                 <tr>

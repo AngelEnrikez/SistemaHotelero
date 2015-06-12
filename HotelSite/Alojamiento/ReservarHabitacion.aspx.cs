@@ -14,6 +14,8 @@ public partial class Default2 : System.Web.UI.Page
     {
         try
         {
+            divError.InnerHtml = "";
+            divError.Visible = false;
             if (!this.IsPostBack)
             {
                 hdAgregarActualizar.Value = Request.QueryString["accion"].ToString();
@@ -109,12 +111,14 @@ public partial class Default2 : System.Web.UI.Page
             if (ViewState["Pasajeros"] != null)
                 listaPasajeros = (List<Pasajero>)ViewState["Pasajeros"];
 
+            if (listaPasajeros.Where(f => f.NombrePasajero == nombre && f.ApellidoMaterno == apellidomaterno && f.ApellidoPaterno == apellidopaterno).Count() > 0) throw new Exception("Los pasajeros no se deben repetir");
+
             Pasajero pasajero = new Pasajero()
             {
                 NombrePasajero = nombre,
                 ApellidoPaterno = apellidopaterno,
                 ApellidoMaterno = apellidomaterno
-            };
+            };            
             listaPasajeros.Add(pasajero);
             gdListadoPasajeros.DataSource = listaPasajeros;
             gdListadoPasajeros.DataBind();
@@ -145,8 +149,10 @@ public partial class Default2 : System.Web.UI.Page
                     ServicioAlojamiento.Reserva reserva;
                     reserva = objReserva.ReservarHabitacion(ServicioAlojamiento.Constantes.Obtener, null, Convert.ToInt32(hdCodigo.Value))[0];
                     cmbCliente.SelectedValue = reserva.Cliente.IdCliente.ToString();                  
-                    txtFechaLlegada.Text = reserva.FechaLlegada.ToString("dd/MM/yyyy HH:mm:ss");
-                    txtFechaSalida.Text = reserva.FechaSalida.ToString("dd/MM/yyyy HH:mm:ss");
+                    txtFechaLlegada.Text = reserva.FechaLlegada.ToString("dd/MM/yyyy");
+                    txtHoraLlegada.Text = reserva.FechaLlegada.ToString("HH:mm:ss");
+                    txtFechaSalida.Text = reserva.FechaSalida.ToString("dd/MM/yyyy");
+                    txtHoraSalida.Text = reserva.FechaSalida.ToString("HH:mm:ss");
                     cmbFormaPago.SelectedValue = reserva.CodFormaPago;
                     txtNroTarjeta.Text = reserva.NumeroTarjeta;
                     txtObservaciones.Text = reserva.Observaciones;
@@ -206,8 +212,8 @@ public partial class Default2 : System.Web.UI.Page
                     habitacion.IdHabitacion = Convert.ToInt32(cmbHbitacion.SelectedValue);
                     reserva.Habitacion = habitacion;
                     reserva.Pasajero = listapasajeros;
-                    reserva.FechaLlegada = DateTime.ParseExact(txtFechaLlegada.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-                    reserva.FechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    reserva.FechaLlegada = DateTime.ParseExact(txtFechaLlegada.Text +" "+ txtHoraLlegada.Text, "dd/MM/yyyy HH:mm:ss" , System.Globalization.CultureInfo.InvariantCulture);
+                    reserva.FechaSalida = DateTime.ParseExact(txtFechaSalida.Text+" " + txtHoraSalida.Text , "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
                     reserva.CodFormaPago = cmbFormaPago.SelectedValue.ToString();
                     reserva.NumeroTarjeta = txtNroTarjeta.Text;
                     reserva.Observaciones = txtObservaciones.Text;
@@ -221,8 +227,8 @@ public partial class Default2 : System.Web.UI.Page
                     habitacion.IdHabitacion = Convert.ToInt32(cmbHbitacion.SelectedValue);
                     reserva.Habitacion = habitacion;
                     reserva.Pasajero = listapasajeros;
-                    reserva.FechaLlegada = DateTime.ParseExact(txtFechaLlegada.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-                    reserva.FechaSalida = DateTime.ParseExact(txtFechaSalida.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    reserva.FechaLlegada = DateTime.ParseExact(txtFechaLlegada.Text + " " + txtHoraLlegada.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    reserva.FechaSalida = DateTime.ParseExact(txtFechaSalida.Text + " " + txtHoraSalida.Text, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
                     reserva.CodFormaPago = cmbFormaPago.SelectedValue.ToString();
                     reserva.NumeroTarjeta = txtNroTarjeta.Text;
                     reserva.Observaciones = txtObservaciones.Text;
