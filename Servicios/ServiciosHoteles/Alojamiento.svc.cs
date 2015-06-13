@@ -99,24 +99,38 @@ namespace ServiciosHoteles
 
                 string rutaCola = @".\private$\Reservas";
                 if (!MessageQueue.Exists(rutaCola))
-                {
+                    {
                     MessageQueue.Create(rutaCola);
-                }
-
-                List<Reserva> listadoReserva = new List<Reserva>();
-                MessageQueue colaRecibe = new MessageQueue(rutaCola);
-                colaRecibe.Formatter = new BinaryMessageFormatter();
-                colaRecibe.MessageReadPropertyFilter.SetAll();
-
-                  foreach (Message ms in colaRecibe.GetAllMessages())
-                    { 
-                   
-                    Message mensaje = colaRecibe.Receive();
-                    mensaje.Formatter = new BinaryMessageFormatter();
-                    listadoReserva.Add((Reserva)mensaje.Body);
-
 
                     }
+
+                    List<Reserva> listadoReserva = new List<Reserva>();
+                    MessageQueue colaRecibe = new MessageQueue(rutaCola);
+                    colaRecibe.Formatter = new BinaryMessageFormatter();
+                    colaRecibe.MessageReadPropertyFilter.SetAll();
+
+                  //foreach (Message ms in colaRecibe.GetAllMessages())
+                  //  { 
+                   
+                  //  Message mensaje = colaRecibe.Receive();
+                  //  mensaje.Formatter = new BinaryMessageFormatter();
+                  //  listadoReserva.Add((Reserva)mensaje.Body);
+
+                  //  }
+
+                 // recorrer la lista de la cola recibida 
+                 int cantidad = colaRecibe.GetAllMessages().Count();
+
+                  for (int i = 0; i < listadoReserva.Count; i++)
+                  {
+
+                    
+                      Message mensaje = colaRecibe.Receive();
+                      mensaje.Formatter = new BinaryMessageFormatter();
+                      Reserva pedido = (Reserva)mensaje.Body;
+                      reservaServicio.RegistrarReserva(pedido);         
+
+                  }
 
             }
 
