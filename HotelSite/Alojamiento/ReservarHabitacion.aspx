@@ -16,7 +16,7 @@
                         <asp:Label ID="lblCliente" runat="server" Text="Cliente:"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="cmbCliente" runat="server" Height="16px" Width="200px">
+                        <asp:DropDownList ID="cmbCliente" runat="server" Height="25px" Width="200px">
                         </asp:DropDownList>
 
 
@@ -27,7 +27,7 @@
                         <asp:Label ID="lblTipoHabitacion" runat="server" Text="Tipo habitación:"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="cmbTipoHabitacion" runat="server" Height="16px" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="cmbTipoHabitacion_SelectedIndexChanged">
+                        <asp:DropDownList ID="cmbTipoHabitacion" runat="server" Height="25px" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="cmbTipoHabitacion_SelectedIndexChanged">
                         </asp:DropDownList>
 
                     </td>
@@ -37,7 +37,7 @@
                         <asp:Label ID="lblHabitacion" runat="server" Text="Habitación:"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="cmbHbitacion" runat="server" Height="16px" Width="130px">
+                        <asp:DropDownList ID="cmbHbitacion" runat="server" Height="25px" Width="130px">
                         </asp:DropDownList>
 
                     </td>
@@ -125,7 +125,7 @@
 
                         <asp:TextBox ID="txtFechaLlegada" MaxLength="100" ValidationGroup="MKE" class="input-group-addon" runat="server" Width="100px"></asp:TextBox>
 
-                        <asp:TextBox ID="txtHoraLlegada" MaxLength="50" ValidationGroup="MKE" class="input-group-addon" runat="server" Width="50px"></asp:TextBox>
+                        <asp:TextBox ID="txtHoraLlegada" MaxLength="50" ValidationGroup="MKE" class="input-group-addon" runat="server" Width="80px"></asp:TextBox>
 
                         <cc1:MaskedEditExtender ID="MaskedEditExtender5" runat="server"
                             TargetControlID="txtFechaLlegada"
@@ -156,7 +156,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="txtFechaSalida" MaxLength="100" class="input-group-addon" runat="server" Width="70px"></asp:TextBox>
-                        <asp:TextBox ID="txtHoraSalida" MaxLength="50" ValidationGroup="MKE" class="input-group-addon" runat="server" Width="50px"></asp:TextBox>
+                        <asp:TextBox ID="txtHoraSalida" MaxLength="50" ValidationGroup="MKE" class="input-group-addon" runat="server" Width="80px"></asp:TextBox>
 
                         <cc1:MaskedEditExtender ID="MaskedEditExtender1" runat="server"
                             TargetControlID="txtFechaSalida"
@@ -187,7 +187,7 @@
                         <asp:Label ID="lblFormaPago" runat="server" Text="Forma de Pago:"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="cmbFormaPago" runat="server" Height="16px" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="cmbFormaPago_SelectedIndexChanged">
+                        <asp:DropDownList ID="cmbFormaPago" runat="server" Height="25px" Width="150px" AutoPostBack="True" OnSelectedIndexChanged="cmbFormaPago_SelectedIndexChanged">
                             <asp:ListItem Value="TM">MasterCard</asp:ListItem>
                             <asp:ListItem Value="TV">Visa</asp:ListItem>
                             <asp:ListItem Value="TA">American Express</asp:ListItem>

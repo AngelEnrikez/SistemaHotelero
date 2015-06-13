@@ -77,18 +77,32 @@ namespace ServiciosHoteles
             Reserva reservaCreado = null;
             try
             {
-                if (reservaACrear.FechaLlegada>=reservaACrear.FechaSalida)
-                    throw new FaultException("Debe colocar un rango de fechas correcta"); 
+                if (reservaACrear.FechaLlegada >= reservaACrear.FechaSalida)
+                    throw new FaultException("Debe colocar un rango de fechas correcta");
+
+                //List<Reserva> validarFechaReserva = new List<Reserva>();
+                //validarFechaReserva = ReservaDAO.Listar().Where(g => g.Habitacion.IdHabitacion == reservaACrear.Habitacion.IdHabitacion).ToList();
+                //foreach (Reserva reserv in validarFechaReserva)
+                //{
+                //    reserv.Pasajero = null;
+                //    for (DateTime dt = reserv.FechaLlegada; dt <= reserv.FechaSalida; dt.AddSeconds(1))
+                //    {
+                //        if (reservaACrear.FechaLlegada >= dt && reservaACrear.FechaSalida >=dt)
+                //            throw new FaultException("La habitación esta reservada. Elija otra habitación diponible");
+                //    }             
+                //}
+
                 if (reservaACrear.Pasajero == null || reservaACrear.Pasajero.Count() == 0)
                     throw new FaultException("Debe haber por lo menos un pasajero.");
                 if (reservaACrear.CodFormaPago != "EF" && reservaACrear.NumeroTarjeta == "")
                     throw new FaultException("Debe Ingresar el número de tarjeta para el tipo de tarjeta.");
 
 
-                reservaCola = new Reserva() {
+                reservaCola = new Reserva()
+                {
                     Cliente = reservaACrear.Cliente,
                     Habitacion = reservaACrear.Habitacion,
-                    Pasajero=reservaACrear.Pasajero,
+                    Pasajero = reservaACrear.Pasajero,
                     FechaLlegada = reservaACrear.FechaLlegada,
                     FechaSalida = reservaACrear.FechaSalida,
                     CodFormaPago = reservaACrear.CodFormaPago,
@@ -145,8 +159,8 @@ namespace ServiciosHoteles
                         mensaje.Formatter = new BinaryMessageFormatter();
 
                         cola.Send(mensaje);
+                        throw new Exception("No hay conexión a la base de datos.</br>Se envió un mensaje a la cola con la reserva creada.");
                     }
-                throw new Exception("No hay conexión a la base de datos.</br>Se envió un mensaje a la cola con la reserva creada." );
             }
             return reservaCreado;
         }
