@@ -117,6 +117,7 @@ namespace ServiciosHoteles
                   //  listadoReserva.Add((Reserva)mensaje.Body);
                   //  }
 
+
                  // recorrer la lista de la cola recibida 
                  int cantidad = colaRecibe.GetAllMessages().Count();
 
