@@ -41,7 +41,7 @@ public partial class Mantenimientos_CheckIn : System.Web.UI.Page
         txtCliente.Text = reserva.Cliente.Nombre + " " + reserva.Cliente.ApellidoPaterno + " " + reserva.Cliente.ApellidoMaterno;
         txtTipoHabitacion.Text = reserva.Habitacion.TipoHabitacion.Descripcion;
         txtFechaInicio.Text = reserva.FechaLlegada.ToString("dd'/'MM'/'yyyy");
-        txtFechaFin.Text = reserva.FechaLlegada.ToString("dd'/'MM'/'yyyy");
+        txtFechaFin.Text = reserva.FechaSalida.ToString("dd'/'MM'/'yyyy");
     }
     
 
