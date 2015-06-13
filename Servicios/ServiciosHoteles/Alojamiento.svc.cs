@@ -96,19 +96,27 @@ namespace ServiciosHoteles
                 }
 
 
-                //// Encolar la lista 
 
-                //string rutaCola = @".\private$\jpascual";
-                //if (!MessageQueue.Exists(rutaCola))
-                //{
-                //    MessageQueue.Create(rutaCola);
-                //}
+                string rutaCola = @".\private$\Reservas";
+                if (!MessageQueue.Exists(rutaCola))
+                {
+                    MessageQueue.Create(rutaCola);
+                }
 
-                //MessageQueue cola = new MessageQueue(rutaCola);
-                //Message mensaje = new Message();
-                //mensaje.Label = "Listado de Reservas";
-                //mensaje.Body = new Reserva() { lista };
-                //cola.Send(mensaje);
+                List<Reserva> listadoReserva = new List<Reserva>();
+                MessageQueue colaRecibe = new MessageQueue(rutaCola);
+                colaRecibe.Formatter = new BinaryMessageFormatter();
+                colaRecibe.MessageReadPropertyFilter.SetAll();
+
+                  foreach (Message ms in colaRecibe.GetAllMessages())
+                    { 
+                   
+                    Message mensaje = colaRecibe.Receive();
+                    mensaje.Formatter = new BinaryMessageFormatter();
+                    listadoReserva.Add((Reserva)mensaje.Body);
+
+                    }
+
             }
 
             return lista;
