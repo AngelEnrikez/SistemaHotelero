@@ -17,7 +17,7 @@ namespace HotelUnitTests
                 reserva.Cliente = new ServicioAlojamiento.Cliente() { IdCliente = 1 };
                 reserva.Habitacion = new ServicioAlojamiento.Habitacion() { IdHabitacion = 1 };
                 reserva.FechaLlegada = new DateTime(2015, 06, 12, 12, 12, 12);
-                reserva.FechaSalida= new DateTime(2015, 06, 12, 12, 12, 12);
+                reserva.FechaSalida= new DateTime(2015, 06, 15, 12, 12, 12);
                 reserva.NumeroTarjeta = "2345655445533";
                 reserva.CodFormaPago = "TM";
                 reserva.Observaciones = "nueva reserva";

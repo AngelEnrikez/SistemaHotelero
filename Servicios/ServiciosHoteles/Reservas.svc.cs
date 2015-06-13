@@ -85,7 +85,17 @@ namespace ServiciosHoteles
                     throw new FaultException("Debe Ingresar el número de tarjeta para el tipo de tarjeta.");
 
 
-                reservaCola = reservaACrear;
+                reservaCola = new Reserva() {
+                    Cliente = reservaACrear.Cliente,
+                    Habitacion = reservaACrear.Habitacion,
+                    Pasajero=reservaACrear.Pasajero,
+                    FechaLlegada = reservaACrear.FechaLlegada,
+                    FechaSalida = reservaACrear.FechaSalida,
+                    CodFormaPago = reservaACrear.CodFormaPago,
+                    NumeroTarjeta = reservaACrear.NumeroTarjeta,
+                    Observaciones = reservaACrear.Observaciones
+                };
+
                 foreach (Pasajero pa in reservaCola.Pasajero)
                 {
                     pa.Reserva = null;
@@ -136,7 +146,7 @@ namespace ServiciosHoteles
 
                         cola.Send(mensaje);
                     }
-                throw new Exception(e.InnerException.Message + "</br>" + "Se envió un mensaje con la reserva creada.");
+                throw new Exception("No hay conexión a la base de datos.</br>Se envió un mensaje a la cola con la reserva creada." );
             }
             return reservaCreado;
         }

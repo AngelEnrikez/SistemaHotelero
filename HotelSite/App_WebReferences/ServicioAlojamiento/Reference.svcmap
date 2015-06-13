@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d9843627-b20e-4f07-932b-e35111f7d0d2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="22f9b02c-3c87-41a3-a2d8-265d2ceeca27" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -23,12 +23,12 @@
     <MetadataSource Address="http://localhost:49486/Alojamiento.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Alojamiento.xsd" MetadataType="Schema" ID="39272c57-39ac-4d01-b893-b0c3c1c1a206" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?xsd=xsd1" />
-    <MetadataFile FileName="Alojamiento.disco" MetadataType="Disco" ID="a24b3920-290c-4c02-bb84-33228fdb7eb0" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?disco" />
-    <MetadataFile FileName="Alojamiento1.xsd" MetadataType="Schema" ID="c920d54b-aef7-4233-a00d-db15ff53e235" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?xsd=xsd2" />
-    <MetadataFile FileName="Alojamiento.wsdl" MetadataType="Wsdl" ID="bab22507-c3cd-49fe-9acf-c3cad4957360" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?wsdl" />
-    <MetadataFile FileName="Alojamiento2.xsd" MetadataType="Schema" ID="c61c2203-3083-48e1-92bc-d7ed271267ae" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?xsd=xsd0" />
-    <MetadataFile FileName="Alojamiento3.xsd" MetadataType="Schema" ID="9cc65344-3cc9-40df-87dc-d50cd2fdec5b" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?xsd=xsd3" />
+    <MetadataFile FileName="Alojamiento.xsd" MetadataType="Schema" ID="d577fb80-9d32-469a-bbd1-6461c3270720" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?xsd=xsd1" />
+    <MetadataFile FileName="Alojamiento.disco" MetadataType="Disco" ID="1c5b558a-a5c2-4c3c-897b-26e810751cee" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?disco" />
+    <MetadataFile FileName="Alojamiento1.xsd" MetadataType="Schema" ID="d29d9668-eda2-49ee-8ca9-5743dac73e18" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?xsd=xsd2" />
+    <MetadataFile FileName="Alojamiento.wsdl" MetadataType="Wsdl" ID="54ca91ed-f99a-46e7-87a0-6a0a65e46ff5" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?wsdl" />
+    <MetadataFile FileName="Alojamiento2.xsd" MetadataType="Schema" ID="d9c8d880-e343-41c6-b788-34d48f260b5c" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?xsd=xsd0" />
+    <MetadataFile FileName="Alojamiento3.xsd" MetadataType="Schema" ID="f1af4310-f48d-41c4-b2eb-cb3c07bc6260" SourceId="1" SourceUrl="http://localhost:49486/Alojamiento.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

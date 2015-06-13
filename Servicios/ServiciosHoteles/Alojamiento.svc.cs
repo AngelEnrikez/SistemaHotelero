@@ -11,7 +11,7 @@ namespace ServiciosHoteles
 {
     public class Alojamiento : IAlojamiento
     {
-        public List<Reserva> ReservarHabitacion( Constantes valor, Reserva reserva,int codigo )
+        public List<Reserva> ReservarHabitacion(Constantes valor, Reserva reserva, int codigo)
         {
             List<Reserva> lista = new List<Reserva>();
             IReservas reservaServicio = new Reservas();
@@ -19,12 +19,12 @@ namespace ServiciosHoteles
             try
             {
                 if (valor == Constantes.Crear)
-                {                    
+                {
                     lista.Add(reservaServicio.RegistrarReserva(reserva));
                 }
                 else if (valor == Constantes.Obtener)
                 {
-                    lista.Add(reservaServicio.ObtenerReserva(codigo) );
+                    lista.Add(reservaServicio.ObtenerReserva(codigo));
                 }
                 else if (valor == Constantes.Modificar)
                 {
@@ -67,6 +67,48 @@ namespace ServiciosHoteles
 
             lista = reservaServicio.ListaReserva();
 
+
+            try
+            {
+                string rutaCola = @".\private$\Reservas";
+                if (!MessageQueue.Exists(rutaCola))
+                {
+                    MessageQueue.Create(rutaCola);
+                }
+
+                List<Reserva> listadoReserva = new List<Reserva>();
+                MessageQueue colaRecibe = new MessageQueue(rutaCola);
+                colaRecibe.Formatter = new BinaryMessageFormatter();
+                colaRecibe.MessageReadPropertyFilter.SetAll();
+
+
+                foreach (Message ms in colaRecibe.GetAllMessages())
+                {
+                    Message mensaje = colaRecibe.Receive();
+                    mensaje.Formatter = new BinaryMessageFormatter();
+                    Reserva reservaACrear = (Reserva)mensaje.Body;
+
+                    listadoReserva.Add(new Reserva() {
+                    Cliente = reservaACrear.Cliente,
+                    Habitacion = reservaACrear.Habitacion,
+                    Pasajero=reservaACrear.Pasajero,
+                    FechaLlegada = reservaACrear.FechaLlegada,
+                    FechaSalida = reservaACrear.FechaSalida,
+                    CodFormaPago = reservaACrear.CodFormaPago,
+                    NumeroTarjeta = reservaACrear.NumeroTarjeta,
+                    Observaciones = reservaACrear.Observaciones
+                });
+                    // throw new FaultException(((Reserva)mensaje.Body).Pasajero.Count());
+                }
+
+                foreach (Reserva pedido in listadoReserva)
+                {
+                    reservaServicio.RegistrarReserva(pedido);
+                }
+            }
+            catch (FaultException ex) { throw ex; }
+
+
             if (lista.Count > 0)
             {
 
@@ -95,42 +137,6 @@ namespace ServiciosHoteles
                     lista = lista.FindAll(delegate(Reserva r) { return r.FechaHoraCheckout >= Convert.ToDateTime(fechaChekOutal); });
                 }
 
-
-
-                string rutaCola = @".\private$\Reservas";
-                if (!MessageQueue.Exists(rutaCola))
-                    {
-                    MessageQueue.Create(rutaCola);
-
-                    }
-
-                    List<Reserva> listadoReserva = new List<Reserva>();
-                    MessageQueue colaRecibe = new MessageQueue(rutaCola);
-                    colaRecibe.Formatter = new BinaryMessageFormatter();
-                    colaRecibe.MessageReadPropertyFilter.SetAll();
-
-                  //foreach (Message ms in colaRecibe.GetAllMessages())
-                  //  { 
-                   
-                  //  Message mensaje = colaRecibe.Receive();
-                  //  mensaje.Formatter = new BinaryMessageFormatter();
-                  //  listadoReserva.Add((Reserva)mensaje.Body);
-                  //  }
-
-
-                 // recorrer la lista de la cola recibida 
-                 int cantidad = colaRecibe.GetAllMessages().Count();
-
-                  for (int i = 0; i < listadoReserva.Count; i++)
-                  {
-
-                    
-                      Message mensaje = colaRecibe.Receive();
-                      mensaje.Formatter = new BinaryMessageFormatter();
-                      Reserva pedido = (Reserva)mensaje.Body;
-                      reservaServicio.RegistrarReserva(pedido);         
-
-                  }
 
             }
 
