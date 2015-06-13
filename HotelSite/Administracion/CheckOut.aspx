@@ -8,21 +8,17 @@
     <div class="panel panel-primary" style="width: 700px">
         <div class="panel-heading">Realizar Check-Out</div>
 
-
-
         <div class="panel-body">
             <table class="table" style="width: 60%">
                 <tr>
-                    <td>
-                        <asp:Label ID="Label1" runat="server" Text="Codigo Reserva"></asp:Label>
-                    </td>
-                    <td>
+                    <td>C&oacute;digo Reserva</td>
+                    <td colspan="2">
                         <asp:TextBox ID="txtCodigo" class="input-group-addon" runat="server" Width="253px" ReadOnly="true"></asp:TextBox>
                     </td>
                 </tr>
 
                 <tr>
-                    <td>Habitacion</td>
+                    <td>Habitaci&oacute;n</td>
                     <td colspan="2">
                         <asp:TextBox ID="txtHabitacion" class="input-group-addon" runat="server" Width="253px" ReadOnly="true"></asp:TextBox>
                     </td>
@@ -35,23 +31,16 @@
 
                 </tr>
                 <tr>
-                    <td>Tipo de Habitación </td>
-                    <td colspan="2">
-                        <asp:TextBox ID="txtTipoHabitacion" class="input-group-addon" runat="server" Width="253px" ReadOnly="true"></asp:TextBox>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>Fecha Check In</td>
+                    <td>Fecha/Hora Check-In</td>
                     <td>
                         <asp:TextBox ID="txtCheckIn" class="input-group-addon" runat="server" Width="253px" ReadOnly="true"></asp:TextBox>
                     </td>
                 </tr>
 
                 <tr>
-                    <td>Comentario  </td>
+                    <td>Comentarios</td>
                     <td colspan="2">
-                        <asp:TextBox ID="txtComentario" class="input-group-addon" runat="server" Width="253px"></asp:TextBox>
+                        <asp:TextBox ID="txtComentario" class="input-group-addon" runat="server" Width="253px" Height="62px" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
             </table>
@@ -61,7 +50,8 @@
 
 
         <div class="panel-footer">
-            <asp:Button ID="Button1" class="btn btn-default" runat="server" Text="Registrar CheckOut" OnClick="Button1_Click" />
+            <asp:Button ID="btnCheckOut" class="btn btn-default" runat="server" Text="Check-Out" OnClick="btnCheckOut_Click" />
+            <asp:Button ID="btnCancelar" class="btn btn-default" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
         </div>
 
         <asp:HiddenField ID="hdCodigo" runat="server" Value="0" />

@@ -35,14 +35,13 @@ public partial class Mantenimientos_CheckOut : System.Web.UI.Page
         ServicioReservas.ReservasClient proxy = new ServicioReservas.ReservasClient();
         ServicioReservas.Reserva reserva = proxy.ObtenerReserva(Int32.Parse(codigo));
         txtCodigo.Text = codigo;
-        txtHabitacion.Text = reserva.Habitacion.Numero.ToString();
+        txtHabitacion.Text = reserva.Habitacion.Numero.ToString() + " - " + reserva.Habitacion.TipoHabitacion.Descripcion;
         txtCliente.Text = reserva.Cliente.Nombre + " " + reserva.Cliente.ApellidoPaterno + " " + reserva.Cliente.ApellidoMaterno;
-        txtTipoHabitacion.Text = reserva.Habitacion.TipoHabitacion.Descripcion;
         txtCheckIn.Text = reserva.FechaHoraCheckin + "";
     }
 
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnCheckOut_Click(object sender, EventArgs e)
     {
         try
         {
@@ -55,7 +54,7 @@ public partial class Mantenimientos_CheckOut : System.Web.UI.Page
             string json = js.Serialize(reserva);
             byte[] data = Encoding.UTF8.GetBytes(json);
             HttpWebRequest req = (HttpWebRequest)WebRequest
-                .Create("http://localhost:49486/CheckOut.svc/Reservas");
+                .Create("http://localhost:49486/CheckOut.svc/CheckOut");
             req.Method = "PUT";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -87,5 +86,9 @@ public partial class Mantenimientos_CheckOut : System.Web.UI.Page
             divError.Visible = true;
         }
 
+    }
+    protected void btnCancelar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ConsultaReserva.aspx", true);
     }
 }
