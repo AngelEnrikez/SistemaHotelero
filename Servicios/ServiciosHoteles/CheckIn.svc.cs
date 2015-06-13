@@ -60,7 +60,8 @@ namespace ServiciosHoteles
                 Mapper.CreateMap<TipoDocumento, ServicioReserva.TipoDocumento>();
                 Mapper.CreateMap<TipoHabitacion, ServicioReserva.TipoHabitacion>();
                 Mapper.CreateMap<Habitacion, ServicioReserva.Habitacion>();
-
+                Mapper.CreateMap<Pasajero, ServicioReserva.Pasajero>();
+               
                 ServicioReserva.Reserva reservaProxyAModificar = new ServicioReserva.Reserva();
 
                 Mapper.Map(reservaCheckIn, reservaProxyAModificar);

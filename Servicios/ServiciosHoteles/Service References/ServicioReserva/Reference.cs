@@ -71,6 +71,9 @@ namespace ServiciosHoteles.ServicioReserva {
         private string ObservacionesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ServiciosHoteles.ServicioReserva.Pasajero[] PasajeroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RequerimientosEspField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -290,6 +293,19 @@ namespace ServiciosHoteles.ServicioReserva {
                 if ((object.ReferenceEquals(this.ObservacionesField, value) != true)) {
                     this.ObservacionesField = value;
                     this.RaisePropertyChanged("Observaciones");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ServiciosHoteles.ServicioReserva.Pasajero[] Pasajero {
+            get {
+                return this.PasajeroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasajeroField, value) != true)) {
+                    this.PasajeroField = value;
+                    this.RaisePropertyChanged("Pasajero");
                 }
             }
         }
@@ -598,6 +614,115 @@ namespace ServiciosHoteles.ServicioReserva {
                 if ((object.ReferenceEquals(this.TipoHabitacionField, value) != true)) {
                     this.TipoHabitacionField = value;
                     this.RaisePropertyChanged("TipoHabitacion");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Pasajero", Namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class Pasajero : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApellidoMaternoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApellidoPaternoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdPasajeroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombrePasajeroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ServiciosHoteles.ServicioReserva.Reserva ReservaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApellidoMaterno {
+            get {
+                return this.ApellidoMaternoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApellidoMaternoField, value) != true)) {
+                    this.ApellidoMaternoField = value;
+                    this.RaisePropertyChanged("ApellidoMaterno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApellidoPaterno {
+            get {
+                return this.ApellidoPaternoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApellidoPaternoField, value) != true)) {
+                    this.ApellidoPaternoField = value;
+                    this.RaisePropertyChanged("ApellidoPaterno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdPasajero {
+            get {
+                return this.IdPasajeroField;
+            }
+            set {
+                if ((this.IdPasajeroField.Equals(value) != true)) {
+                    this.IdPasajeroField = value;
+                    this.RaisePropertyChanged("IdPasajero");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NombrePasajero {
+            get {
+                return this.NombrePasajeroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombrePasajeroField, value) != true)) {
+                    this.NombrePasajeroField = value;
+                    this.RaisePropertyChanged("NombrePasajero");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ServiciosHoteles.ServicioReserva.Reserva Reserva {
+            get {
+                return this.ReservaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReservaField, value) != true)) {
+                    this.ReservaField = value;
+                    this.RaisePropertyChanged("Reserva");
                 }
             }
         }
