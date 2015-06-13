@@ -77,9 +77,10 @@ namespace ServiciosHoteles
             Reserva reservaCreado = null;
             try
             {
+                if (reservaACrear.FechaLlegada>=reservaACrear.FechaSalida)
+                    throw new FaultException("Debe colocar un rango de fechas correcta"); 
                 if (reservaACrear.Pasajero == null || reservaACrear.Pasajero.Count() == 0)
                     throw new FaultException("Debe haber por lo menos un pasajero.");
-
                 if (reservaACrear.CodFormaPago != "EF" && reservaACrear.NumeroTarjeta == "")
                     throw new FaultException("Debe Ingresar el número de tarjeta para el tipo de tarjeta.");
 
@@ -145,6 +146,10 @@ namespace ServiciosHoteles
             Reserva reservaModificado = null;
             try
             {
+                if (reservaAModificar.FechaLlegada >= reservaAModificar.FechaSalida)
+                    throw new FaultException("Debe colocar un rango de fechas correcta");
+                if (reservaAModificar.Pasajero == null || reservaAModificar.Pasajero.Count() == 0)
+                    throw new FaultException("Debe haber por lo menos un pasajero.");
                 if (reservaAModificar.CodFormaPago != "EF" && reservaAModificar.NumeroTarjeta == "")
                 {
                     throw new FaultException("Debe Ingresar el número de tarjeta para el tipo de tarjeta ");
