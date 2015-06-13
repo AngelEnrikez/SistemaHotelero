@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:49486/Alojamiento.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Util" />
+  <xs:import schemaLocation="http://localhost:49486/Alojamiento.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" />
+  <xs:element name="ReservarHabitacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Util" minOccurs="0" name="valor" type="q1:Constantes" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="reserva" nillable="true" type="q2:Reserva" />
+        <xs:element minOccurs="0" name="codigo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReservarHabitacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="ReservarHabitacionResult" nillable="true" type="q3:ArrayOfReserva" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarCheckin">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarCheckinResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="RegistrarCheckinResult" nillable="true" type="q4:ArrayOfReserva" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarCheckout">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarCheckoutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="RegistrarCheckoutResult" nillable="true" type="q5:ArrayOfReserva" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelarReserva">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelarReservaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarCancelacion">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarCancelacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidarCancelacionResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerReserva">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" type="xs:int" />
+        <xs:element minOccurs="0" name="fechaChekIndel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaChekInAl" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaChekOutdel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaChekOutal" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerReservaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServiciosHoteles.Dominio" minOccurs="0" name="ObtenerReservaResult" nillable="true" type="q6:ArrayOfReserva" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
