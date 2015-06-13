@@ -115,6 +115,7 @@ namespace ServiciosHoteles
                     mensaje.Formatter = new BinaryMessageFormatter();
                     listadoReserva.Add((Reserva)mensaje.Body);
 
+
                     }
 
             }
