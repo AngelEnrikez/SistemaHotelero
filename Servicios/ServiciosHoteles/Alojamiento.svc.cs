@@ -115,7 +115,6 @@ namespace ServiciosHoteles
                   //  Message mensaje = colaRecibe.Receive();
                   //  mensaje.Formatter = new BinaryMessageFormatter();
                   //  listadoReserva.Add((Reserva)mensaje.Body);
-
                   //  }
 
                  // recorrer la lista de la cola recibida 
