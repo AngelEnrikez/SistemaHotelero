@@ -37,6 +37,10 @@ namespace ServiciosHoteles
             Mapper.CreateMap<Reserva, ServicioReserva.Reserva>();
             Mapper.CreateMap<Cliente, ServicioReserva.Cliente>();
             Mapper.CreateMap<Habitacion, ServicioReserva.Habitacion>();
+            Mapper.CreateMap<Pais, ServicioReserva.Pais>();
+            Mapper.CreateMap<TipoDocumento, ServicioReserva.TipoDocumento>();
+            Mapper.CreateMap<TipoHabitacion, ServicioReserva.TipoHabitacion>();
+            Mapper.CreateMap<Pasajero, ServicioReserva.Pasajero>();
 
             ServicioReserva.Reserva reservaAModificar = new ServicioReserva.Reserva();
             Mapper.Map(reservaCheckedOut, reservaAModificar);
@@ -44,7 +48,11 @@ namespace ServiciosHoteles
 
             Mapper.CreateMap<ServicioReserva.Reserva, Reserva>();
             Mapper.CreateMap<ServicioReserva.Cliente, Cliente>();
+            Mapper.CreateMap<ServicioReserva.Pais, Pais>();
+            Mapper.CreateMap<ServicioReserva.TipoDocumento, TipoDocumento>();
+            Mapper.CreateMap<ServicioReserva.TipoHabitacion, TipoHabitacion>();
             Mapper.CreateMap<ServicioReserva.Habitacion, Habitacion>();
+
             Reserva reservaRetorno = new Reserva();
             Mapper.Map(reservaModificada, reservaRetorno);
 
@@ -86,7 +94,7 @@ namespace ServiciosHoteles
             decimal importeIgv = importeSinIgv * igv;
             decimal importeTotal = importeSinIgv + importeIgv;
 
-            //Creamos un objeto Comprobante y lo grabamos en la base de datos
+            //Creamos un objeto Comprobante y lo grabamos en la base de datosE:\Workspaces\VisualStudio\GestionHotelera\Servicios\ServiciosHoteles\Persistencia\ClienteDAO.cs
             ServicioComprobante.ComprobantesClient proxyComprobante = new ServicioComprobante.ComprobantesClient();
             ServicioComprobante.Comprobante nuevoComprobante = new ServicioComprobante.Comprobante()
             {

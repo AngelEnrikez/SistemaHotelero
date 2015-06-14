@@ -100,6 +100,19 @@
     <Content Include="Pasajeros.svc" />
     <Content Include="Reservas.svc" />
     <Content Include="packages.config" />
+    <None Include="Service References\ServicioCliente\Clientes.wsdl" />
+    <None Include="Service References\ServicioCliente\Clientes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioCliente\Clientes1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioCliente\Clientes2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\ServicioCliente\ServiciosHoteles.ServicioCliente.Cliente.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ServicioComprobante\Comprobantes.wsdl" />
     <None Include="Service References\ServicioComprobante\Comprobantes.xsd">
       <SubType>Designer</SubType>
@@ -109,6 +122,12 @@
     </None>
     <None Include="Service References\ServicioComprobante\Comprobantes2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServicioCliente\configuration91.svcinfo" />
+    <None Include="Service References\ServicioCliente\configuration.svcinfo" />
+    <None Include="Service References\ServicioCliente\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Service References\ServicioComprobante\ServiciosHoteles.ServicioComprobante.Comprobante.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -243,6 +262,11 @@
     <Compile Include="Reservas.svc.cs">
       <DependentUpon>Reservas.svc</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServicioCliente\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServicioComprobante\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -297,6 +321,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServicioCliente\" />
     <WCFMetadataStorage Include="Service References\ServicioComprobante\" />
     <WCFMetadataStorage Include="Service References\ServicioConfig\" />
     <WCFMetadataStorage Include="Service References\ServicioCuenta\" />

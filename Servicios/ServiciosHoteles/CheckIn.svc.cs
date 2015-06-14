@@ -90,8 +90,8 @@ namespace ServiciosHoteles
                         IdServicio = 1
                     },
                     Cantidad = 1,
-                    CostoUnitario = 0,
-                    Total = 0
+                    CostoUnitario = (double)reserva.Habitacion.TipoHabitacion.Tarifa,
+                    Total = (double) reserva.Habitacion.TipoHabitacion.Tarifa
                 };
 
                 ServicioCuenta.CuentasClient cuentaProxy = new ServicioCuenta.CuentasClient();

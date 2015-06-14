@@ -73,8 +73,8 @@
                 </asp:BoundField>
                 <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de Llegada" />
                  <asp:BoundField DataField="FechaSalida" HeaderText="Fecha de Salida" />
-                <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de Chek-In" />
-                <asp:BoundField DataField="FechaLlegada" HeaderText="Fecha de Check-Out" />
+                <asp:BoundField DataField="FechaHoraCheckin" HeaderText="Fecha de Chek-In" />
+                <asp:BoundField DataField="FechaHoraCheckout" HeaderText="Fecha de Check-Out" />
                 <asp:BoundField DataField="Observaciones" HeaderText="Observaciones" />
                 <asp:TemplateField HeaderText="Acciones">
                     <ItemTemplate>
