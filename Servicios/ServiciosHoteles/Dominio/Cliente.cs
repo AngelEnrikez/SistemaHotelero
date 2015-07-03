@@ -26,6 +26,9 @@ namespace ServiciosHoteles.Dominio
         public string Email { get; set; }
         [DataMember]
         public string Telefono { get; set; }
+
+        [DataMember]
+        public string Telefono { get; set; }
         [DataMember]
         public Pais Pais { get; set; }
         
